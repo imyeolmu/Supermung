@@ -36,3 +36,29 @@
 
 프론트 어드민 작업 실행
 
+
+&nbsp;
+
+- 07.22
+
+ 프론트 어드민 작업완료
+ 
+ 백엔드 작업 시작
+
+ jsp 변경 작업 
+
+ spirng 환경설정 셋팅 작업 
+
+ IDE :spring tool suite4
+
+ DB: Oracel
+
+Configuration Management: git
+
+bulid : maven
+
+SQL:my batis
+
+
+
+

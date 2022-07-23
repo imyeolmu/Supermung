@@ -51,13 +51,24 @@
 
  IDE :spring tool suite4
 
- DB: Oracel
+ DB: Oracle
 
 Configuration Management: git
 
 bulid : maven
 
 SQL:my batis
+
+
+&nbsp;
+
+- 07.23
+spring 기본 셋팅환경 구축 완료
+
+이클립스 깃허브 연동 -팀원
+
+
+
 
 
 

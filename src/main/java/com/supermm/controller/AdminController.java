@@ -15,6 +15,11 @@ public class AdminController {
 	@RequestMapping("/admin-login")
 	public String alogin() {
 
+		
+		
+		
+		
+		
 		return "admin/admin-login";
 	}
 

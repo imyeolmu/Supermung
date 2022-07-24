@@ -49,9 +49,9 @@
 
  spirng 환경설정 셋팅 작업 
 
- IDE :spring tool suite4
+IDE :spring tool suite4
 
- DB: Oracle
+DB: Oracle
 
 Configuration Management: git
 
@@ -63,9 +63,24 @@ SQL:my batis
 &nbsp;
 
 - 07.23
+
 spring 기본 셋팅환경 구축 완료
 
+
 이클립스 깃허브 연동 -팀원
+
+&nbsp;
+- 07.24
+
+이클립스 깃허브 연동 - 팀원 
+
+어드민 백엔드 작업 
+
++에러 페이지 페이지 추가
+
+&nbsp;
+
+
 
 
 

@@ -15,6 +15,8 @@ public class MemberController {
 	public String mempoint() {
 		
 		return "admin/member/member-point";
+		
+		
 	}
 	@RequestMapping("/member-update")
 	public String memupdate() {

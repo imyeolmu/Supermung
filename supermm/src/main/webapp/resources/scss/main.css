@@ -1151,7 +1151,7 @@ ol {
   width: 40px;
   height: 40px;
   line-height: 40px;
-  background: #FFD66B;
+  background: #AB93C9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7378,7 +7378,6 @@ blockquote span {
 ========================================*/
 .admin-input {
   background-color: #fff;
-  min-height: 700px;
 }
 .admin-input .input-form {
   padding: 42px;
@@ -7428,13 +7427,6 @@ blockquote span {
 .admin-input .input-form p input {
   margin-right: 15px;
 }
-.admin-input .input-form .member-point {
-  color: #AB93C9;
-  font-weight: 600;
-}
-.admin-input .input-form .member-point:hover {
-  color: #333;
-}
 .admin-input .input-form .inputdiv .ok {
   background-color: #AB93C9;
   color: white;
@@ -7458,21 +7450,11 @@ blockquote span {
     Admin Board CSS
 ========================================*/
 .board {
-  min-height: 700px;
+  min-height: 500px;
 }
 .board h4 {
   font-size: 25px;
   margin-bottom: 20px;
-}
-.board h5 {
-  font-size: 20px;
-}
-.board .table {
-  table-layout: fixed;
-}
-.board .table td {
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 .board .search {
   float: right;
@@ -7563,11 +7545,8 @@ blockquote span {
     Admin Board Detail CSS
 ========================================*/
 .board-detail {
-  min-height: 700px;
+  min-height: 500px;
   color: #333;
-}
-.board-detail h5 {
-  font-size: 20px;
 }
 .board-detail .content {
   min-height: 300px;
@@ -7598,37 +7577,4 @@ blockquote span {
 }
 .board-detail .three-menu a {
   color: #fff;
-}
-.board-detail .reply {
-  margin-top: 50px;
-}
-.board-detail .reply h5 {
-  font-size: 15px;
-  font-weight: 500;
-}
-.board-detail .reply .row {
-  border: 1px solid #eee;
-  border-radius: 4px;
-  margin-top: 10px;
-  padding: 10px 20px;
-}
-.board-detail .reply .row p {
-  font-size: 15px;
-}
-.board-detail .reply .form-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.board-detail .reply .form-group button {
-  background-color: #AB93C9;
-  border: 1px solid #AB93C9;
-  border-radius: 4px;
-  padding: 3px;
-  margin: 2px;
-  min-width: 30px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 10px;
 }/*# sourceMappingURL=main.css.map */

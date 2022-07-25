@@ -228,7 +228,6 @@
 ========================================*/
 .admin-input {
     background-color: #fff;
-    min-height: 700px;
 
     .input-form {
         padding: 42px;
@@ -289,15 +288,6 @@
             }
         }
 
-        .member-point {
-            color: $theme-color;
-            font-weight: 600;
-            
-            &:hover {
-                color: #333;
-            }
-        }
-
         .inputdiv {
             .ok {
                 background-color: $theme-color;
@@ -328,25 +318,13 @@
 ========================================*/
 
 .board {
-    min-height: 700px;
+    min-height: 500px;
     
     h4 {
         font-size: 25px;
         margin-bottom: 20px;
     }
     
-    h5 {
-        font-size: 20px;
-    }
-    .table {
-        table-layout:fixed;
-
-        td {
-            text-overflow:ellipsis; 
-            overflow:hidden;
-        }
-    }
-
     .search {
         float: right;
         margin-bottom: 20px;
@@ -459,12 +437,8 @@ color: #333;
     Admin Board Detail CSS
 ========================================*/
 .board-detail {
-    min-height: 700px;
+    min-height: 500px;
     color: #333;
-
-    h5 {
-        font-size: 20px;
-    }
 
     .content {
         min-height: 300px;
@@ -499,46 +473,5 @@ color: #333;
         a {
             color: #fff;
         }
-    }
-
-    .reply {
-        margin-top: 50px;
-
-        h5 {
-            font-size: 15px;
-            font-weight: 500;
-            
-        }
-        .row {
-            border: 1px solid #eee;
-            border-radius: 4px;
-            margin-top: 10px;
-            padding: 10px 20px;
-            
-
-            p {
-                font-size: 15px;
-            }
-
-        }
-        
-        .form-group {
-            // border: 1px solid #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            button {
-                background-color: $theme-color;
-                border: 1px solid $theme-color;
-                border-radius: 4px;
-                padding: 3px;
-                margin: 2px;
-                min-width: 30px;
-                color: #fff;
-                font-size: 14px;
-                font-weight: 500;
-                margin-top: 10px;
-            }
-        }   
     }
 }

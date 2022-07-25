@@ -7,16 +7,16 @@
 	<div class="container text-center">
 		<div class="row">
 			<div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
-				<form class="card input-form rounded shadow-sm" method="post">
+				<form action="<c:url value='category-input'/>" class="card input-form rounded shadow-sm" method="post">
 					<div class="title">
 						<h4 class="mb-5">카테고리 등록</h4>
 						<p>
 							<span>카테고리 코드</span> <input class="w-50 cinput" type="text"
-								name="">
+								name="cCode">
 						</p>
 						<p>
 							<span>카테고리 이름</span> <input class="w-50 cinput" type="text"
-								name="">
+								name="cName">
 						</p>
 					</div>
 					<div class="inputdiv">

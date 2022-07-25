@@ -21,10 +21,10 @@ public class CategoryMapperTests {
 		
 		CategoryVO cat = new CategoryVO();
 		
-		cat.setCNum("1");
-		cat.setCName("테스트이름");
-		cat.setCCode("테스트코드");
-		
+//		cat.setCNum("1");
+//		cat.setCName("테스트이름");
+//		cat.setCCode("테스트코드");
+//		
 		mapper.input(cat);
 		
 		

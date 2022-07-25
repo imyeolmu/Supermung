@@ -1,8 +1,11 @@
+<%@page import="java.util.List" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="com.supermm.model.MemberVO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../inc/admin-header.jsp"%>
 
-<!-- main 부분 여기여기 폼 부분 -->
 <main class="board container w-100 p-5">
 	<h4>회원 목록</h4>
 	<!-- 검색창  -->
@@ -31,29 +34,33 @@
 				<th class="w30">우편번호</th>
 				<th class="w60">주소</th>
 				<th class="w40">가입일</th>
+				<th class="w40">포인트</th>
 				<th class="w10">삭제</th>
 			</tr>
 		</thead>
 		<tbody>
+		<c:forEach var="dto" items="${list}">
 			<tr class="text-center">
 				<!-- 회원번호(primarykey) 클릭하면 수정페이지로 넘어가기 -->
-				<td width="100"><nobr /><a href="member-update"
-					class="pro-hre">1</a></td>
-				<td width="100"><nobr />user</td>
-				<td width="100"><nobr />password</td>
-				<td width="100"><nobr />이름</td>
-				<td width="100"><nobr />생년월일</td>
-				<td width="100"><nobr />여</td>
-				<td width="100"><nobr />user@google.com</td>
-				<td width="100"><nobr />010-1234-1234</td>
-				<td width="100"><nobr />우편번호</td>
-				<td width="100"><nobr />도로명(지번) 상세주소</td>
-				<td width="100"><nobr />2022-07-21</td>
+				<td width="100"><nobr /><a href="member-info?no=${dto.no}"
+					class="pro-hre">${dto.no}</a></td>
+				<td width="100"><nobr />${dto.id}</td>
+				<td width="100"><nobr />${dto.pw}</td>
+				<td width="100"><nobr />${dto.name}</td>
+				<td width="100"><nobr />${dto.age}</td>
+				<td width="100"><nobr />${dto.gender}</td>
+				<td width="100"><nobr />${dto.email}</td>
+				<td width="100"><nobr />${dto.phone}</td>
+				<td width="100"><nobr />${dto.zipCode}</td>
+				<td width="100"><nobr />${dto.roadAddr}${dto.roadAddr}${dto.detailAddr}</td>
+				<td width="100"><nobr />${dto.regDate}</td>
+				<td width="100"><nobr /><a href="member-point?no=${dto.no}"
+					class="pro-hre">${dto.point}</a></td>				
 				<td><input type="checkbox" name="del" id="del"></td>
 			</tr>
+		</c:forEach>
 		</tbody>
 	</table>
-	</div>
 	<div class="notice-footer w-100">
 		<div class="indexer align-right">
 			<p class="notice-page">

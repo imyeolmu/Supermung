@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../inc/admin-header.jsp"%>
 
+
 <!-- Start Category Input Area -->
 <div class="admin-input section">
 	<div class="container text-center">
@@ -12,11 +13,11 @@
 						<h4 class="mb-5">카테고리 등록</h4>
 						<p>
 							<span>카테고리 코드</span> <input class="w-50 cinput" type="text"
-								name="cCode">
+								id="cateCode" name="cateCode">
 						</p>
 						<p>
 							<span>카테고리 이름</span> <input class="w-50 cinput" type="text"
-								name="cName">
+								id="cateName" name="cateName">
 						</p>
 					</div>
 					<div class="inputdiv">

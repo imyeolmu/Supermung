@@ -100,8 +100,8 @@
                                             <div class="admin-menu">
                                                 <div class="dropdown-user">
                                                     <ul class="admin-menu-list">
-                                                        <li><a href="category-list" class="admin-head-menu">카테고리목록</a></li>
-                                                        <li><a href="category-input" class="admin-head-menu">카테고리등록</a></li>
+                                                        <li><a href="${ctx}/category-list" class="admin-head-menu">카테고리목록</a></li>
+                                                        <li><a href="${ctx}/category-input" class="admin-head-menu">카테고리등록</a></li>
                                                         <li><a href="category-update" class="admin-head-menu">카테고리수정</a></li>
                                                     </ul>
                                                 </div>

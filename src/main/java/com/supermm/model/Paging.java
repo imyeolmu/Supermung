@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class Paging {
 	private int totalCnt;
-	
+	 
 	private int viewPage;
 	private int startIndex;
 	private int blockSize = 5;

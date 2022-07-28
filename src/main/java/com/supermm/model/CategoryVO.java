@@ -9,8 +9,7 @@ public class CategoryVO {
 	private String cateCode;
 	private String cateName;
 	
-	
-	
+	 
 	private String uid;
 	/////// paging //////
 	private int startIndex;

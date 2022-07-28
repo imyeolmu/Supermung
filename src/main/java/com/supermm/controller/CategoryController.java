@@ -48,7 +48,7 @@ public class CategoryController {
 		cvo.setStartIndex(page.getStartIndex());
 		cvo.setCntPerPage(cntPerPage);
 		
-		
+		 
 		System.out.println("viewPage........"+ viewPage);
 		System.out.println("cntPerPage........"+ cntPerPage);
 		

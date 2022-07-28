@@ -12,7 +12,7 @@
 					<div class="title">
 						<h4 class="mb-5">카테고리 등록</h4>
 						<p>
-			 				<span>카테고리 코드</span> <input class="w-50 cinput" type="text"
+			  				<span>카테고리 코드</span> <input class="w-50 cinput" type="text"
 								id="cateCode" name="cateCode">
 						</p>
 						<p>

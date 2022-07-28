@@ -16,7 +16,7 @@
 		$(".goUpdate").on("click", function(e){
 			e.preventDefault();
 			
-			 moveForm.append("<input type='hidden' name='cateNum' value='"+
+			  moveForm.append("<input type='hidden' name='cateNum' value='"+
 					$(this).attr("href")+"'>");
 			moveForm.attr("action","category-update");
 			moveForm.submit();

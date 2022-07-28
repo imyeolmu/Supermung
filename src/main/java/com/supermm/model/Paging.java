@@ -18,7 +18,7 @@ public class Paging {
 	private int blockEnd;
 	private int prevPage;
 	private int nextPage;
-	
+	 
 	private int cntPerPage; // 한페이지당 게시글 수
 	private int totalPage; // 전체페이지 수
 	

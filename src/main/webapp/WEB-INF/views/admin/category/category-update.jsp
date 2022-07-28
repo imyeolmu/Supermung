@@ -20,7 +20,7 @@
 							id="cateCode" name="cateCode" value="${update.cateCode}" >
 						</p>
 						<p>
-					 		<span>카테고리 이름</span> <input class="w-50  cinput" type="text"
+					  		<span>카테고리 이름</span> <input class="w-50  cinput" type="text"
 								name="cateName" id="cateName" value="${update.cateName}">
 						</p>
 						

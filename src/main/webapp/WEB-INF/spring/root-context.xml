@@ -10,7 +10,7 @@
 		https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-
+ 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- ▼dataSource는 id="sqlSessionFactory"의 property와 같아야합니다!!-->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"> 

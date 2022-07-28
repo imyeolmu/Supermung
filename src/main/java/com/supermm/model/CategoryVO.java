@@ -14,7 +14,7 @@ public class CategoryVO {
 	/////// paging //////
 	private int startIndex;
 	private int cntPerPage;
-	
+	 
 	
 
 	//////// search ///////////

@@ -10,3 +10,4 @@
 		<typeAlias type="com.supermm.model.CategoryVO" alias="categoryVO"/>
 	</typeAliases>
 </configuration>
+ 

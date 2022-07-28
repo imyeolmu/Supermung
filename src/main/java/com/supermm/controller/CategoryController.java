@@ -66,7 +66,7 @@ public class CategoryController {
 		return "admin/category/category-list";
 		
 		}
-		
+		 
 		
 	//카테고리 등록 페이지 접속(이동)
 	@RequestMapping(value="/category-input", method=RequestMethod.GET)

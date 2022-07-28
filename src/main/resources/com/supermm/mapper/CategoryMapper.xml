@@ -12,7 +12,7 @@
 	    insert into Category(cateNum, cateCode, cateName)
 	    values (categorySeq.NEXTVAL, #{cateCode}, #{cateName})
 	</insert>
-	 
+	  
 	  <!-- 전체 게시글 수 구하기 -->
 	 <select id="totalCnt" resultType="Integer">
 		select count(*) total from Category

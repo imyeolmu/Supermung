@@ -23,6 +23,7 @@
 							<span>카테고리 이름</span> <input class="w-50  cinput" type="text"
 								name="cateName" id="cateName" value="${update.cateName}">
 						</p>
+						
 					</div>
 					<div class="inputdiv">
 						<input type="submit" class="btn ok" value="수정" />

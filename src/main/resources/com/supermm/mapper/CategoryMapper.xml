@@ -19,6 +19,7 @@
 		<include refid="criteria"></include>	
 	 </select>
 	
+	
   <sql id = "criteria">
   	<if test="searchType=='N'.toString()">
   		WHERE cateName like '%'||#{keyWord}||'%'

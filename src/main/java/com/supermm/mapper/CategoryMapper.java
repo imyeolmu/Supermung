@@ -15,6 +15,7 @@ public interface CategoryMapper {
 	// 사용자가 입력한 데이터를 전달받아야 하기 때문에 VO를 파라미터로 부여
 	public void cateInput(CategoryVO cinput);
 	
+	
 	// 카테고리 삭제
 	public String cateDelete(String cateNum);
 	

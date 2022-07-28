@@ -70,8 +70,7 @@ public class CategoryController {
 		
 	//카테고리 등록 페이지 접속(이동)
 	@RequestMapping(value="/category-input", method=RequestMethod.GET)
-		public String CategoryInputForm(
-				@ModelAttribute("viewPage") int viewPage) {
+		public String CategoryInputForm() {
 		System.out.println("카테고리등록 페이지 접속");
 		
 		return "admin/category/category-input";

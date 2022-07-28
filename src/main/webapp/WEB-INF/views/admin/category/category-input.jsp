@@ -24,6 +24,7 @@
 						<input type="submit" class="btn ok" value="등록" /> <input
 							type="reset" class="btn reset" value="취소" />
 					</div>
+					
 				</form>
 			</div>
 		</div>

@@ -17,6 +17,7 @@ public interface CategoryService {
 	// 카테고리 삭제 
 	public String cateDelete(String cateNum);
 	
+	
 	// 카테고리 수정
 	public String cateUpdate(CategoryVO cinput);
 	

@@ -24,6 +24,7 @@ public class CategoryServiceImpl implements CategoryService {
 		categoryMapper.cateInput(cinput);
 	}
 	
+	
 	// 카테고리 목록
 	@Override 
 	public List<CategoryVO> cateList(CategoryVO clist){

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.supermm.mapper.ProductMapper">
+	
+	<!-- 상품등록 -->
+	<insert id="prodInput">
+		insert into product(pnum,pcategory_fk1,pcategory_fk2,pname,pimage,pcompany,pspec,pqty,price,ppoint)
+		values(#{pnum},#{pcategory_fk1},#{pcategory_fk2},#{pname},#{pimage},#{pcompany},#{pspec},#{pqty},#{price},#{ppoint}) 
+	</insert>
+
+	<!-- 상품목록  -->
+	<select id="getProdList" resultType="com.supermm.model.ProductVO">
+		select * from product order by pNum	
+	</select>
+	
+	<!-- 상품목록(페이징) -->
+	<select id="getProdListPaging" resultType="com.supermm.model.ProductVO">		
+		<![CDATA[
+        select pnum, pcategory_fk1, pcategory_fk2, pname, pimage, pcompany, pspec, pqty, price, ppoint from(
+                select /*+INDEX_DESC(product pnum) */ rownum  as pnum, pcategory_fk1, pcategory_fk2, pname, pimage, pcompany, pspec, pqty, price, ppoint
+                from product where rownum <= #{pageNum} * #{amount}) 
+        where pnum > (#{pageNum} -1) * #{amount}
+	    ]]>
+	</select>
+	
+	<!-- 상품 총 개수 -->
+	<select id="getProdTotal" resultType="int">
+		select count(*) from product
+	</select>
+	
+  </mapper>

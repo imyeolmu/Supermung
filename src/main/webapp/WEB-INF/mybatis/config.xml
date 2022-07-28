@@ -8,5 +8,7 @@
    typeAliases 태그로 마이바티스에서 데이터 전달에 사용될 VO빈을 설정!!
    root-context.xml에 추가해야됩니당 -->
       <typeAlias type="com.supermm.model.CategoryVO" alias="categoryVO"/>
+      <typeAlias type="com.supermm.model.ProductVO" alias="productVO"/>
+      <typeAlias type="com.supermm.model.Criteria" alias="Criteria"/>
    </typeAliases>
 </configuration>

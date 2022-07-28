@@ -228,7 +228,7 @@
 ========================================*/
 .admin-input {
     background-color: #fff;
-    min-height: 700px;
+    min-height: 1000px;
 
     .input-form {
         padding: 42px;
@@ -328,8 +328,8 @@
 ========================================*/
 
 .board {
-    min-height: 700px;
-    
+    min-height: 1000px;
+
     h4 {
         font-size: 25px;
         margin-bottom: 20px;
@@ -344,6 +344,12 @@
         td {
             text-overflow:ellipsis; 
             overflow:hidden;
+            
+            a {
+                text-overflow:ellipsis; 
+                overflow:hidden;
+
+            }
         }
     }
 
@@ -459,7 +465,7 @@ color: #333;
     Admin Board Detail CSS
 ========================================*/
 .board-detail {
-    min-height: 700px;
+    min-height: 1000px;
     color: #333;
 
     h5 {
@@ -467,7 +473,7 @@ color: #333;
     }
 
     .content {
-        min-height: 300px;
+        min-height: 400px;
     }
 
     .one-menu {

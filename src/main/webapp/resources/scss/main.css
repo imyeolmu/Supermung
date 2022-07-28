@@ -45,6 +45,8 @@ body {
   color: #e8e8e8;
   overflow-x: hidden;
   font-size: 14px;
+  margin: 0;
+  height: 100%;
 }
 
 p {
@@ -7378,7 +7380,7 @@ blockquote span {
 ========================================*/
 .admin-input {
   background-color: #fff;
-  min-height: 700px;
+  min-height: 1000px;
 }
 .admin-input .input-form {
   padding: 42px;
@@ -7458,7 +7460,7 @@ blockquote span {
     Admin Board CSS
 ========================================*/
 .board {
-  min-height: 700px;
+  min-height: 1000px;
 }
 .board h4 {
   font-size: 25px;
@@ -7471,6 +7473,10 @@ blockquote span {
   table-layout: fixed;
 }
 .board .table td {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.board .table td a {
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -7563,14 +7569,14 @@ blockquote span {
     Admin Board Detail CSS
 ========================================*/
 .board-detail {
-  min-height: 700px;
+  min-height: 1000px;
   color: #333;
 }
 .board-detail h5 {
   font-size: 20px;
 }
 .board-detail .content {
-  min-height: 300px;
+  min-height: 400px;
 }
 .board-detail .one-menu {
   display: flex;

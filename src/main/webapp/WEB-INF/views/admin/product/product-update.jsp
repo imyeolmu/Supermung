@@ -9,7 +9,7 @@
 			<div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
 				<form class="card input-form rounded shadow-sm" action=""
 					method="post" enctype="multipart/form-data">
-					<h4 class="mb-5">상품 등록</h4>
+					<h4 class="mb-5">상품 수정</h4>
 					<!-- ▲ MultipartRequest 기능을 쓰려면
                             form에 enctype="multipart/form-data 를 넣어줘야한다.
                             이렇게 해야 파라미터를 전달 받을 수 있다. 아니면 null값이 나옴.. -->

@@ -9,6 +9,6 @@
    root-context.xml에 추가해야됩니당 -->
       <typeAlias type="com.supermm.model.CategoryVO" alias="categoryVO"/>
       <typeAlias type="com.supermm.model.ProductVO" alias="productVO"/>
-      <typeAlias type="com.supermm.model.Criteria" alias="Criteria"/>
+      <typeAlias type="com.supermm.model.MemberVO" alias="memberVO"/>
    </typeAliases>
 </configuration>

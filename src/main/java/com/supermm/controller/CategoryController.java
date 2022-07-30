@@ -112,7 +112,6 @@ public class CategoryController {
 		
 		model.addAttribute("keyWord", cinput.getKeyWord());
 		model.addAttribute("searchType",cinput.getSearchType());
-		
 
 		return "admin/category/category-list";
 	}

@@ -68,7 +68,7 @@ public class ProductMapperTests {
 		Criteria cri = new Criteria();
 		//cri.setPageNum(5);
 		
-		List list = service.getProdListPaging(cri);
+		List list = mapper.getProdListPaging(cri);
 		list.forEach(product -> log.info("" + product));  
 		
 	}

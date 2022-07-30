@@ -51,7 +51,7 @@ public class ProductController {
 	@RequestMapping(value = "/product-list", method = RequestMethod.GET)
 	public String prodListForm(Model model, Criteria cri) {
 
-		System.out.println("상품 목록 페이지 페이징..");
+		System.out.println("상품 목록 페이징..");
 		
 		model.addAttribute("list", service.getProdListPaging(cri));
 		

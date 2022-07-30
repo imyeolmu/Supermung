@@ -11,7 +11,6 @@
 }
 </style>
 
-<!-- main 부분 여기여기 폼 부분 -->
 <main class="board container w-100 p-5">
 	<h4>상품 목록</h4>
 	<!-- 검색창  -->
@@ -26,7 +25,7 @@
 					class="button board-search-button" type="submit" value="검색" />
 			</div>
 			<tr class="text-center">
-				<th style="width:5%">NO</th>
+				<th style="width:7%">NO</th>
 				<th style="width:7%">대분류</th>
 				<th style="width:10%">소분류</th>
 				<th style="width:25%">상품명</th>
@@ -44,15 +43,16 @@
 		<c:forEach items="${list}" var="list">
 			<tr class="text-center">
 				<!-- 상품번호(primarykey) 클릭하면 수정페이지로 넘어가기 -->
-				<td><a href="product-update" class="pro-hre">${list.pnum}</a></td>
+				<td><a href="product-update" class="pro-hre"><c:out value="${list.pnum}"/></a></td>
 				<td width="100"><nobr /><c:out value="${list.pcategory_fk1}"/></td>
 				<td width="100"><nobr /><c:out value="${list.pcategory_fk2}"/></td>
 				<td width="100"><a href="product-update" class="pro-hre"><nobr /><c:out value="${list.pname}"/></a></td>
+				<!-- 이미지 주소 불러오기 -->
 				<td width="100"><nobr /><img src="<c:out value='${list.pimage}'/>"/></td>
 				<td width="100"><nobr /><c:out value="${list.pcompany}"/></td>
 				<td width="100"><nobr /><c:out value="${list.pspec}"/></td>
+				<!-- 숫자 포맷 변경 -->
 				<td width="100"><nobr /><fmt:formatNumber value="${list.pqty}" pattern="#,##0"/></td>
-				<%-- <td width="100" ><nobr /><c:out value="${list.price}"/></td> --%>
 				<td width="100" ><nobr /><fmt:formatNumber value="${list.price}" pattern="#,##0"/></td>
 				<td width="100"><fmt:formatNumber value="${list.ppoint}" pattern="#,##0"/></td>
 				<!-- <td width="100"><nobr />소개</td> -->
@@ -63,7 +63,12 @@
 	</table>
 	<div class="notice-footer w-100">
 		<div class="indexer align-right">
+		<span>${pageMake.cri.pageNum}/${pageMake.realEnd} pages</span>
 			<ul id="pageInfo" class="notice-page pager">
+				<!-- 맨앞으로 버튼 -->
+				<c:if test="${pageMake.prev}">
+					<li class="next pageInfo_btn"><a href="?pageNum=${pageMake.realStart}&amount=5"><i class="lni lni-angle-double-left"></i></a></li>
+				</c:if>
 				<!-- 이전페이지 버튼 -->
 				<c:if test="${pageMake.prev}">
 					<li class="prev pageInfo_btn"><a href="?pageNum=${pageMake.startPage-1}&amount=5"><i class="lni lni-chevron-left"></i></a></li>
@@ -76,8 +81,11 @@
 				<c:if test="${pageMake.next}">
 					<li class="next pageInfo_btn"><a href="?pageNum=${pageMake.endPage+1}&amount=5"><i class="lni lni-chevron-right"></i></a></li>
 				</c:if>
+				<!-- 맨끝으로 버튼 -->
+				<c:if test="${pageMake.next}">
+					<li class="next pageInfo_btn"><a href="?pageNum=${pageMake.realEnd}&amount=5"><i class="lni lni-angle-double-right"></i></a></li>
+				</c:if>
 			</ul>
-					<!-- <span>1</span> / 1 pages -->
 			<button class="bloc" type="submit">삭제</button>
 			<button class="write">
 				<a href"<c:url value='product-input'/>">등록</a>
@@ -97,19 +105,6 @@
 		moveForm.attr("action", "/product-list");
 		moveForm.submit();
 	});
-	
-	//천 단위 콤마 및 소수점 자르기
-	function NumberWithCommas(double, decimalPointCipher) {
-	    var parts = double.toString().split(".");
-	    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	    parts[1] = parts[1].substr(0, decimalPointCipher);
-	    if (decimalPointCipher < 1) {
-	        return parts[0];
-	    }
-	    else {
-	        return parts.join(".");
-	    }
-	}
 </script>
 
 <%@ include file="../inc/footer.jsp"%>

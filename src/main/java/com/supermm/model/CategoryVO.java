@@ -11,23 +11,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor // NoArgs...와 Builder같이 쓰면 인자생성자->기본생성자로 바뀌면서 에러
 public class CategoryVO {
 
-	private String cNum;
-	private String cCode;
-	private String cName;
-	private String cateNum;
+	private int cateNum;
 	private String cateCode;
 	private String cateName;
 
-
-
-	private String uid;
-	/////// paging //////
-	private int startIndex;
-	private int cntPerPage;
-
+	// PAGE
+	private int pageNum;
+	private int amount; 
 
 
 	//////// search ///////////
 	private String searchType; 
 	private String keyWord;
+	
+	public CategoryVO(int pageNum, int amount) {
+		pageNum = 1;
+		amount =5;
+		
+		this.pageNum = pageNum;
+		this.amount = amount;
+	}
+	
 }

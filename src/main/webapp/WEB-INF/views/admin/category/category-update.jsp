@@ -9,8 +9,9 @@
          <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
             <form action="<c:url value='category-update'/>" class="card input-form rounded " method="post">
                <input type="hidden" name="viewPage" value="${viewPage}"/>
-               <input type="hidden" name="keyWord" value="${cvo.keyWord}"/>
-               <input type="hidden" name="searchType" value="${cvo.searchType}"/>
+               <input type="hidden" name="keyWord" value="${cri.keyWord}"/>
+               <input type="hidden" name="searchType" value="${cri.searchType}"/>
+               <input type="hidden" name="cateNum" value="${update.cateNum}"/>
                <div class="title">
                   <h4 class="mb-5">카테고리 수정</h4>
                   <p>
@@ -25,8 +26,8 @@
                   </p>
                </div>
                <div class="inputdiv">
-                  <input type="submit" class="btn ok" value="수정" />
-                   <input   type="reset" class="btn reset" value="취소" /> <a
+                  <input type="submit" id="btn-update" class="btn ok" value="수정" />
+                   <input type="reset" class="btn reset" value="취소" /> <a
                      href="javascript:history.back()" class="btn golist">목록</a>
                </div>
             </form>
@@ -37,3 +38,7 @@
 <!-- End Account Login Area -->
 
 <%@ include file="../inc/footer.jsp"%>
+
+<script type="text/javascript">
+
+</script>

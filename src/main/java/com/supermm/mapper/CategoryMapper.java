@@ -4,12 +4,15 @@ package com.supermm.mapper;
 import java.util.List;
 
 import com.supermm.model.CategoryVO;
+import com.supermm.model.Criteria;
 
 
 public interface CategoryMapper {
 
+	// 카테고리 목록(페이징)
+	public List<CategoryVO> cateListPaging(Criteria cri);
 	// 카테고리 목록
-	public List<CategoryVO> cateList(CategoryVO clist);
+	public List<CategoryVO> cateList();
 
 	/* 카테고리 등록 */
 	// 상품 등록 쿼리를 실행할 mapper메서드 생성
@@ -18,11 +21,11 @@ public interface CategoryMapper {
 	public void cateInput(CategoryVO cinput);
 
 	// 카테고리 삭제
-	public String cateDelete(String cateNum);
+	public void cateDelete(String cateNum);
 
 	// 카테고리 수정
 	public String cateUpdate(CategoryVO cinput);
 
 	// 전체 리스트 개수
-	public int totalCnt(CategoryVO clist);
+	public int totalCnt();
 }

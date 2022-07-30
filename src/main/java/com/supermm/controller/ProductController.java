@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.supermm.mapper.PageMakeDTO;
 import com.supermm.model.Criteria;
+import com.supermm.model.PageMakeDTO;
 import com.supermm.model.ProductVO;
 import com.supermm.service.ProductService;
 
@@ -70,5 +70,6 @@ public class ProductController {
 
 		return "admin/product/product-update";
 	}
+	
 
 }

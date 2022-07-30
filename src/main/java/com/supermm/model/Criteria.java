@@ -8,6 +8,11 @@ public class Criteria {
 	private int pageNum; //현재페이지
 	private int amount; //한페이지당 보여질 게시물 개수
 	
+
+	////////search ///////////
+	private String searchType; 
+	private String keyWord;
+	
 	//기본생성자 : 기본세팅(pageNum=1, amount=5)
 	public Criteria() {
 		this(1, 5);
@@ -18,4 +23,6 @@ public class Criteria {
 		this.pageNum = pageNum;
 		this.amount = amount;
 	}
+	
+	
 }

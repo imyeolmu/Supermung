@@ -10,9 +10,10 @@
     <title>슈퍼멍뭉</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
     <link rel="shortcut icon" type="image/x-icon" href="${ctx}/resources/images/favicon.svg" />
-
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="${ctx}/resources/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${ctx}/resources/css/LineIcons.3.0.css" />

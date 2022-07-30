@@ -8,51 +8,66 @@
 <mapper namespace="com.supermm.mapper.CategoryMapper">
 
 <insert id="input">
-        <selectKey keyProperty="cNum" resultType="string" order="BEFORE">  
+        <selectKey keyProperty="cateNum" resultType="string" order="BEFORE">  
             select categorySeq.Nextval from dual 
         </selectKey>
-        insert into Category(cNum, cCode, cName)
-        values(#{cNum},#{cCode},#{cName})
+        insert into Category(cateNum, cateCode, cateName)
+        values(#{cateNum},#{cateCode},#{cateName})
 </insert>
 
 	<!-- 카테고리 등록 -->
-	<insert id="cateInput" parameterType="categoryVO">
-	    insert into Category(cateNum, cateCode, cateName)
-	    values (categorySeq.NEXTVAL, #{cateCode}, #{cateName})
-	</insert>
+<insert id="cateInput" parameterType="categoryVO">
+    insert into Category(cateNum, cateCode, cateName)
+    values (categorySeq.NEXTVAL, #{cateCode}, #{cateName})
+</insert>
 
-	  <!-- 전체 게시글 수 구하기 -->
-	 <select id="totalCnt" resultType="Integer">
-		select count(*) total from Category
-		<include refid="criteria"></include>	
-	 </select>
+  <!-- 전체 게시글 수 구하기 -->
+ <select id="totalCnt" resultType="Integer">
+	select count(*) from Category where
+	<include refid="criteria"></include>
+	cateCode >0	
+ </select>
+ 
+ 
+<sql id="criteria">
+    <if test="searchType =='N'.toString()">
+	    cateName like '%'||#{keyWord}||'%'and
+	</if>
+	<if test="searchType =='C'.toString()">
+	    cateNum like '%'||#{keyWord}||'%'and
+	</if>
+</sql>
 
-  <sql id = "criteria">
-  	<if test="searchType=='N'.toString()">
-  		WHERE cateName like '%'||#{keyWord}||'%'
-  	</if>
-  	<if test="searchType=='C'.toString()">
-  		WHERE cateCode like '%'||#{keyWord}||'%'
-  	</if>
-  </sql>	
-
-	<!-- 카테고리 목록 -->
+<!-- 카테고리 목록 -->
+<select id="cateListPaging" resultType="categoryVO">
+<!-- 오라클에서는 limit 사용할d 수 없으니 rownum로 사용하기
+검색은 WHERE절 알맞은 위치에 맞게 넣어주면 검색가능
+위 표현식의 and 꼭!!!! 넣기-->
+select
+	cateNum,cateCode,cateName
+from
+	(
+	select /*+INDEX_DESC(Category cateNum)*/
+		rownum cateNum,cateCode,cateName
+        from Category
+        where <include refid="criteria"></include>
+        <![CDATA[rownum <= #{pageNum} * #{amount}]]>)
+<![CDATA[where cateNum > (#{pageNum} -1) * #{amount}]]>
+	</select>
+	
+	
 	<select id="cateList" resultType="categoryVO">
-	<!-- 오라클에서는 limit 사용할d 수 없으니 rownum로 사용하기
-		 검색은 WHERE절 알맞은 위치에 맞게 넣어주면 검색가능-->
-	 SELECT * FROM(
-
-	 SELECT ROW_NUMBER() OVER(ORDER BY cateCode, cateName) cateNum,cateName,cateCode
-	 FROM Category <include refid="criteria"></include> ORDER BY cateCode, cateName)
-	 WHERE cateNum BETWEEN #{startIndex} AND #{cntPerPage}
+		select * from Category where
+		<include refid="criteria"></include>
+		order by cateNum
 	</select>
 	<!-- 카테고리 삭제 -->
-	<delete id="cateDelete" parameterType="String">
+	<delete id="cateDelete">
 		delete from Category where cateNum=#{cateNum} 
 	</delete>
 
 
-	<!-- 카테고리 수정 -->
+<!-- 카테고리 수정 -->
 	<update id="cateUpdate" parameterType="categoryVO">
 		update Category set cateCode=#{cateCode}, cateName=#{cateName} where cateNum=#{cateNum}
 	</update>

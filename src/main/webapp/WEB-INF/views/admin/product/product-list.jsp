@@ -80,7 +80,7 @@
 					<!-- <span>1</span> / 1 pages -->
 			<button class="bloc" type="submit">삭제</button>
 			<button class="write">
-				<a href="product-input">등록</a>
+				<a href"<c:url value='product-input'/>">등록</a>
 			</button>
 		</div>
 	</div>

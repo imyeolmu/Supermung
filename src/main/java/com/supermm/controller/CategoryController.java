@@ -1,7 +1,8 @@
 package com.supermm.controller;
 
 
-import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,10 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.supermm.model.CategoryVO;
-import com.supermm.model.Paging;
+import com.supermm.model.Criteria;
+import com.supermm.model.PageMakeDTO;
 import com.supermm.service.CategoryService;
 
 
@@ -30,39 +31,27 @@ public class CategoryController {
 		// 즉 JSP Servlet의 request.setAttribute() 와 비슷한 역할을 한다.
 	@RequestMapping("/category-list")
 	public String list(
-			@RequestParam(defaultValue = "1") int viewPage,
-			@RequestParam(defaultValue = "5") int cntPerPage,
-			@ModelAttribute("clist") CategoryVO cvo, Model model){
+			@ModelAttribute("clist") CategoryVO cvo, Model model, Criteria cri){
 		
 		// 전체 게시물의 개수
-		int totalCnt = service.totalCnt(cvo);
+		int totalCnt = service.totalCnt();
 		System.out.println("전체게시글 수 : " + totalCnt);
 		
-		// Paging에서 인자생성한거
-		Paging page = new Paging(totalCnt, viewPage, cntPerPage);
-		System.out.println("page........" + page);
+		// 페이징처리
+		PageMakeDTO pageMake = new PageMakeDTO(cri, totalCnt);
 		
-		page.setViewPage(viewPage);
-		page.setValue(totalCnt, cntPerPage);
+		System.out.println("pageMake........" +pageMake);
 		
-		cvo.setStartIndex(page.getStartIndex());
-		cvo.setCntPerPage(cntPerPage);
+		model.addAttribute("pageMake", pageMake);
 		
+		model.addAttribute("cri",cri);
 		
-		System.out.println("viewPage........"+ viewPage);
-		System.out.println("cntPerPage........"+ cntPerPage);
-		
-		model.addAttribute("page", page);
-		model.addAttribute("cvo",cvo);
-		
-		model.addAttribute("keyWord", cvo.getKeyWord());
-		model.addAttribute("searchType", cvo.getSearchType());
+		// 검색기능
+		model.addAttribute("keyWord", cri.getKeyWord());
+		model.addAttribute("searchType", cri.getSearchType());
 
-		
-		List<CategoryVO> cateList = service.cateList(cvo);
-		
-		model.addAttribute("cateList", cateList);
-		System.out.println("cateList....."+cateList);
+		model.addAttribute("cateList", service.cateListPaging(cri));
+		System.out.println("cateList....."+ service.cateListPaging(cri));
 		return "admin/category/category-list";
 		
 		}
@@ -88,15 +77,32 @@ public class CategoryController {
 		return "redirect:/category-list";
 	}
 	
-	// 카테고리 삭제피이지 접속
-	@RequestMapping("/category-delete")
+	// 카테고리 삭제
+	@RequestMapping(value="/category-delete", method=RequestMethod.GET)
 	public String cateDelete(String cateNum) {
+		System.out.println("카테고리 삭제입니다.");
 		
 		service.cateDelete(cateNum);
-		
-		return "redirect:/list.do";
+		return "admin/category/category-list";
 	}
-
+	
+	// 카테고리 선택삭제
+	@RequestMapping(value="/category-delete")
+	public String cateDeleteAjax(HttpServletRequest request) {
+		System.out.println("카테고리 삭제입니다.");
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		
+		int size = ajaxMsg.length;
+		
+		for(int i=0; i<size; i++) {
+			System.out.println("i........."+i);
+			service.cateDelete(ajaxMsg[i]);
+		}
+		System.out.println("ajaxMsg.........."+ajaxMsg);
+		return "admin/category/category-list";
+	}
+	
 	// 카테고리 수정 페이지 :> 수정 후 카테고리목록으로 이동(전송)
 	@RequestMapping(value="/category-update", method=RequestMethod.POST)
 	public String catupdate(@ModelAttribute("viewPage")CategoryVO cinput,

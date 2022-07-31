@@ -18,11 +18,11 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	// 카테고리 등록
 	@Override
-	public void cateInput(CategoryVO cinput) {
+	public void cateInput(CategoryVO cvo) {
 		
 		System.out.println("service..categoryInput..");
 		
-		categoryMapper.cateInput(cinput);
+		categoryMapper.cateInput(cvo);
 	}
 	
 	// 카테고리 목록(페이징)
@@ -47,9 +47,14 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 	// 카테고리 수정
 	@Override
-	public String cateUpdate(CategoryVO cinput) {
-		return categoryMapper.cateUpdate(cinput);
+	public void cateUpdate(CategoryVO cvo) {
+		categoryMapper.cateUpdate(cvo);
 	}
+	// 카테고리 수정(상세보기)
+	@Override
+	public CategoryVO cateDetail(String cateNum){
+	    return categoryMapper.cateDetail(cateNum);
+	 }
 	
 	// 전체리스트 개수
 	@Override

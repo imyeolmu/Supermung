@@ -15,6 +15,7 @@ public class CategoryVO {
 	private String cateCode;
 	private String cateName;
 
+	
 	// PAGE
 	private int pageNum;
 	private int amount; 
@@ -23,7 +24,6 @@ public class CategoryVO {
 	//////// search ///////////
 	private String searchType; 
 	private String keyWord;
-	
 	public CategoryVO(int pageNum, int amount) {
 		pageNum = 1;
 		amount =5;
@@ -31,5 +31,6 @@ public class CategoryVO {
 		this.pageNum = pageNum;
 		this.amount = amount;
 	}
+	
 	
 }

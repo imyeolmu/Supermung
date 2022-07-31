@@ -23,7 +23,6 @@ public class CategoryMapperTests {
 		CategoryVO cat = new CategoryVO();
 		
 	
-		mapper.input(cat);
 		
 		
 		

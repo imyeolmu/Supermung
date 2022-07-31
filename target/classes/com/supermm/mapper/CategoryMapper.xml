@@ -7,14 +7,6 @@
 
 <mapper namespace="com.supermm.mapper.CategoryMapper">
 
-<insert id="input">
-        <selectKey keyProperty="cateNum" resultType="string" order="BEFORE">  
-            select categorySeq.Nextval from dual 
-        </selectKey>
-        insert into Category(cateNum, cateCode, cateName)
-        values(#{cateNum},#{cateCode},#{cateName})
-</insert>
-
 	<!-- 카테고리 등록 -->
 <insert id="cateInput" parameterType="categoryVO">
     insert into Category(cateNum, cateCode, cateName)
@@ -25,10 +17,10 @@
  <select id="totalCnt" resultType="Integer">
 	select count(*) from Category where
 	<include refid="criteria"></include>
-	cateCode >0	
+	cateNum >0	
  </select>
  
- 
+<!-- 검색조건 -->
 <sql id="criteria">
     <if test="searchType =='N'.toString()">
 	    cateName like '%'||#{keyWord}||'%'and
@@ -48,11 +40,13 @@ select
 from
 	(
 	select /*+INDEX_DESC(Category cateNum)*/
-		rownum cateNum,cateCode,cateName
+	rownum rnum,cateNum,cateCode,cateName
         from Category
         where <include refid="criteria"></include>
-        <![CDATA[rownum <= #{pageNum} * #{amount}]]>)
-<![CDATA[where cateNum > (#{pageNum} -1) * #{amount}]]>
+        
+        <![CDATA[rownum <= #{pageNum} * #{amount}]]> order by cateNum)
+		<![CDATA[where rnum > (#{pageNum} -1) * #{amount}]]>
+		order by cateNum
 	</select>
 	
 	
@@ -69,6 +63,11 @@ from
 
 <!-- 카테고리 수정 -->
 	<update id="cateUpdate" parameterType="categoryVO">
-		update Category set cateCode=#{cateCode}, cateName=#{cateName} where cateNum=#{cateNum}
+		update Category set cateCode=#{cateCode}, cateName=#{cateName} where cateNum=#{cateNum} 
 	</update>
+<!--  카테고리 (수정)상세내용  -->
+    <select id="cateDetail" resultType="categoryVO">
+        select cateNum, cateCode, cateName
+        from Category where cateNum = #{cateNum} 
+    </select>
 </mapper>

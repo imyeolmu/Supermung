@@ -22,7 +22,9 @@ public interface CategoryService {
 	public void cateDelete(String cateNum);
 	
 	// 카테고리 수정
-	public String cateUpdate(CategoryVO cinput);
+	public void cateUpdate(CategoryVO cvo);
+	// 카테고리 수정(상세보기)
+	public CategoryVO cateDetail(String cateNum);// 수정-상세보기
 	
 	// 전체 리스트 개수
 	public int totalCnt();

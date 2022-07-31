@@ -44,7 +44,7 @@ public class CategoryController {
 		
 		model.addAttribute("pageMake", pageMake);
 		
-		model.addAttribute("cri",cri);
+		model.addAttribute("cvo",cvo);
 		
 		// 검색기능
 		model.addAttribute("keyWord", cri.getKeyWord());
@@ -76,19 +76,18 @@ public class CategoryController {
 		
 		return "redirect:/category-list";
 	}
-	
 	// 카테고리 삭제
 	@RequestMapping(value="/category-delete", method=RequestMethod.GET)
-	public String cateDelete(String cateNum) {
+	public String cateDelete(String cateNum) throws Exception {
 		System.out.println("카테고리 삭제입니다.");
 		
 		service.cateDelete(cateNum);
 		return "admin/category/category-list";
 	}
-	
+ 
 	// 카테고리 선택삭제
 	@RequestMapping(value="/category-delete")
-	public String cateDeleteAjax(HttpServletRequest request) {
+	public String cateDeleteAjax(HttpServletRequest request)throws Exception {
 		System.out.println("카테고리 삭제입니다.");
 		
 		String[] ajaxMsg = request.getParameterValues("valueArr");
@@ -103,19 +102,24 @@ public class CategoryController {
 		return "admin/category/category-list";
 	}
 	
-	// 카테고리 수정 페이지 :> 수정 후 카테고리목록으로 이동(전송)
-	@RequestMapping(value="/category-update", method=RequestMethod.POST)
-	public String catupdate(@ModelAttribute("viewPage")CategoryVO cinput,
-			int viewPage, Model model) {
-		System.out.println("Update.cinput.........."+cinput);
-		
-		
-		model.addAttribute("keyWord", cinput.getKeyWord());
-		model.addAttribute("searchType",cinput.getSearchType());
+	// 카테고리 수정 페이지로 이동 
+    @RequestMapping(value="/category-update", method=RequestMethod.GET)
+    public String cateUpdate(String cateNum ,Model model) throws Exception {
+    	CategoryVO data = service.cateDetail(cateNum); // cateNum값을 넘김
+        model.addAttribute("data", data); // model에 데이터 값을 담는다
+        System.out.println("data........."+data);
+        System.out.println("cateNum....."+cateNum);
+        return "admin/category/category-update"; // 
+    }
+    // 카테고리 수정 화면
+    @RequestMapping(value="/category-update", method=RequestMethod.POST)
+    public String postUpdate(CategoryVO cvo) throws Exception {
+        service.cateUpdate(cvo);
+        // 수정 후 리스트로 넘어가기
+        System.out.println("cvo........."+cvo);
+        return "redirect:category-list"; 
+    }
 
-		return "admin/category/category-list";
-	}
-	
 	
 
 

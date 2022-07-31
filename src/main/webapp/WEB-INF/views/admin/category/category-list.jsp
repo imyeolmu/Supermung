@@ -98,10 +98,10 @@
          <c:set var="cno" value="${pageMake.startPage}"/>
          <c:forEach var="ctvo" items="${cateList}">
          <tr class="text-center">
-            <td><a class="goUpdate" href="<c:url value='${ctvo.cateNum}'/>">${ctvo.cateNum}</a></td>
+            <td><a class="goUpdate" href="<c:url value='category-update?cateNum=${ctvo.cateNum}'/>"><c:out value="${ctvo.cateNum}"/></a></td>
             <td>${ctvo.cateName}</td>
             <td>${ctvo.cateCode}</td>
-            <td><input type="checkbox" name="RowCheck" value="${ctvo.cateNum}"/></td>
+            <td class="checkbox"><input type="checkbox" name="RowCheck" value="${ctvo.cateNum}"/></td>
          </tr>
          <c:set var="cno" value="${cno-1}"/>
          </c:forEach>

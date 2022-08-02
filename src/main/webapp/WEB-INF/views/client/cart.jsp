@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Cart - ShopGrids Bootstrap 5 eCommerce HTML Template.</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.svg" />
-
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../resources/css/LineIcons.3.0.css" />
-    <link rel="stylesheet" href="../resources/css/tiny-slider.css" />
-    <link rel="stylesheet" href="../resources/css/glightbox.min.css" />
-    <link rel="stylesheet" href="../resources/scss/main.css" />
-
-</head>
-
-<body>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="./inc/client-header.jsp"%>
     <!-- Shopping Cart -->
     <div class="shopping-cart section">
         <div class="container">
@@ -52,10 +33,10 @@
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="https://via.placeholder.com/220x200" alt="#"></a>
+                            <a href="product-details"><img src="https://via.placeholder.com/220x200" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">
+                            <h5 class="product-name"><a href="product-details">
                                     Canon EOS M50 Mirrorless Camera</a></h5>
                             <p class="product-des">
                                 <span><em>Type:</em> Mirrorless</span>
@@ -89,10 +70,10 @@
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="https://via.placeholder.com/220x200" alt="#"></a>
+                            <a href="product-details"><img src="https://via.placeholder.com/220x200" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">
+                            <h5 class="product-name"><a href="product-details">
                                     Apple iPhone X 256 GB Space Gray</a></h5>
                             <p class="product-des">
                                 <span><em>Memory:</em> 256 GB</span>
@@ -126,10 +107,10 @@
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="https://via.placeholder.com/220x200" alt="#"></a>
+                            <a href="product-details"><img src="https://via.placeholder.com/220x200" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">HP LaserJet Pro Laser Printer</a></h5>
+                            <h5 class="product-name"><a href="product-details">HP LaserJet Pro Laser Printer</a></h5>
                             <p class="product-des">
                                 <span><em>Type:</em> Laser</span>
                                 <span><em>Color:</em> White</span>
@@ -185,8 +166,8 @@
                                         <li class="last">You Pay<span>$2531.00</span></li>
                                     </ul>
                                     <div class="button">
-                                        <a href="checkout.html" class="btn">Checkout</a>
-                                        <a href="product-grids.html" class="btn btn-alt">Continue shopping</a>
+                                        <a href="checkout" class="btn">Checkout</a>
+                                        <a href="product-grids" class="btn btn-alt">Continue shopping</a>
                                     </div>
                                 </div>
                             </div>
@@ -197,13 +178,4 @@
             </div>
         </div>
     </div>
-    <!--/ End Shopping Cart -->
-    
-    <!-- ========================= JS here ========================= -->
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/tiny-slider.js"></script>
-    <script src="../resources/js/glightbox.min.js"></script>
-    <script src="../resources/js/main.js"></script>
-</body>
-
-</html>
+<%@ include file="./inc/footer.jsp"%>

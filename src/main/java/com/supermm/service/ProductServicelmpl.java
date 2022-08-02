@@ -14,15 +14,6 @@ public class ProductServicelmpl implements ProductService {
 	
 	@Autowired
 	private ProductMapper mapper;
-	
-	//상품등록
-	@Override
-	public void prodInput(ProductVO prod) {
-		
-		System.out.println("productInput service..");
-		
-		mapper.prodInput(prod);
-	}
 
 	//상품목록
 	@Override
@@ -38,17 +29,34 @@ public class ProductServicelmpl implements ProductService {
 	public List<ProductVO> getProdListPaging(Criteria cri) {
 		
 		System.out.println("productListPaging service..");		
-		
 		return mapper.getProdListPaging(cri);
 	}
 	
 	//상품 총 개수
 	@Override
-	public int getProdTotal() {
+	public int getProdTotal(Criteria cri) {
 
 		System.out.println("getProdTotal service..");		
 		
-		return mapper.getProdTotal();
+		return mapper.getProdTotal(cri);
+	}
+	
+	//상품등록
+	@Override
+	public void prodInput(ProductVO prod) {
+		
+		System.out.println("productInput service..");
+		
+		mapper.prodInput(prod);
 	}
 
+	//상품 삭제
+	@Override
+	public int prodDelete(String pnum) {
+		
+		System.out.println("productDelete service..");
+		
+		return mapper.prodDelete(pnum);
+	}
+	
 }

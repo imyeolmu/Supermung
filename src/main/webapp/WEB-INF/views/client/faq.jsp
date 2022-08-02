@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>FAQ - ShopGrids Bootstrap 5 eCommerce HTML Template.</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.svg" />
-
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../resources/css/LineIcons.3.0.css" />
-    <link rel="stylesheet" href="../resources/css/tiny-slider.css" />
-    <link rel="stylesheet" href="../resources/css/glightbox.min.css" />
-    <link rel="stylesheet" href="../resources/scss/main.css" />
-
-</head>
-
-<body>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="./inc/client-header.jsp"%>
     <!-- Start Faq Area -->
     <section class="faq section">
         <div class="container">
@@ -146,13 +127,4 @@
             </div>
         </div>
     </section>
-    <!--/ End Faq Area -->
-    
-    <!-- ========================= JS here ========================= -->
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/tiny-slider.js"></script>
-    <script src="../resources/js/glightbox.min.js"></script>
-    <script src="../resources/js/main.js"></script>
-</body>
-
-</html>
+<%@ include file="./inc/footer.jsp"%>

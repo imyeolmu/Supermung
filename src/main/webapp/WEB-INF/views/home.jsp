@@ -3,6 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="./admin/inc/admin-header.jsp"%>
 
-관리자홈..대시보드......
+..나중에합시다..
 
 <%@ include file="./admin/inc/footer.jsp"%>

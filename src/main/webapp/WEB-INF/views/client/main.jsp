@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>슈퍼멍뭉</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.svg" />
-
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../resources/css/LineIcons.3.0.css" />
-    <link rel="stylesheet" href="../resources/css/tiny-slider.css" />
-    <link rel="stylesheet" href="../resources/css/glightbox.min.css" />
-    <link rel="stylesheet" href="../resources/scss/main.css" />
-
-</head>
-
-<body>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="./inc/client-header.jsp"%>
     <!-- Start Hero Area -->
     <section class="hero-area">
         <div class="slider-head">
@@ -82,13 +63,13 @@
                         <div class="product-image">
                             <img src="https://via.placeholder.com/335x335" alt="#">
                             <div class="button">
-                                <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                                <a href="product-details" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
                             </div>
                         </div>
                         <div class="product-info">
                             <span class="category">Headphones</span>
                             <h4 class="title">
-                                <a href="product-grids.html">Wireless Headphones</a>
+                                <a href="product-grids">Wireless Headphones</a>
                             </h4>
                             <ul class="review">
                                 <li><i class="lni lni-star-filled"></i></li>
@@ -111,13 +92,13 @@
                         <div class="product-image">
                             <img src="https://via.placeholder.com/335x335" alt="#">
                             <div class="button">
-                                <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                                <a href="product-details" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
                             </div>
                         </div>
                         <div class="product-info">
                             <span class="category">Speaker</span>
                             <h4 class="title">
-                                <a href="product-grids.html">Mini Bluetooth Speaker</a>
+                                <a href="product-grids">Mini Bluetooth Speaker</a>
                             </h4>
                             <ul class="review">
                                 <li><i class="lni lni-star-filled"></i></li>
@@ -141,13 +122,13 @@
                             <img src="https://via.placeholder.com/335x335" alt="#">
                             <span class="sale-tag">-50%</span>
                             <div class="button">
-                                <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                                <a href="product-details" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
                             </div>
                         </div>
                         <div class="product-info">
                             <span class="category">Headphones</span>
                             <h4 class="title">
-                                <a href="product-grids.html">PX7 Wireless Headphones</a>
+                                <a href="product-grids">PX7 Wireless Headphones</a>
                             </h4>
                             <ul class="review">
                                 <li><i class="lni lni-star-filled"></i></li>
@@ -171,13 +152,13 @@
                         <div class="product-image">
                             <img src="https://via.placeholder.com/335x335" alt="#">
                             <div class="button">
-                                <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                                <a href="product-details" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
                             </div>
                         </div>
                         <div class="product-info">
                             <span class="category">Laptop</span>
                             <h4 class="title">
-                                <a href="product-grids.html">Apple MacBook Air</a>
+                                <a href="product-grids">Apple MacBook Air</a>
                             </h4>
                             <ul class="review">
                                 <li><i class="lni lni-star-filled"></i></li>
@@ -214,14 +195,14 @@
                     <!-- Start Single Blog -->
                     <div class="single-blog">
                         <div class="blog-img">
-                            <a href="blog-single-sidebar.html">
+                            <a href="blog-single-sidebar">
                                 <img src="https://via.placeholder.com/370x215" alt="#">
                             </a>
                         </div>
                         <div class="blog-content">
                             <a class="category" href="javascript:void(0)">eCommerce</a>
                             <h4>
-                                <a href="blog-single-sidebar.html">What information is needed for shipping?</a>
+                                <a href="blog-single-sidebar">What information is needed for shipping?</a>
                             </h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt.</p>
@@ -236,14 +217,14 @@
                     <!-- Start Single Blog -->
                     <div class="single-blog">
                         <div class="blog-img">
-                            <a href="blog-single-sidebar.html">
+                            <a href="blog-single-sidebar">
                                 <img src="https://via.placeholder.com/370x215" alt="#">
                             </a>
                         </div>
                         <div class="blog-content">
                             <a class="category" href="javascript:void(0)">Gaming</a>
                             <h4>
-                                <a href="blog-single-sidebar.html">Interesting fact about gaming consoles</a>
+                                <a href="blog-single-sidebar">Interesting fact about gaming consoles</a>
                             </h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt.</p>
@@ -258,14 +239,14 @@
                     <!-- Start Single Blog -->
                     <div class="single-blog">
                         <div class="blog-img">
-                            <a href="blog-single-sidebar.html">
+                            <a href="blog-single-sidebar">
                                 <img src="https://via.placeholder.com/370x215" alt="#">
                             </a>
                         </div>
                         <div class="blog-content">
                             <a class="category" href="javascript:void(0)">Electronic</a>
                             <h4>
-                                <a href="blog-single-sidebar.html">Electronics, instrumentation & control engineering
+                                <a href="blog-single-sidebar">Electronics, instrumentation & control engineering
                                 </a>
                             </h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -281,12 +262,6 @@
         </div>
     </section>
     <!-- End Blog Section Area -->
-
-    <!-- ========================= JS here ========================= -->
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/tiny-slider.js"></script>
-    <script src="../resources/js/glightbox.min.js"></script>
-    <script src="../resources/js/main.js"></script>
     <script type="text/javascript">
         //========= Hero Slider 
         tns({
@@ -359,6 +334,4 @@
         timer();
         setInterval(timer, 1000);
     </script>
-</body>
-
-</html>
+<%@ include file="./inc/footer.jsp"%>

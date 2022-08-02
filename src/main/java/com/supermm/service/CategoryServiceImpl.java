@@ -58,9 +58,9 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	// 전체리스트 개수
 	@Override
-	public int totalCnt() {
+	public int totalCnt(Criteria cri) {
 		
-		return categoryMapper.totalCnt();
+		return categoryMapper.totalCnt(cri);
 	}
 
 	

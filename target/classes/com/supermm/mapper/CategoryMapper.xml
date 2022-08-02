@@ -9,13 +9,13 @@
 
 	<!-- 카테고리 등록 -->
 <insert id="cateInput" parameterType="categoryVO">
-    insert into Category(cateNum, cateCode, cateName)
-    values (categorySeq.NEXTVAL, #{cateCode}, #{cateName})
+    insert into Category(cateNum, cateCode, cateName, cateParent)
+    values (categorySeq.NEXTVAL, #{cateCode}, #{cateName}, #{cateParent})
 </insert>
 
   <!-- 전체 게시글 수 구하기 -->
  <select id="totalCnt" resultType="Integer">
-	select count(*) from Category where
+	select count(*) total from Category where
 	<include refid="criteria"></include>
 	cateNum >0	
  </select>
@@ -26,7 +26,7 @@
 	    cateName like '%'||#{keyWord}||'%'and
 	</if>
 	<if test="searchType =='C'.toString()">
-	    cateNum like '%'||#{keyWord}||'%'and
+	    cateCode like '%'||#{keyWord}||'%'and
 	</if>
 </sql>
 
@@ -36,25 +36,19 @@
 검색은 WHERE절 알맞은 위치에 맞게 넣어주면 검색가능
 위 표현식의 and 꼭!!!! 넣기-->
 select
-	cateNum,cateCode,cateName
+	cateNum,cateCode,cateName,cateParent
 from
 	(
 	select /*+INDEX_DESC(Category cateNum)*/
-	rownum rnum,cateNum,cateCode,cateName
+	rownum rnum,cateNum,cateCode,cateName,cateParent
         from Category
         where <include refid="criteria"></include>
         
         <![CDATA[rownum <= #{pageNum} * #{amount}]]> order by cateNum)
 		<![CDATA[where rnum > (#{pageNum} -1) * #{amount}]]>
 		order by cateNum
-	</select>
+</select>
 	
-	
-	<select id="cateList" resultType="categoryVO">
-		select * from Category where
-		<include refid="criteria"></include>
-		order by cateNum
-	</select>
 	<!-- 카테고리 삭제 -->
 	<delete id="cateDelete">
 		delete from Category where cateNum=#{cateNum} 
@@ -63,11 +57,11 @@ from
 
 <!-- 카테고리 수정 -->
 	<update id="cateUpdate" parameterType="categoryVO">
-		update Category set cateCode=#{cateCode}, cateName=#{cateName} where cateNum=#{cateNum} 
+		update Category set cateCode=#{cateCode}, cateName=#{cateName}, cateParent=#{cateParent} where cateNum=#{cateNum} 
 	</update>
 <!--  카테고리 (수정)상세내용  -->
     <select id="cateDetail" resultType="categoryVO">
-        select cateNum, cateCode, cateName
+        select cateNum, cateCode, cateName, cateParent
         from Category where cateNum = #{cateNum} 
     </select>
 </mapper>

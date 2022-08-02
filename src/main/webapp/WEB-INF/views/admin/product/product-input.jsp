@@ -5,7 +5,7 @@
 <!-- Start Product Input Area -->
 <div class="admin-input section" id="wrap">
 	<div class="container text-center">
-		<div class="row">
+		<div class="row"> 
 			<div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
 				<form action="<c:url value='product-input' />" class="card input-form rounded shadow-sm"
 					method="post" enctype="multipart/form-data">

@@ -27,7 +27,7 @@ public interface CategoryService {
 	public CategoryVO cateDetail(String cateNum);// 수정-상세보기
 	
 	// 전체 리스트 개수
-	public int totalCnt();
+	public int totalCnt(Criteria cri);
 	
 	
 }

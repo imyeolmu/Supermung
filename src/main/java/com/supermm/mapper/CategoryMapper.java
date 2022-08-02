@@ -28,5 +28,5 @@ public interface CategoryMapper {
 	public CategoryVO cateDetail(String cateNum);
 
 	// 전체 리스트 개수
-	public int totalCnt();
+	public int totalCnt(Criteria cri);
 }

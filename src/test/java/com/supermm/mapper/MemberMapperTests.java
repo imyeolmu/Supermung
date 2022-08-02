@@ -75,9 +75,7 @@ public class MemberMapperTests {
 		member.setMnum(1); //번호
 		member.setMpoint(9999); //수정될 포인트
 		
-		int result = service.updateMemPoint(member); //수정된 회원........
 		
-		System.out.println("result : " + result);
 	}
 
 	

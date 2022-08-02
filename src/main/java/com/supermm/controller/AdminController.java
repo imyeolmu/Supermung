@@ -15,12 +15,12 @@ public class AdminController {
 	@RequestMapping("/admin-login")
 	public String alogin() {
 
-		
-		
-		
-		
-		
 		return "admin/admin-login";
 	}
 
+	@RequestMapping("/about-us")
+	public String about() {
+		
+		return "client/about-us";
+	}
 }

@@ -34,7 +34,7 @@ public class CategoryController {
 			@ModelAttribute("clist") CategoryVO cvo, Model model, Criteria cri){
 		
 		// 전체 게시물의 개수
-		int totalCnt = service.totalCnt();
+		int totalCnt = service.totalCnt(cri);
 		System.out.println("전체게시글 수 : " + totalCnt);
 		
 		// 페이징처리
@@ -43,14 +43,8 @@ public class CategoryController {
 		System.out.println("pageMake........" +pageMake);
 		
 		model.addAttribute("pageMake", pageMake);
-		
-		model.addAttribute("cvo",cvo);
-		
-		// 검색기능
-		model.addAttribute("keyWord", cri.getKeyWord());
-		model.addAttribute("searchType", cri.getSearchType());
-
 		model.addAttribute("cateList", service.cateListPaging(cri));
+		
 		System.out.println("cateList....."+ service.cateListPaging(cri));
 		return "admin/category/category-list";
 		
@@ -121,6 +115,10 @@ public class CategoryController {
     }
 
 	
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    // clinet 
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    
 
 
 }

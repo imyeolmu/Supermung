@@ -35,11 +35,11 @@ public class MemberServicelmpl implements MemberService{
 	
 	//회원 총 인원
 	@Override
-	public int getMemTotal() {
+	public int getMemTotal(Criteria cri) {
 		
 		System.out.println("getMemTotal service..");
 		
-		return mapper.getMemTotal();
+		return mapper.getMemTotal(cri);
 	}
 	
 	
@@ -49,26 +49,15 @@ public class MemberServicelmpl implements MemberService{
 		
 		System.out.println("getMemInfo service..");
 		
-		return mapper.getMemInfo(mnum);		
-	}
-	
-	//회원 포인트 조회
-	@Override
-	public MemberVO getMemPoint(int mnum) {
-		
-		System.out.println("getMemPoint service..");
-		
-		return mapper.getMemPoint(mnum);
+		return mapper.getMemInfo(mnum);	
 	}
 	
 	//정보수정(포인트적립)
 	@Override
-	public int updateMemPoint(MemberVO member) {
-
-		System.out.println("updateMemPoint service..");
+	public void updateMemPoint(MemberVO member) {
 		
-		return mapper.updateMemPoint(member);
+		System.out.println("updateMemPoint service..");
+
+		mapper.updateMemPoint(member);
 	}
-	
-	
 }

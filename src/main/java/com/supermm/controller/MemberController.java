@@ -19,72 +19,80 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
-	
+
 	//회원 목록 페이지 접속
-//	@RequestMapping("/member-list")
-//	public String memlist(Model model) {
-//		
-//		System.out.println("회원 목록 페이지 접속");
-//		
-//		model.addAttribute("list", service.getMemList());
-//		
-//		return "admin/member/member-list";
-//	}
+	//	@RequestMapping("/member-list")
+	//	public String memlist(Model model) {
+	//		
+	//		System.out.println("회원 목록 페이지 접속");
+	//		
+	//		model.addAttribute("list", service.getMemList());
+	//		
+	//		return "admin/member/member-list";
+	//	}
 
 	//회원 목록 페이지 접속(페이징 적용)
-	@RequestMapping(value="/member-list", method = RequestMethod.GET)
-	public String memlist(Model model, Criteria cri) {
-		
+	@RequestMapping("/member-list")
+	public String memlist(
+			@ModelAttribute("list") MemberVO member, Model model, Criteria cri) {
+
 		System.out.println("회원 목록 페이징..");
-		
-		model.addAttribute("list", service.getMemListPaging(cri));
-		
-		int total = service.getMemTotal();
-		
-		PageMakeDTO pageMake = new PageMakeDTO(cri, total);
-		
+
+		//전체 회원 수
+		int total = service.getMemTotal(cri);
+		//		System.out.println("전체 회원 수 : " + total);
+
+		//페이징처리
+		PageMakeDTO pageMake = new PageMakeDTO(cri, total);		
 		model.addAttribute("pageMake", pageMake);
-		
+
+		//		model.addAttribute("member", member);
+
+		//검색
+		//		model.addAttribute("keyWord", cri.getKeyWord());
+		//		model.addAttribute("searchType", cri.getSearchType());
+		//		
+		model.addAttribute("list", service.getMemListPaging(cri));
+
 		return "admin/member/member-list";
 	}
-	
+
 	//회원 조회
 	@RequestMapping(value="/member-info", method = RequestMethod.GET)
 	public String meminfo(int mnum, Model model) {
-		
+
 		System.out.println("회원 조회하기..");
 
 		model.addAttribute("minfo", service.getMemInfo(mnum));
 
 		return "admin/member/member-info";
 	}
-	
+
 	//회원 포인트 조회(수정) 페이지로 이동
 	@RequestMapping(value="/member-point", method = RequestMethod.GET)
-	public String mempoint(int mnum, Model model) {
+	public String memPointUpdateGET(int mnum, Model model) {
+		
+		MemberVO minfo = service.getMemInfo(mnum);
+		
+		model.addAttribute("minfo", minfo);
 		
 		System.out.println("회원 포인트 조회..");
-		
-		model.addAttribute("minfo", service.getMemInfo(mnum));
-		
+
 		return "admin/member/member-point";
 	}
-	
+
 	//정보수정(포인트적립) 수정
-	@RequestMapping(value="/member-point-update", method = RequestMethod.POST)
-	public String memPointUpdatePOST(int mnum, MemberVO member, RedirectAttributes rttr, Model model) {
-		
+	@RequestMapping(value="/member-point", method = RequestMethod.POST)
+	public String memPointUpdatePOST(MemberVO member, Model model, RedirectAttributes rttr) {
+
 		System.out.println("회원 포인트 수정..");
-		
+
 		service.updateMemPoint(member);
-		
-		model.addAttribute("mpoint", service.updateMemPoint(member));
-		
-		if(rttr.addFlashAttribute("result", "update success")!=null) {
-			System.out.println("포인트 수정 성공..");
-		};			
+		model.addAttribute("member" , member);
+
+		rttr.addFlashAttribute("result", "update success");
 
 		return "redirect: /member-list";
-	
+
 	}
 }

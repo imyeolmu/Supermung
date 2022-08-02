@@ -24,13 +24,21 @@ public class MemberVO {
 	//생성자
 	public MemberVO() {}
 	
-	public MemberVO(int mnum, int mpoint) {
-		this.mnum = mnum;
-		this.mpoint = mpoint;
-	}
-	
 	public MemberVO(int mnum) {
 		this.mnum = mnum;
+	}
+	
+	private int PageNum;
+	private int amount;
+	
+	private String searchType;
+	private String keyWord;
+	public MemberVO(int pageNum, int amount) {
+		pageNum =1;
+		amount =5;
+		
+		this.PageNum = pageNum;
+		this.amount = amount;
 	}
 	
 }

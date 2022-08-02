@@ -1,20 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>슈퍼멍뭉</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../resources/images/favicon.svg" />
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <c:set var="ctx" value="${pageContext.request.contextPath}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="${ctx}/resources/images/favicon.svg" />
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../resources/css/LineIcons.3.0.css" />
-    <link rel="stylesheet" href="../../resources/css/tiny-slider.css" />
-    <link rel="stylesheet" href="../../resources/css/glightbox.min.css" />
-    <link rel="stylesheet" href="../../resources/scss/main.css" />
+    <link rel="stylesheet" href="${ctx}/resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${ctx}/resources/css/LineIcons.3.0.css" />
+    <link rel="stylesheet" href="${ctx}/resources/css/tiny-slider.css" />
+    <link rel="stylesheet" href="${ctx}/resources/css/glightbox.min.css" />
+    <link rel="stylesheet" href="${ctx}/resources/scss/main.css" />
 
 </head>
     <!-- Preloader -->
@@ -37,7 +41,7 @@
                     <div class="col-lg-3 col-md-3 col-7">
                         <!-- Start Header Logo -->
                         <a class="navbar-brand" href="index.html">
-                            <img src="../../resources/images/logo/logo.png" alt="Logo">
+                            <img src="${ctx}/resources/images/logo/logo.png" alt="Logo">
                         </a>
                         <!-- End Header Logo -->
                     </div>
@@ -117,7 +121,7 @@
                                                         class="lni lni-close"></i></a>
                                                 <div class="cart-img-head">
                                                     <a class="cart-img" href="product-details.html"><img
-                                                            src="../../resources/images/header/cart-items/item1.jpg" alt="#"></a>
+                                                            src="${ctx}resources/images/header/cart-items/item1.jpg" alt="#"></a>
                                                 </div>
                                                 <div class="content">
                                                     <h4><a href="product-details.html">
@@ -226,10 +230,10 @@
     <!-- End Header Area -->
     
         <!-- ========================= JS here ========================= -->
-        <script src="../../resources/js/bootstrap.min.js"></script>
-        <script src="../../resources/js/tiny-slider.js"></script>
-        <script src="../../resources/js/glightbox.min.js"></script>
-        <script src="../../resources/js/main.js"></script>
+        <script src="${ctx}resources/js/bootstrap.min.js"></script>
+        <script src="${ctx}resources/js/tiny-slider.js"></script>
+        <script src="${ctx}resources/js/glightbox.min.js"></script>
+        <script src="${ctx}resources/js/main.js"></script>
         <script type="text/javascript">
             //========= Hero Slider 
             tns({

@@ -23,6 +23,10 @@
                      <span>카테고리 이름</span> <input class="w-50  cinput" type="text"
                         name="cateName" id="cateName" value="${data.cateName}">
                   </p>
+                  <p>
+                     <span>상위 카테고리</span> <input class="w-50  cinput" type="text"
+                        name="cateParent" id="cateParent" value="${data.cateParent}">
+                  </p>
                </div>
                <div class="inputdiv">
                   <input type="submit" id="btn-update" class="btn ok" value="수정" />

@@ -9,15 +9,14 @@
 	<div class="container text-center">
 		<div class="row">
 			<div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
-				<form class="card input-form rounded shadow-sm" id="updateMemPoint"
-				action="<c:url value='member-point-update?mnum=${minfo.mnum}'/>" method="post" id="updateForm">
+				<form class="card input-form rounded shadow-sm" action="member-point?mnum=${minfo.mnum}" method="post">
 				<h4 class="mb-5">회원포인트 수정</h4>
 					<table class="container table table-borderless">
 						<c:set value="${minfo.mnum}" var="mpinfo" />
 							<tbody>
 								<tr>
-									<td>회원번호</td>
-									<td>${minfo.mnum}</td>
+									<td>NO</td>
+									<td>${minfo.id}</td>
 								</tr>
 								<tr>
 									<td>아이디</td>
@@ -34,14 +33,14 @@
 								</tr>
 								<tr>
 									<td>포인트수정</td>
-									<td><input class="w-50  cinput" type="number" value="${minfo.mpoint}" name="mpoint" required></td>
+									<td><input class="w-50  cinput" type="number" name ="mpoint" value="${minfo.mpoint}"required></td>
 								</tr>
 							</tbody>
 					</table>
 					<div class="inputdiv">
-						<input type="submit" class="btn ok" value="수정"/> <input
-							type="reset" class="btn reset" value="취소" /> <a
-							href="member-list" class="btn golist" id="list_btn">목록</a>
+						<input type="submit" class="btn ok" id="update_btn" value="수정"/>
+						<input type="reset" class="btn reset" value="취소" />
+						<a href="member-list" class="btn golist" id="list_btn">목록</a>
 					</div>
 				</form>
 			</div>

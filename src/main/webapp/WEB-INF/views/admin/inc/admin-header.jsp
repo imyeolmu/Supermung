@@ -3,14 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>슈퍼멍뭉</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+ 	<script src="Scripts/jquery-1.6.4.js"></script>
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 	
  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
     <link rel="shortcut icon" type="image/x-icon" href="${ctx}/resources/images/favicon.svg" />
@@ -103,7 +105,6 @@
                                                     <ul class="admin-menu-list">
                                                         <li><a href="category-list" class="admin-head-menu">카테고리목록</a></li>
                                                         <li><a href="category-input" class="admin-head-menu">카테고리등록</a></li>
-                                                        <li><a href="category-update" class="admin-head-menu">카테고리수정</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

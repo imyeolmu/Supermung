@@ -1,33 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.supermm.mapper.ProductMapper">
-	
-	<!-- 상품등록 -->
-	<insert id="prodInput">
-		insert into product(pnum,pcategory_fk1,pcategory_fk2,pname,pimage,pcompany,pspec,pqty,price,ppoint)
-		values(#{pnum},#{pcategory_fk1},#{pcategory_fk2},#{pname},#{pimage},#{pcompany},#{pspec},#{pqty},#{price},#{ppoint}) 
-	</insert>
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.supermm.mapper.ProductMapper">
 
-	<!-- 상품목록  -->
-	<select id="getProdList" resultType="com.supermm.model.ProductVO">
-		select * from product order by pNum	
-	</select>
+<!-- 상품등록 -->
+<insert id="prodInput" parameterType="productVO">
+	insert into product(pnum,pcategory_fk1,pcategory_fk2,pname,pimage,pcompany,pspec,pqty,price,ppoint)
+	values(#{pnum},#{pcategory_fk1},#{pcategory_fk2},#{pname},#{pimage},#{pcompany},#{pspec},#{pqty},#{price},#{ppoint}) 
+</insert>
+<!-- 검색조건 -->
+<sql id="criteria">
+    <if test="searchType =='N'.toString()">
+	    pname like '%'||#{keyWord}||'%'and
+	</if>
+	<if test="searchType =='C'.toString()">
+	    pcategory_fk1 like '%'||#{keyWord}||'%'and
+	</if>
+</sql>
+
+
+<!-- 상품목록(페이징) -->
+<select id="getProdListPaging" resultType="productVO">		
 	
-	<!-- 상품목록(페이징) -->
-	<select id="getProdListPaging" resultType="com.supermm.model.ProductVO">		
-		<![CDATA[
-        select pnum, pcategory_fk1, pcategory_fk2, pname, pimage, pcompany, pspec, pqty, price, ppoint from(
-                select /*+INDEX_DESC(product pnum) */ rownum  as pnum, pcategory_fk1, pcategory_fk2, pname, pimage, pcompany, pspec, pqty, price, ppoint
-                from product where rownum <= #{pageNum} * #{amount}) 
-        where pnum > (#{pageNum} -1) * #{amount}
-	    ]]>
-	</select>
-	
-	<!-- 상품 총 개수 -->
-	<select id="getProdTotal" resultType="int">
-		select count(*) from product
-	</select>
-	
-  </mapper>
+       select pnum, pcategory_fk1, pcategory_fk2, pname, pimage, pcompany, pspec, pqty, price, ppoint
+       from(
+               select /*+INDEX_DESC(product pnum) */
+               rownum rnum, pnum, pcategory_fk1, pcategory_fk2, pname, pimage, pcompany, pspec, pqty, price, ppoint
+               from product
+               where <include refid="criteria"></include>
+               <![CDATA[rownum <= #{pageNum} * #{amount}]]> order by pnum) 
+    			<![CDATA[where rnum > (#{pageNum} -1) * #{amount}]]>
+	order by pnum
+</select>
+<!-- 상품 삭제 -->
+<delete id="prodDelete">
+	delete from product where pnum=#{pnum} 
+</delete>
+<!-- 상품 수정 -->
+<update id="prodUpdate" parameterType="productVO">
+	update product set pcategory_fk1=#{pcategory_fk1}, pcategory_fk2=#{pcategory_fk2},
+	pname=#{pname}, pimage=#{pimage},
+	pcompany=#{pcompany},
+	pspec=#{pspec}, pqty=#{pqty},
+	price=#{price}, ppoint=#{ppoint}
+	 where pnum=#{pnum} 
+</update>
+<!--  상품 (수정)상세내용  -->
+   <select id="prodDetail" resultType="productVO">
+       select pnum, pcategory_fk1, pcategory_fk2, pname, pimage, pcompany, pspec, pqty, price, ppoint
+       from product where pnum = #{pnum} 
+   </select>
+
+<!-- 상품 총 개수 -->
+<select id="getProdTotal" resultType="Integer">
+	select count(*) total from product where
+	<include refid="criteria"></include>
+	pnum > 0
+</select>
+ </mapper>

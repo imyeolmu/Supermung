@@ -3464,7 +3464,7 @@ ol {
     About Us CSS
 ========================================*/
 .about-us {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 .about-us .content-left {
   position: relative;
@@ -3558,12 +3558,12 @@ ol {
 }
 .about-us .content-right h2 {
   display: block;
-  font-size: 32px;
-  margin-bottom: 25px;
+  font-size: 27px;
+  margin-bottom: 32px;
   line-height: 45px;
   text-transform: capitalize;
   position: relative;
-  font-weight: 700;
+  font-weight: 600;
   color: #333;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -3579,13 +3579,18 @@ ol {
   }
 }
 .about-us .content-right h3 {
-  font-size: 22px;
+  font-size: 25px;
   margin-top: 40px;
   margin-bottom: 8px;
   line-height: 45px;
   text-transform: capitalize;
   position: relative;
   font-weight: 600;
+  color: #AB93C9;
+}
+.about-us .content-right .none {
+  color: #333;
+  font-size: 22px;
 }
 .about-us .content-right p {
   font-size: 14px;
@@ -3595,6 +3600,20 @@ ol {
 }
 .about-us .content-right p:last-child {
   margin: 0;
+}
+.about-us .content-right .point {
+  color: #AB93C9;
+  font-size: 27px;
+  margin-left: 5px;
+}
+.about-us .content-right li {
+  color: #333;
+  font-size: 17px;
+  font-weight: 500;
+}
+.about-us .content-right .about-num {
+  color: #AB93C9;
+  font-size: 17px;
 }
 
 /*======================================
@@ -4555,8 +4574,98 @@ blockquote span {
 /*======================================
     Team CSS
 ========================================*/
+.secret {
+  background-color: #f9f9f9;
+}
+.secret h2 {
+  font-size: 27px;
+  color: #333;
+  font-weight: 600;
+}
+.secret h3 {
+  font-size: 20px;
+  line-height: 30px;
+  color: #333;
+  font-weight: 500;
+}
+.secret .single-team {
+  background-color: #fff;
+  text-align: center;
+  margin-top: 30px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 35px;
+  transition: all 0.4s ease;
+}
+.secret .single-team:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.123);
+}
+.secret .single-team .image img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  display: inline-block;
+  padding: 5px;
+}
+.secret .single-team .content {
+  margin-top: 20px;
+}
+.secret .single-team .content h3 {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+.secret .single-team .content p {
+  font-size: 15px;
+  margin-top: 5px;
+  color: #333;
+}
+.secret .single-team .content span {
+  color: #FFD66B;
+  font-size: 18px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+.secret .single-team .content .social {
+  margin-top: 20px;
+}
+.secret .single-team .content .social li {
+  display: inline-block;
+  margin-right: 4px;
+}
+.secret .single-team .content .social li:last-child {
+  margin: 0;
+}
+.secret .single-team .content .social li a {
+  height: 35px;
+  width: 35px;
+  line-height: 32px;
+  text-align: center;
+  border: 1px solid #eee;
+  color: #444;
+  border-radius: 50%;
+  font-size: 14px;
+}
+.secret .single-team .content .social li a:hover {
+  border-color: transparent;
+  color: #fff;
+  background-color: #AB93C9;
+}
+
 .team {
   background-color: #fff;
+}
+.team h2 {
+  font-size: 27px;
+  color: #333;
+  font-weight: 600;
+}
+.team h3 {
+  font-size: 20px;
+  line-height: 30px;
+  color: #333;
+  font-weight: 500;
 }
 .team .single-team {
   text-align: center;
@@ -4582,7 +4691,8 @@ blockquote span {
 }
 .team .single-team .content h3 {
   color: #333;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
 }
 .team .single-team .content h5 {
   font-size: 13px;
@@ -5312,6 +5422,7 @@ blockquote span {
 /* Product Grids */
 .product-grids {
   background-color: #fff;
+  min-height: 1500px;
 }
 .product-grids .product-grid-topbar {
   padding: 15px 20px;
@@ -7190,6 +7301,7 @@ blockquote span {
 .mypage {
   position: relative;
   background-color: #fff;
+  min-height: 1000px;
 }
 .mypage .mypage-main .single-info-head {
   margin-top: 30px;

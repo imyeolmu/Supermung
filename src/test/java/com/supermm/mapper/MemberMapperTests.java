@@ -27,57 +27,15 @@ public class MemberMapperTests {
 	@Autowired
 	private MemberService service;
 	
-/* 	회원목록
-	@Test
-	public void MemList() throws Exception {
-		
-		System.out.println("MemList().." + mapper.getMemList());
-		
-		List list = mapper.getMemList();
-		for(Object a : list) {
-			System.out.println("" + a);
-		}
-		
-		service.getMemList().forEach(member -> log.info("" + member));  
-	}
-*/
-/* 	회원목록(페이징 적용)
-	@Test
-	public void testGetMemListPaging() {
-		Criteria cri = new Criteria();
-		
-		List list = mapper.getMemListPaging(cri);
-		list.forEach(member -> log.info("" + member));
-	}	
-*/
-
-	
-/*	회원정보 조회(포인트 포함)
-	@Test
-	public void testGetMemInfo() {
-		
-		//실제 존재하는 회원
-		int mnum = 8;
-		
-		//회원정보
-		System.out.println("" + service.getMemInfo(mnum));
-		
-		//포인트
-		System.out.println("" + mapper.getMemPoint(mnum));
-	}
-*/ 	
-	
 	/*회원 포인트 수정*/
 	@Test
 	public void testUpdateMemPoint() {
 		
 		MemberVO member = new MemberVO();
-		member.setMnum(1); //번호
-		member.setMpoint(9999); //수정될 포인트
-		
+		member.setMnum(2); //번호
+		member.setMpoint(12323445); //수정될 포인트
 		
 	}
-
 	
 	
 	

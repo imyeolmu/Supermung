@@ -10,10 +10,7 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
- 	<script src="Scripts/jquery-1.6.4.js"></script>
- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
- 	
- 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
     <link rel="shortcut icon" type="image/x-icon" href="${ctx}/resources/images/favicon.svg" />
     <!-- ========================= CSS here ========================= -->
@@ -63,7 +60,7 @@
                             </button>
                             <div class="col-lg-3 col-md-3 col-7">
                                 <!-- Start Header Logo -->
-                                <a class="navbar-brand" href="#">
+                                <a class="navbar-brand" href="client-main">
                                     <img src="${ctx}/resources/images/logo/logo.png" alt="Logo">
                                 </a>
                                 <!-- End Header Logo -->
@@ -105,6 +102,8 @@
                                                     <ul class="admin-menu-list">
                                                         <li><a href="category-list" class="admin-head-menu">카테고리목록</a></li>
                                                         <li><a href="category-input" class="admin-head-menu">카테고리등록</a></li>
+                                                        <li><a href="categorySub-list" class="admin-head-menu">서브카테고리목록</a></li>
+                                                        <li><a href="categorySub-input" class="admin-head-menu">서브카테고리등록</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -124,7 +123,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="nav-item">
+                                   <!--  <li class="nav-item">
                                         <div class="admin">
                                             <a href="admin-review-board" aria-label="Toggle navigation">게시판관리</a>
                                             <div class="admin-menu">
@@ -136,7 +135,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item">
                                         <div class="admin">
                                             <a href="notice-list" aria-label="Toggle navigation">고객센터관리</a>
@@ -144,7 +143,7 @@
                                                 <div class="dropdown-user">
                                                     <ul class="admin-menu-list">
                                                         <li><a href="notice-list" class="admin-head-menu">공지사항</a></li>
-                                                        <li><a href="qna-list" class="admin-head-menu">문의게시판</a></li>
+                                                        <!-- <li><a href="qna-list" class="admin-head-menu">문의게시판</a></li> -->
                                                     </ul>
                                                 </div>
                                             </div>

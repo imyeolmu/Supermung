@@ -14,6 +14,5 @@ public class CategoryVO {
 	private int cateNum;
 	private String cateCode;
 	private String cateName;
-	private String cateParent;
 
 }

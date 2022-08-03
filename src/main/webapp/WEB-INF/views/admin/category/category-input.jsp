@@ -19,10 +19,6 @@
                      <span>카테고리 이름</span> <input class="w-50 cinput" type="text"
                         id="cateName" name="cateName">
                   </p>
-                  <p>
-                     <span>상위 카테고리</span> <input class="w-50 cinput" type="text"
-                        id="cateParent" name="cateParent">
-                  </p>
                </div>
                <div class="inputdiv">
                   <input type="submit" class="btn ok" value="등록" /><input

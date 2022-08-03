@@ -71,7 +71,6 @@
             <th class="w60">NO</th>
             <th class="expand">카테고리 이름</th>
             <th class="w100">카테고리 코드</th>
-            <th class="w100">상위 카테고리</th>
             <th class="w60"><input type="checkbox" id="allCheck"
              name="allCheck" style="margin-left: 38px; margin-right: 10px;"/><label for="allCheck">삭제</label>
              <script>
@@ -105,7 +104,6 @@
             <td><a class="goUpdate" href="<c:url value='category-update?cateNum=${ctvo.cateNum}'/>"><c:out value="${ctvo.cateNum}"/></a></td>
             <td>${ctvo.cateName}</td>
             <td>${ctvo.cateCode}</td>
-            <td>${ctvo.cateParent}</td>
             <td class="checkbox"><input type="checkbox" name="RowCheck" value="${ctvo.cateNum}"/></td>
          </tr>
          <c:set var="cno" value="${cno-1}"/>

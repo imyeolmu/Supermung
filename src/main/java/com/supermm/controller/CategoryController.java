@@ -1,7 +1,5 @@
 package com.supermm.controller;
 
-
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,6 @@ public class CategoryController {
 
 	@Autowired
 	private CategoryService service;
-
 
 	// 카테고리 리스트 페이지 접속
 		// Controller의 메서드는 Model이라는 타입의 객체를 파라미터로 받을 수 있다.
@@ -50,7 +47,6 @@ public class CategoryController {
 		
 		}
 		
-		
 	//카테고리 등록 페이지 접속(이동)
 	@RequestMapping(value="/category-input", method=RequestMethod.GET)
 		public String CategoryInputForm() {
@@ -58,7 +54,6 @@ public class CategoryController {
 		
 		return "admin/category/category-input";
 	}
-	
 	
 	//카테고리 등록 페이지 :> 등록 후 카테고리목록으로 이동(전송)
 	@RequestMapping(value="/category-input", method=RequestMethod.POST)
@@ -114,11 +109,9 @@ public class CategoryController {
         return "redirect:category-list"; 
     }
 
-	
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // clinet 
     ///////////////////////////////////////////////////////////////////////////////////////////////
-    
 
 
 }

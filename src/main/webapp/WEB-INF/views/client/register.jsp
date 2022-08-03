@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../inc/client-header.jsp"%>
+<%@ include file="./inc/client-header.jsp"%>
     <!-- Start Account Register Area -->
     <div class="account-login section">
         <div class="container">
@@ -51,7 +50,7 @@
                             <div class="button">
                                 <button class="btn" type="submit">Register</button>
                             </div>
-                            <p class="outer-link">Already have an account? <a href="login.html">Login Now</a>
+                            <p class="outer-link">Already have an account? <a href="login">Login Now</a>
                             </p>
                         </form>
                     </div>

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../inc/admin-header.jsp"%>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+
 
 <!-- Start Product Input Area -->
 <div class="admin-input section" id="wrap">
@@ -19,8 +23,14 @@
 								<td>대분류</td>
 								<td>
 									<!-- select/// 등록된 카테고리 for문으로 불러와서 나열 -->
-								<select class="form-select form-select-sm cinput" name="pcategory_fk1">
-										<option value="category1">1</option>
+								<select class="cate1 form-select form-select-sm cinput">
+								<c:forEach items="${cateList}" var="cateList">
+									<c:if test="${cateList.cateParent eq null}">
+									<option value="" selected>
+										<c:out value="${cateList.cateName}"/>
+									</option>
+									</c:if>
+								</c:forEach>
 								</select>
 								</td>
 							</tr>
@@ -28,8 +38,7 @@
 								<td>소분류</td>
 								<td>
 									<!-- select/// 등록된 카테고리 for문으로 불러와서 나열 --> 
-								<select class="form-select form-select-sm cinput" name="pcategory_fk2">
-										<option value="category2">1</option>
+								<select class="cate2 form-select form-select-sm cinput" name="cateCode">
 								</select>
 								</td>
 							</tr>
@@ -41,7 +50,7 @@
 							<tr>
 								<td>이미지</td>
 								<td><input class="form-control form-control-sm cinput"
-									type="file" name="pimage"></td>
+									type="text" name="pimage"></td>
 							</tr>
 							<tr>
 								<td>브랜드</td>
@@ -93,5 +102,6 @@
 	</div>
 </div>
 <!-- End Account Login Area -->
+
 
 <%@ include file="../inc/footer.jsp"%>

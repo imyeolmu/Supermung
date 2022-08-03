@@ -4,11 +4,12 @@
 .mypage {
     position: relative;
     background-color: $white;
+    min-height: 1000px;
 
     .mypage-main {
         .single-info-head {
             margin-top: 30px;
-            background-color: $gray;
+            background-color: #f9f9f9;
             padding: 30px;
             border: 1px solid #eee;
             border-radius: 4px;

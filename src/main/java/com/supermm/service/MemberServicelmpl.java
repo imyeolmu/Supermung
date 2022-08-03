@@ -60,4 +60,17 @@ public class MemberServicelmpl implements MemberService{
 
 		mapper.updateMemPoint(member);
 	}
+	
+	
+	/********************* 클라이언트 ************************/
+	@Override
+	public MemberVO getMyInfo(int mnum) throws Exception {
+		
+		System.out.println("getMyInfo service..");
+		
+		return mapper.getMyInfo(mnum);
+	}
+	
+	
+	
 }

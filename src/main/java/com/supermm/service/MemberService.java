@@ -21,5 +21,10 @@ public interface MemberService {
 	
 	//정보수정(포인트적립)
 	public void updateMemPoint(MemberVO member);
+	
+	
+	/********************* 클라이언트 ************************/
+	//마이페이지 내정보
+	public MemberVO getMyInfo(int mnum) throws Exception;
 
 }

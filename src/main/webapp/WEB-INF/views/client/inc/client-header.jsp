@@ -40,7 +40,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-3 col-7">
                         <!-- Start Header Logo -->
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="client-main">
                             <img src="${ctx}/resources/images/logo/logo.png" alt="Logo">
                         </a>
                         <!-- End Header Logo -->
@@ -76,55 +76,51 @@
                     <div class="col-lg-4 col-md-2 col-5">
                         <div class="middle-right-area">
                             <div class="nav-hotline">
-                                <i class="lni lni-phone"></i>
+                                <i >📞</i>
                                 <h3>고객센터:
                                     <span>(042) 123-4567</span>
                                 </h3>
                             </div>
                             <div class="navbar-cart">
                                 <div class="user">
-                                    <a href="javascript:void(0)" class="main-btn">
-                                        <i class="lni lni-user"></i>
-                                    </a>
+                                    <a href="javascript:void(0)" class="main-btn">🐶</a>
                                     <!-- User-menu -->
                                     <div class="user-menu">
                                         <div class="dropdown-user">
                                             <ul class="user-menu-list">
-                                                <li><a href="login.html">로그인</a></li>
-                                                <li><a href="register.html">회원가입</a></li>
-                                                <li><a href="mypage.html">내정보수정</a></li>
-                                                <li><a href="admin-main.html">관리자페이지</a></li>
+                                                <li><a href="client-login">로그인</a></li>
+                                                <li><a href="client-join">회원가입</a></li>
+                                                <li><a href="client-mypage">마이페이지</a></li>
+                                                <li><a href="admin-login">관리자페이지</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="wishlist">
+                               <!--  <div class="wishlist">
                                     <a href="javascript:void(0)">
                                         <i class="lni lni-heart"></i>
                                         <span class="total-items">0</span>
                                     </a>
-                                </div>
+                                </div> -->
                                 <div class="cart-items">
-                                    <a href="javascript:void(0)" class="main-btn">
-                                        <i class="lni lni-cart"></i>
-                                        <span class="total-items">2</span>
+                                    <a href="javascript:void(0)" class="main-btn">🛒<span class="total-items">2</span>
                                     </a>
                                     <!-- Shopping Item -->
                                     <div class="shopping-item">
                                         <div class="dropdown-cart-header">
                                             <span>2 Items</span>
-                                            <a href="cart.html">View Cart</a>
+                                            <a href="cart">View Cart</a>
                                         </div>
                                         <ul class="shopping-list">
                                             <li>
                                                 <a href="javascript:void(0)" class="remove" title="Remove this item"><i
                                                         class="lni lni-close"></i></a>
                                                 <div class="cart-img-head">
-                                                    <a class="cart-img" href="product-details.html"><img
+                                                    <a class="cart-img" href="product-details"><img
                                                             src="${ctx}resources/images/header/cart-items/item1.jpg" alt="#"></a>
                                                 </div>
                                                 <div class="content">
-                                                    <h4><a href="product-details.html">
+                                                    <h4><a href="product-details">
                                                             Apple Watch Series 6</a></h4>
                                                     <p class="quantity">1x - <span class="amount">$99.00</span></p>
                                                 </div>
@@ -136,7 +132,7 @@
                                                 <span class="total-amount">$134.00</span>
                                             </div>
                                             <div class="button">
-                                                <a href="checkout.html" class="btn animate">Checkout</a>
+                                                <a href="checkout" class="btn animate">Checkout</a>
                                             </div>
                                         </div>
                                     </div>
@@ -156,17 +152,19 @@
                     <div class="nav-inner">
                         <!-- Start Mega Category Menu -->
                         <div class="mega-category-menu">
-                            <span class="cat-button"><i class="lni lni-menu"></i>SHOP</span>
+                            <span class="cat-button"><i class="lni lni-menu"></i>CATEGORY</span>
                             <ul class="sub-category">
-                                <li><a href="product-grids.html">New Arrival</a></li>
-                                <li><a href="product-grids.html">Best Seller</a></li>
-                                <li><a href="product-grids.html">의류</a></li>
-                                <li><a href="product-grids.html">사료/간식</a></li>
-                                <li><a href="product-grids.html">강아지 용품</a></li>
-                                <li><a href="product-grids.html">장난감</a></li>
-                                <li><a href="product-grids.html">액세서리</a></li>
-                                <li><a href="product-grids.html">대형견</a></li>
-                                <li><a href="product-grids.html">기타용품</a></li>
+                                <li><a href="product-grids">New Arrival</a></li>
+                                <li><a href="product-grids">Best Seller</a></li>
+                                <li><a href="product-grids">Home</a></li>
+                                <li><a href="product-grids">Walk</a></li>
+                                <li><a href="product-grids">Carrier</a></li>
+                                <li><a href="product-grids">Clothes</a></li>
+                                <li><a href="product-grids">Grooming</a></li>
+                                <li><a href="product-grids">Toy</a></li>
+                                <li><a href="product-grids">Food</a></li>
+                                <li><a href="product-grids">For human</a></li>
+                                <li><a href="product-grids">Outdoor</a></li>
                             </ul>
                         </div>
                         <!-- End Mega Category Menu -->
@@ -182,19 +180,22 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="index.html" class="active" aria-label="Toggle navigation">HOME</a>
+                                        <a href="client-main" class="active" aria-label="Toggle navigation">HOME</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="about-us.html" aria-label="Toggle navigation">ABOUT</a>
+                                        <a href="about-us" aria-label="Toggle navigation">ABOUT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="blog-grid-sidebar.html" aria-label="Toggle navigation">VOLUNTEER</a>
+                                        <a href="client-product-list" aria-label="Toggle navigation">SHOP</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="blog-grid-sidebar.html" aria-label="Toggle navigation">NOTICE</a>
+                                        <a href="#" aria-label="Toggle navigation">NOTICE</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="contact.html" aria-label="Toggle navigation">CONTACT</a>
+                                        <a href="client-faq" aria-label="Toggle navigation">FAQ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="contact" aria-label="Toggle navigation">CONTACT</a>
                                     </li>
                                 </ul>
                             </div> <!-- navbar collapse -->
@@ -207,17 +208,12 @@
                     <div class="nav-social">
                         <h5 class="title">FOLLOW US:</h5>
                         <ul>
+                            
                             <li>
-                                <a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
+                                <a href="javascript:void(0)">📧</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"><i class="lni lni-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"><i class="lni lni-skype"></i></a>
+                                <a href="javascript:void(0)">🐤</a>
                             </li>
                         </ul>
                     </div>

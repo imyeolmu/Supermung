@@ -12,6 +12,7 @@ public class PageMakeDTO {
    private int realStart; //전체 시작페이지
    private Criteria cri; //현재페이지, 페이지당 게시물 표시수 정보
    
+   
    //생성자
    public PageMakeDTO(Criteria cri,int total) {
    

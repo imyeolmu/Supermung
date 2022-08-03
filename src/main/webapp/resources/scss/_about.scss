@@ -3,7 +3,7 @@
 ========================================*/
 
 .about-us {
-    background-color: $gray;
+    background-color: $white;
 
     .content-left {
         position: relative;
@@ -104,12 +104,12 @@
 
         h2 {
             display: block;
-            font-size: 32px;
-            margin-bottom: 25px;
+            font-size: 27px;
+            margin-bottom: 32px;
             line-height: 45px;
             text-transform: capitalize;
             position: relative;
-            font-weight: 700;
+            font-weight: 600;
             color: #333;
 
             @media #{$md} {
@@ -124,13 +124,19 @@
         }
 
         h3 {
-            font-size: 22px;
+            font-size: 25px;
             margin-top: 40px;
             margin-bottom: 8px;
             line-height: 45px;
             text-transform: capitalize;
             position: relative;
             font-weight: 600;
+            color: $theme-color;
+        }
+
+        .none {
+            color: #333;
+            font-size: 22px;
         }
 
         p {
@@ -143,5 +149,23 @@
                 margin: 0;
             }
         }
+
+        .point {
+            color: $theme-color;
+            font-size: 27px;
+            margin-left: 5px;
+        }
+
+        li {
+            color: #333;
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .about-num {
+            color: $theme-color;
+            font-size: 17px;
+        }
+
     }
 }

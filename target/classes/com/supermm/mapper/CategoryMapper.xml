@@ -9,8 +9,8 @@
 
 	<!-- 카테고리 등록 -->
 <insert id="cateInput" parameterType="categoryVO">
-    insert into Category(cateNum, cateCode, cateName, cateParent)
-    values (categorySeq.NEXTVAL, #{cateCode}, #{cateName}, #{cateParent})
+    insert into Category(cateNum, cateCode, cateName)
+    values (categorySeq.NEXTVAL, #{cateCode}, #{cateName})
 </insert>
 
   <!-- 전체 게시글 수 구하기 -->
@@ -36,11 +36,11 @@
 검색은 WHERE절 알맞은 위치에 맞게 넣어주면 검색가능
 위 표현식의 and 꼭!!!! 넣기-->
 select
-	cateNum,cateCode,cateName,cateParent
+	cateNum,cateCode,cateName
 from
 	(
 	select /*+INDEX_DESC(Category cateNum)*/
-	rownum rnum,cateNum,cateCode,cateName,cateParent
+	rownum rnum,cateNum,cateCode,cateName
         from Category
         where <include refid="criteria"></include>
         
@@ -57,11 +57,11 @@ from
 
 <!-- 카테고리 수정 -->
 	<update id="cateUpdate" parameterType="categoryVO">
-		update Category set cateCode=#{cateCode}, cateName=#{cateName}, cateParent=#{cateParent} where cateNum=#{cateNum} 
+		update Category set cateCode=#{cateCode}, cateName=#{cateName} where cateNum=#{cateNum} 
 	</update>
 <!--  카테고리 (수정)상세내용  -->
     <select id="cateDetail" resultType="categoryVO">
-        select cateNum, cateCode, cateName, cateParent
+        select cateNum, cateCode, cateName
         from Category where cateNum = #{cateNum} 
     </select>
 </mapper>

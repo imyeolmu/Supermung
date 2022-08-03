@@ -93,6 +93,17 @@ public class MemberController {
 		rttr.addFlashAttribute("result", "update success");
 
 		return "redirect: /member-list";
-
 	}
+	
+	
+	/********************* 클라이언트 ************************/
+	@RequestMapping(value="/client-mypage", method = RequestMethod.GET)
+	public void getMyInfoGET(int mnum, Model model) throws Exception {
+		
+		System.out.println("마이페이지 내정보..");
+		
+		model.addAttribute("myinfo", service.getMyInfo(mnum));
+		
+	}
+	
 }

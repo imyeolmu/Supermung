@@ -1,68 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="./inc/client-header.jsp"%>
-    <!-- Start Mypage Area -->
-    <section id="mypage" class="mypage section">
-        <div class="container">
-                <div class="mypage-main">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12 col-12">
-                            <div class="single-info-head">
-                                <!-- Start Single Info -->
-                                <div class="single-info">
-                                    <h5><i class="lni lni-user"></i>마이페이지</h5>
-                                    <!-- 링크클릭 :>  회원정보수정하는 페이지로이동하기 -->
-                                    <div class="button">
-                                        <a href="javascript:void(0)" class="btn">회원정보수정</a>
-                                    </div>
-                                    <!-- 링크클릭 :>  장바구니 페이지로이동 -->
-                                    <div class="button">
-                                        <a href="javascript:void(0)" class="btn">장바구니로</a>
-                                    </div>
-                                </div>
-                                <!-- End Single Info -->
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-12 col-12">
-                            <div class="mypage-wish">
-                                <div class="wish-main">
-                                    <!-- 이미지 클릭시에 상품상세정보사이트로 넘어가기-->
-                                    <form class="form" method="post" action="">
-                                        <h4>위시리스트</h4>
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-6 col-12">
-                                                <!-- 데이터 등록 후.. 위시리스트 클릭하면 추가되게-->
-                                                <div class="single-product">
-                                                    <img class="product-image" src="https://via.placeholder.com/335x335" alt="#">
-                                                    <!-- 하트 클릭시 위시리스트에서 해제 -->
-                                                    <div class="button">
-                                                        <a href="product-details"><i class="lni lni-heart-filled"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        <div class="col-lg-8 col-md-12 col-12">
-                            <div class="mypage-review">
-                                <div class="review-main">
-                                        <h4>나의리뷰</h4>
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-6 col-12">
-                                                <!-- 나의 리뷰 내역 불러오기 for문 -->
-                                                <div class="my-review">
-                                                    <p>리뷰내역 쑐라쑐라
-                                                    </p>                                                
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="admin-input section">
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+				<form class="card input-form rounded shadow-sm"
+					action="<c:url value='member-list'/>" method="post">
+					<h4 class="mb-5">회원정보</h4>
+					<table class="container table table-borderless">
+						<tbody>
+							<c:set value="${myinfo}" var="myinfo" />
+							<tr>
+								<td>NO</td>
+								<td>${myinfo.mnum}</td>
+							</tr>
+							<tr>
+								<td>아이디</td>
+								<td>${myinfo.id}</td>
+							</tr>
+							<tr>
+								<td>비밀번호</td>
+								<td>${myinfo.pw}</td>
+							</tr>
+							<tr>
+								<td>이름</td>
+								<td>${myinfo.name}</td>
+							</tr>
+							<tr>
+								<td>생년월일</td>
+								<td><fmt:formatDate value="${myinfo.birth}"
+										pattern="yyyy-MM-dd" /></td>
+							</tr>
+							<tr>
+								<td>성별</td>
+								<td>${myinfo.gender}</td>
+							</tr>
+							<tr>
+								<td>이메일</td>
+								<td>${myinfo.email}</td>
+							</tr>
+							<tr>
+								<td>전화번호</td>
+								<td>${myinfo.phone}</td>
+							</tr>
+							<tr>
+								<td>우편번호</td>
+								<td>${myinfo.zipcode}</td>
+							</tr>
+							<tr>
+								<td>주소</td>
+								<td>${myinfo.addr1}(${myinfo.addr2}),${myinfo.addr3}</td>
+							</tr>
+							<tr>
+								<td>가입일</td>
+								<td><fmt:formatDate value="${myinfo.regdate}"
+										pattern="yyyy-MM-dd" /></td>
+							</tr>
+							<tr>
+								<td>포인트</td>
+								<td><fmt:formatNumber value="${myinfo.mpoint}"
+										pattern="#,##0" />P</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="text-center inputdiv">
+								<input type="reset" class="btn golist mt-3" value="탈퇴" />
+								<input type="submit" class="btn ok mt-3" id="update_btn" value="수정"/>
+								<input type="reset" class="btn reset mt-3" value="취소" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
 <%@ include file="./inc/footer.jsp"%>

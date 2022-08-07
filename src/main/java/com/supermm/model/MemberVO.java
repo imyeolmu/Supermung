@@ -10,7 +10,7 @@ public class MemberVO {
 	private String id; //아이디
 	private String pw; //비밀번호
 	private String name; //이름
-	private Date birth; //생년월일
+	private String birth; //생년월일
 	private String gender; //성별
 	private String email; //이메일
 	private String phone; //핸드폰번호
@@ -20,6 +20,8 @@ public class MemberVO {
 	private String addr3; //상세주소
 	private int mpoint; //회원포인트
 	private Date regdate; //가입일
+	private int money;
+	private int adminchk;
 	
 	//생성자
 	public MemberVO() {}
@@ -40,5 +42,7 @@ public class MemberVO {
 		this.PageNum = pageNum;
 		this.amount = amount;
 	}
+
+
 	
 }

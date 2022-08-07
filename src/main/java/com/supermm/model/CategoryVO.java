@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class CategoryVO {
 
 	private int cateNum;
+	private int tier;
 	private String cateCode;
 	private String cateName;
 

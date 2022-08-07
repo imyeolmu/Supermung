@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="./inc/client-header.jsp"%>
     <!-- Start Hero Area -->
     <section class="hero-area">
@@ -60,26 +60,33 @@
 	            <div class="row">
 			<c:forEach items="${list}" var="list">
 				 <c:if test="${list.pspec eq '인기'}">
-	              		<div class="col-lg-3 col-md-6 col-12">
-	                    <div class="single-product" style="height: 415px;">
+	              		<div class="col-lg-3 col-mb-12 col-12">
+	                    <div class="container single-product">
 	                        <div class="product-image">
 	                            <img src="${list.pimage}" alt="#">
 	                     
 	                            <div class="button">
-	                                <a href="product-details" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+	                            <!-- 로그인 하지 않는 상태 -->
+                                 <c:if test="${member == null}">
+                                 	<a href="<c:url value='insert'/>" onClick="alert('로그인 후 이용해주세요.')" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+                                 </c:if>
+                                 <!-- 로그인 상태 -->
+                                 <c:if test="${member != null}">
+                                    <a href="<c:url value='insert?pnum=${list.pnum}&pqty=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+                                 </c:if>
 	                            </div>
 	                        </div>
 	                        <div class="product-info">
 	                       
-	                            <span class="category">${list.pcategory_fk1}(${list.pcategory_fk2})</span>
+	                            <span class="category">${list.pcategory_fk1}</span>
 	                   
-	                            <h4 class="title">
-	                                <a href="product-grids">${list.pname}</a>
+	                            <h4 class="title" style="margin-top: 10px">
+	                                <a href="<c:url value='client-product-detail?pnum=${list.pnum}'/>"><MARQUEE  scrolldelay=150>${list.pname}</MARQUEE></a>
 	                            </h4>
 	                            
 	                            <div class="price">
 	                                <span><fmt:formatNumber value="${list.price}"
-															pattern="#,##0" /></span>
+															pattern="#,##0" />원</span>
 	                            </div>
 	                       	</div>
 	                        </div>
@@ -105,27 +112,32 @@
 			<c:forEach items="${list}" var="list">
 				 <c:if test="${list.pspec eq '최신'}">
 	              		<div class="col-lg-3 col-md-6 col-12" >
-	                    <div class="single-product" style="height: 415px;">
+	                    <div class="single-product">
 	                        <div class="product-image">
-	                        	
-						
 	                            <img src="${list.pimage}" alt="#">
 	                     
 	                            <div class="button">
-	                                <a href="product-details" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+	                             <!-- 로그인 하지 않는 상태 -->
+                                 <c:if test="${member == null}">
+                                 	<a href="<c:url value='insert'/>" onClick="alert('로그인 후 이용해주세요.')" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+                                 </c:if>
+                                 <!-- 로그인 상태 -->
+                                 <c:if test="${member != null}">
+                                    <a href="<c:url value='insert?pnum=${list.pnum}&pqty=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+                                 </c:if>
 	                            </div>
 	                        </div>
 	                        <div class="product-info">
 	                       
-	                            <span class="category">${list.pcategory_fk1}(${list.pcategory_fk2})</span>
+	                            <span class="category">${list.pcategory_fk1}</span>
 	                   
-	                            <h4 class="title">
-	                                <a href="product-grids">${list.pname}</a>
+	                            <h4 class="title" style="margin-top: 10px">
+	                                <a href="<c:url value='client-product-detail?pnum=${list.pnum}'/>"><MARQUEE  scrolldelay=150>${list.pname}</MARQUEE></a>
 	                            </h4>
 	                            
 	                            <div class="price">
 	                                <span><fmt:formatNumber value="${list.price}"
-															pattern="#,##0" /></span>
+															pattern="#,##0" />원</span>
 	                            </div>
 	                       	</div>
 	                        </div>
@@ -137,7 +149,7 @@
     </section>
     <!-- End Trending Product Area -->
     
-     <!-- Start Blog Section Area -->
+      <!-- Start Blog Section Area -->
     <section class="blog-section section" style="background-color:#f9f9f9">
         <div class="container">
             <div class="row">
@@ -159,7 +171,7 @@
                         <div class="button" style="float:right">
                                 <a href="javascript:void(0)" class="btn">자세히</a>
                             </div>
-                            <h4><a href="blog-single-sidebar.html">${nlist.ntitle}</a></h4>
+                            <h4><a href="blog-single-sidebar">${nlist.ntitle}</a></h4>
                         </div>
                     </div>
                     <!-- End Single Blog -->

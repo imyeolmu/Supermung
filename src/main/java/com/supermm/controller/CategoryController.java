@@ -1,5 +1,7 @@
 package com.supermm.controller;
 
+
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +25,16 @@ public class CategoryController {
 	@Autowired
 	private CategoryService service;
 
+
 	// 카테고리 리스트 페이지 접속
 		// Controller의 메서드는 Model이라는 타입의 객체를 파라미터로 받을 수 있다.
 		// 즉 JSP Servlet의 request.setAttribute() 와 비슷한 역할을 한다.
 	@RequestMapping("/category-list")
-	public String list(
-			@ModelAttribute("clist") CategoryVO cvo, Model model, Criteria cri){
+	public String list(Criteria cri,Model model){
 		
 		// 전체 게시물의 개수
 		int totalCnt = service.totalCnt(cri);
-		System.out.println("전체게시글 수 : " + totalCnt);
+
 		
 		// 페이징처리
 		PageMakeDTO pageMake = new PageMakeDTO(cri, totalCnt);
@@ -41,11 +43,11 @@ public class CategoryController {
 		
 		model.addAttribute("pageMake", pageMake);
 		model.addAttribute("cateList", service.cateListPaging(cri));
+		System.out.println("cateList.........."+service.cateListPaging(cri));
 		
-		System.out.println("cateList....."+ service.cateListPaging(cri));
 		return "admin/category/category-list";
+	}
 		
-		}
 		
 	//카테고리 등록 페이지 접속(이동)
 	@RequestMapping(value="/category-input", method=RequestMethod.GET)
@@ -54,6 +56,7 @@ public class CategoryController {
 		
 		return "admin/category/category-input";
 	}
+	
 	
 	//카테고리 등록 페이지 :> 등록 후 카테고리목록으로 이동(전송)
 	@RequestMapping(value="/category-input", method=RequestMethod.POST)
@@ -65,7 +68,7 @@ public class CategoryController {
 		
 		return "redirect:/category-list";
 	}
-	// 카테고리 삭제
+	// 카테고리 삭제 ( 번호넘김 )
 	@RequestMapping(value="/category-delete", method=RequestMethod.GET)
 	public String cateDelete(String cateNum) throws Exception {
 		System.out.println("카테고리 삭제입니다.");
@@ -109,9 +112,11 @@ public class CategoryController {
         return "redirect:category-list"; 
     }
 
+	
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // clinet 
     ///////////////////////////////////////////////////////////////////////////////////////////////
+    
 
 
 }

@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>슈퍼멍뭉</title>
@@ -102,8 +104,6 @@
                                                     <ul class="admin-menu-list">
                                                         <li><a href="category-list" class="admin-head-menu">카테고리목록</a></li>
                                                         <li><a href="category-input" class="admin-head-menu">카테고리등록</a></li>
-                                                        <li><a href="categorySub-list" class="admin-head-menu">서브카테고리목록</a></li>
-                                                        <li><a href="categorySub-input" class="admin-head-menu">서브카테고리등록</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -149,21 +149,30 @@
                                             </div>
                                         </div>
                                     </li>
+                                    <form id="logoutForm" method="post" >
                                     <div class="navbar-cart mt-2">
                                         <div class="user">
                                             <a href="javascript:void(0)" class="main-btn">
                                                 <i class="lni lni-user"></i>
                                             </a>
                                             <!-- User-menu -->
+                                            
+                                            
+                                           
+                                            
                                             <div class="user-menu">
                                                 <div class="dropdown-user">
                                                     <ul class="user-menu-list">
-                                                        <li><a href="admin-login">로그인</a></li>
+                                                        <li><a href="admin-logout" >로그아웃</a></li>
+                                                     
+               
+                                                     
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                   </form>
                                 </ul>
                             </div> <!-- navbar collapse -->
                         </nav>
@@ -178,10 +187,14 @@
 
 
     <!-- ========================= JS here ========================= -->
+ 
+    
+    
     <script src="${ctx}/resources/js/bootstrap.min.js"></script>
     <script src="${ctx}/resources/js/tiny-slider.js"></script>
     <script src="${ctx}/resources/js/glightbox.min.js"></script>
     <script src="${ctx}/resources/js/main.js"></script>
+    <script src="${ctx}resources/js/login.js"></script>
     <script type="text/javascript">
         //========= Hero Slider 
         tns({

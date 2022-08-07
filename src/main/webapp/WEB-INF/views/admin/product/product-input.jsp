@@ -9,10 +9,10 @@
 <!-- Start Product Input Area -->
 <div class="admin-input section" id="wrap">
 	<div class="container text-center">
-		<div class="row"> 
+		<div class="row">
 			<div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
-				<form action="<c:url value='product-input' />" class="card input-form rounded shadow-sm"
-					method="post" enctype="multipart/form-data">
+				<form action="<c:url value='product-input'/>" class="card input-form rounded shadow-sm"
+					method="post">
 					<h4 class="mb-5">상품 등록</h4>
 					<!-- ▲ MultipartRequest 기능을 쓰려면
                             form에 enctype="multipart/form-data 를 넣어줘야한다.
@@ -20,25 +20,50 @@
 					<table class="container table table-borderless">
 						<tbody>
 							<tr>
-								<td>대분류</td>
+								<td>카테고리</td>
 								<td>
 									<!-- select/// 등록된 카테고리 for문으로 불러와서 나열 -->
-								<select class="cate1 form-select form-select-sm cinput">
-								<c:forEach items="${cateList}" var="cateList">
-									<c:if test="${cateList.cateParent eq null}">
-									<option value="" selected>
-										<c:out value="${cateList.cateName}"/>
-									</option>
-									</c:if>
-								</c:forEach>
-								</select>
-								</td>
-							</tr>
-							<tr>
-								<td>소분류</td>
-								<td>
-									<!-- select/// 등록된 카테고리 for문으로 불러와서 나열 --> 
-								<select class="cate2 form-select form-select-sm cinput" name="cateCode">
+								<select class="cate1 form-select form-select-sm cinput" name="pcategory_fk1">
+								<option value="none">선택</option>
+								<script>
+									let cateList = JSON.parse('${cateList}');
+									
+									let cate1Array = new Array();
+									let cate2Array = new Array();
+									let cate1Obj = new Object();
+									let cate2Obj = new Object();
+									let cateSelect1 = $(".cate1");
+									let cateSelect2 = $(".cate2");
+									
+									/* 카테고리 배열 초기화 메서드 */
+									function makeCateArray(obj,array,cateList, tier){
+										for(let i = 0; i < cateList.length; i++){
+											if(cateList[i].tier === tier){
+												obj = new Object();
+												
+												obj.cateName = cateList[i].cateName;
+												obj.cateCode = cateList[i].cateCode;
+												
+												array.push(obj);				
+												
+											}
+										}
+									}	
+									/* 배열 초기화 */
+									makeCateArray(cate1Obj,cate1Array,cateList,1);
+									makeCateArray(cate2Obj,cate2Array,cateList,2);
+									
+									
+									/* $(document).ready(function(){
+										console.log(cate1Array);
+										console.log(cate2Array);
+									});
+									 */
+									
+									for(let i = 0; i < cate1Array.length; i++){
+										cateSelect1.append("<option name='pcategory_fk1' value='"+cate1Array[i].cateName+"'>" + cate1Array[i].cateName + "</option>");
+									}
+									</script>
 								</select>
 								</td>
 							</tr>
@@ -62,9 +87,9 @@
 								<td><select class="form-select form-select-sm cinput"
 									name="pspec">
 										<!-- option/// 나열-->
-										<option value="none" selected>일반</option>
-										<option value="best">인기</option>
-										<option value="new">최신</option>
+										<option value="일반" selected>일반</option>
+										<option value="인기">인기</option>
+										<option value="최신">최신</option>
 								</select></td>
 							</tr>
 							<tr>

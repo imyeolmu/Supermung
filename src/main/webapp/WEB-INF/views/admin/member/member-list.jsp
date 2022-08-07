@@ -1,4 +1,4 @@
-w<%@page import="java.util.List" %>
+<%@page import="java.util.List" %>
 <%@page import="java.util.ArrayList" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -111,7 +111,7 @@ $(".notice-page a").on("click", function(e){
 				<td width="100"><nobr /><c:out value="${fn:replace(list.pw,list.pw,'*****')}"/></td>
 				<td width="100"><nobr /><c:out value="${list.name}"/></td>
 				<!-- 생년월일 날짜 포맷 변경 -->
-				<td width="100"><nobr /><fmt:formatDate value="${list.birth}" pattern="yy-MM-dd"/></td>
+				<td width="100"><nobr /><c:out value="${list.birth}"/></td>
 				<td width="100"><nobr /><c:out value="${list.gender}"/></td>
 				<td width="100"><nobr /><c:out value="${list.email}"/></td>
 				<td width="100"><nobr /><c:out value="${list.phone}"/></td>

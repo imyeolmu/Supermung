@@ -99,12 +99,12 @@
       </thead>
       <tbody>
          <c:set var="cno" value="${pageMake.startPage}"/>
-         <c:forEach var="ctvo" items="${cateList}">
+         <c:forEach var="cateList" items="${cateList}">
          <tr class="text-center">
-            <td><a class="goUpdate" href="<c:url value='category-update?cateNum=${ctvo.cateNum}'/>"><c:out value="${ctvo.cateNum}"/></a></td>
-            <td>${ctvo.cateName}</td>
-            <td>${ctvo.cateCode}</td>
-            <td class="checkbox"><input type="checkbox" name="RowCheck" value="${ctvo.cateNum}"/></td>
+            <td><a class="goUpdate" href="<c:url value='category-update?cateNum=${cateList.cateNum}'/>"><c:out value="${cateList.cateNum}"/></a></td>
+            <td>${cateList.cateName}</td>
+            <td>${cateList.cateCode}</td>
+            <td class="checkbox"><input type="checkbox" name="RowCheck" value="${cateList.cateNum}"/></td>
          </tr>
          <c:set var="cno" value="${cno-1}"/>
          </c:forEach>

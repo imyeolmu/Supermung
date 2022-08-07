@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.supermm.model.ClientCriteria;
 import com.supermm.model.ClientPageMakeDTO;
 import com.supermm.model.Criteria;
@@ -48,7 +49,7 @@ public class ProductController {
 
 		model.addAttribute("pageMake", pageMake);
 		model.addAttribute("list", service.getProdListPaging(cri));
-		System.out.println("list.........."+service.getProdListPaging(cri));
+		//		System.out.println("list.........."+service.getProdListPaging(cri));
 
 		return "admin/product/product-list";
 	}	
@@ -59,10 +60,10 @@ public class ProductController {
 
 		System.out.println("상품 등록 페이지 접속");
 
-		//		ObjectMapper objm = new ObjectMapper();
+		ObjectMapper objm = new ObjectMapper();
 
-		List cateList = service.cateList();
-
+		List list = service.cateList();
+		String cateList = objm.writeValueAsString(list);
 		model.addAttribute("cateList", cateList);
 
 		return "admin/product/product-input";
@@ -72,13 +73,13 @@ public class ProductController {
 	@RequestMapping(value="/product-input", method = RequestMethod.POST)
 	public String ProdInput(ProductVO prod, RedirectAttributes rttr) {
 
-		System.out.println("product_input prod : "+ prod);
+		System.out.println("상품 등록..");
 
 		service.prodInput(prod);
 
 		rttr.addFlashAttribute("result", "input success");
 
-		return "redirect: admin/product/product-list";
+		return "redirect: /product-list";
 	}
 
 	//상품수정
@@ -122,7 +123,7 @@ public class ProductController {
 
 
 	/********************* 클라이언트 ************************/
-	
+
 	//전체상품리스트
 	@RequestMapping("/client-product-list")
 	public String clientProductList(ClientCriteria cri, Model model) {
@@ -134,38 +135,40 @@ public class ProductController {
 		// 페이징처리
 		ClientPageMakeDTO pageMake = new ClientPageMakeDTO(cri, totalCnt);
 		model.addAttribute("pageMake", pageMake);
-		
+
 		//상품
 		model.addAttribute("list", service.getProdListPaging(cri));
 		System.out.println("list.........."+service.getProdListPaging(cri));
-		
+
 		//카테고리
 		model.addAttribute("cateList", service.cateList());
 
 		return "client/product/client-product-list";
 	}	
-	
+
 	//카테고리별 상품리스트로 이동
 	@RequestMapping(value="/client-product-list-category", method= RequestMethod.GET)
 	public String clientProductListGET(ClientCriteria cri, Model model) {
-		
+
 		System.out.println("상품 목록 페이징");
-		
+
 		int totalCnt = service.getProdTotal(cri);
-		
+
 		// 페이징처리
 		ClientPageMakeDTO pageMake = new ClientPageMakeDTO(cri, totalCnt);
 		model.addAttribute("pageMake", pageMake);
-		
+
 		//상품
 		model.addAttribute("list", service.getProdListPaging(cri));
 		model.addAttribute("plist", service.getProdList());
 		System.out.println("list.........."+service.getProdListPaging(cri));
-		
+
 		//카테고리
 		model.addAttribute("cateList", service.cateList());
-		
+
 		return "client/product/client-product-list-category";
 	}	
+	
+	
 
 }

@@ -24,6 +24,21 @@ public interface MemberMapper {
 	
 	
 	/********************* 클라이언트 ************************/
+	//로그인
+	public MemberVO memberLogin(MemberVO member);
+	
+	//회원가입 
+	public void memberjoin(MemberVO member);
+	
+	//아이디 중복 검사
+	public int idCheck(String id);
+	
+	//비밀번호 찾기
+	public void findpw(String pw, String email, String id);
+	
+	//비밀번호 찾기 검사
+	public int findpwchk(MemberVO memeber) throws Exception;
+	
 	//마이페이지 내정보
 	public MemberVO getMyInfo(int mnum);
 

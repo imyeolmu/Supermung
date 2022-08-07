@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.supermm.model.CartVO;
 import com.supermm.model.MemberVO;
 import com.supermm.service.CartService;
+
 @Controller("cartController")
 public class CartController {
 	
@@ -28,11 +28,11 @@ public class CartController {
 	@RequestMapping("/cart")
 	// modelandview :> model과 비슷한 역할 뷰의경로를 지정해준다.
 	public ModelAndView Cart(HttpSession session, ModelAndView mv, MemberVO member) {
-        Map<String, Object> map=new HashMap<>();
+		Map<String, Object> map=new HashMap<>();
 		System.out.println("카트...");
-        String id = String.valueOf(session.getAttribute("memberid"));
-       
-        System.out.println("id..................."+id);
+		String id = String.valueOf(session.getAttribute("memberid"));
+		
+		System.out.println("id..................."+id);
 		if(id!=null) {
 			// 로그인
 			List<CartVO> list = service.cartList(id);
@@ -45,7 +45,7 @@ public class CartController {
 			map.put("fee", fee);
 			map.put("list", list);
 			map.put("count", list.size());
-
+			
 			session.setAttribute("count" ,list.size());
 			session.setAttribute("cartlist" ,service.cartList(id));
 			session.setAttribute("priceAll" ,priceAll);
@@ -68,7 +68,7 @@ public class CartController {
 			HttpServletRequest request) {
 		//세션 초기화하기
 		HttpSession session = request.getSession();
-			
+		
 		String id=(String)session.getAttribute("memberid");
 		if(id == null) {
 			// 로그인하지 않았으면 로그인 창으로 이동
@@ -76,7 +76,7 @@ public class CartController {
 			session.invalidate();	
 			return "redirect:/client-login";
 		}
-			
+		
 		cvo.setId(id);
 		service.cartAdd(cvo);
 		return "redirect:/cart";
@@ -86,7 +86,7 @@ public class CartController {
 	@RequestMapping("/cart-delete")
 	public String cartDelete(int cartnum) throws Exception {
 		System.out.println("장바구니 삭제입니다.");
-			service.delete(cartnum);
+		service.delete(cartnum);
 		return "redirect:/cart";
 	}
 	

@@ -12,7 +12,6 @@
 }
 </style>
 
-
 <script type="text/javascript">
 	//페이징
 	$(".notice-page a").on("click", function(e) {

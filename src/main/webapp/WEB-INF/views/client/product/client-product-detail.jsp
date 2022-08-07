@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="${ctx}/resources/css/slick.min.css">
 <link rel="stylesheet" type="text/css" href="${ctx}/resources/css/slick-theme.min.css" />
 <!-- Start Item Details -->
+
 <form action="<c:url value='detailUpdate?pnum=${data.pnum}'/>" method="post">
 	<input tyle="hidden" name="pqty" value="${data.pqty}">
 </form>

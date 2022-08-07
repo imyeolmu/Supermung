@@ -25,7 +25,6 @@
 <link rel="stylesheet" href="${ctx}/resources/css/tiny-slider.css" />
 <link rel="stylesheet" href="${ctx}/resources/css/glightbox.min.css" />
 <link rel="stylesheet" href="${ctx}/resources/scss/main.css" />
-
 <script>
 /************* 검색 ****************/
 var sf = $("#searchForm");

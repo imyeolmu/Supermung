@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="./inc/client-header.jsp"%>
+
     <!-- Start Hero Area -->
     <section class="hero-area">
         <div class="slider-head">

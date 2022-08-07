@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.supermm.model.CartVO;
 
+
 public interface CartService {
 	
 	List<CartVO> cartPrice();
@@ -24,8 +25,8 @@ public interface CartService {
 	void update(int cartnum); // 번호넘김
 	// 장바구니 수량 수정
 	public int modifyCart(CartVO cvo); // ??
-
 	
 	
-
+	
+	
 }

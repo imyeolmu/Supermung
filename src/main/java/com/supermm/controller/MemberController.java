@@ -109,13 +109,14 @@ public class MemberController {
 		return "client/login/client-login";
 	}
 
+
 	//로그인 
 	@RequestMapping(value="/client-login",  method = RequestMethod.POST)
 	public String loginPost(HttpServletRequest request, MemberVO member) throws Exception{
-
+		
 		//정상적으로 메서드가 요청 되었는지 데이터 확인 System.out.println("login 메소드 진입");
 		// System.out.println("전달된 데이터:" + member);
-
+		
 		//세션 초기화하기
 		HttpSession session = request.getSession();
 		//두번쨰 변수 선언 - 값을 담을 변수
@@ -127,7 +128,7 @@ public class MemberController {
 			session.invalidate();
 			return "redirect:/client-login";
 		}
-
+		
 		// 일치하는 아이디, 비밀번호 경우 - 로그인 성공
 		session.setAttribute("member", vo);
 		// 장바구니 :> 아이디 저장
@@ -137,7 +138,6 @@ public class MemberController {
 		System.out.println("로그인성공");
 		return "redirect:/client-main";
 	}
-
 	//메인페이지 로그아웃
 	@RequestMapping(value="/client-logout", method = RequestMethod.GET)
 	public String loginmainGET(HttpServletRequest request) throws Exception {

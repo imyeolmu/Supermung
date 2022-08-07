@@ -4,9 +4,10 @@ import java.util.List;
 
 import com.supermm.model.CartVO;
 
+
 public interface CartMapper {
 	
-List<CartVO> cartPrice();
+	List<CartVO> cartPrice();
 	
 	void cartAdd(CartVO cvo); // 장바구니 추가
 	
@@ -24,5 +25,5 @@ List<CartVO> cartPrice();
 	// 장바구니 수정
 	void update(int cartnum); // 번호넘김
 	int modifyCart(CartVO cvo); // ??
-		
+	
 }

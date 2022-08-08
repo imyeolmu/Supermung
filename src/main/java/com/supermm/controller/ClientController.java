@@ -3,13 +3,18 @@ package com.supermm.controller;
 
 
 
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.supermm.model.CartVO;
 import com.supermm.model.ClientCriteria;
 import com.supermm.model.ProductVO;
+import com.supermm.service.CartService;
 import com.supermm.service.NoticeService;
 import com.supermm.service.ProductService;
 
@@ -26,7 +31,7 @@ public class ClientController {
 	
 	//client-product ** 상품상세보기 ** < pnum 값에 해당하는 곳으로 이동 >
 	@RequestMapping("/client-product-detail")
-	public String productDetail(int pnum ,ClientCriteria cri, Model model) throws Exception {
+	public String productDetail(int pnum ,ClientCriteria cri, Model model, CartVO cvo,HttpSession session) throws Exception {
 		
 		ClientCriteria cmc = new ClientCriteria(1, 2325);
     	ProductVO data = service.prodDetail(pnum); // pnum값을 넘김
@@ -34,8 +39,7 @@ public class ClientController {
 		model.addAttribute("list", service.getProdListPaging(cmc));
 		return "client/product/client-product-detail";
 	}
-	
-	
+
 //	@RequestMapping("/client-product-list")
 //	public String productList() {
 //		return "client/product/client-product-list";

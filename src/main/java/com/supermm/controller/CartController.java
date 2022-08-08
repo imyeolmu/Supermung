@@ -18,6 +18,7 @@ import com.supermm.model.CartVO;
 import com.supermm.model.MemberVO;
 import com.supermm.service.CartService;
 
+
 @Controller("cartController")
 public class CartController {
 	
@@ -79,6 +80,8 @@ public class CartController {
 		
 		cvo.setId(id);
 		service.cartAdd(cvo);
+		service.modifyCart(cvo);
+		session.setAttribute("amount",cvo.getCartAmount());
 		return "redirect:/cart";
 	}
 	
@@ -105,12 +108,20 @@ public class CartController {
 	}
 	
 	
-	// 장바구니 수량 수정
+	// 장바구니에서 수량 수정
 	@PostMapping("/cart/update")
 	public String updateCart(CartVO cvo) {
 		service.modifyCart(cvo);
 		
 		return "redirect:/cart";
+		
+	}
+	// 장바구니에 담는 수량 수정
+	@PostMapping("/qtyUpdate")
+	public String prodUpdate(CartVO cvo) {
+		service.modifyCart(cvo);
+		
+		return "redirect:/insert?pnum="+cvo.getPnum()+"&cartAmount="+cvo.getCartAmount();
 		
 	}
 	

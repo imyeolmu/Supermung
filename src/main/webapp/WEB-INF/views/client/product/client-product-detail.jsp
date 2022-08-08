@@ -2,14 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../inc/client-header.jsp"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="${ctx}/resources/css/slick.min.css">
 <link rel="stylesheet" type="text/css" href="${ctx}/resources/css/slick-theme.min.css" />
 <!-- Start Item Details -->
+	<form action="<c:url value='/qtyUpdate'/>" method="post" class="quantity_update_form">
+		<input type="hidden" name="pnum" class="update_pnum">
+		<input type="hidden" name="cartAmount" class="update_cartAmount">
+		<input type="hidden" name="id" value="${member.id}">
+	</form>
 
-<form action="<c:url value='detailUpdate?pnum=${data.pnum}'/>" method="post">
-	<input tyle="hidden" name="pqty" value="${data.pqty}">
-</form>
 <section class="item-details section">
 	<div class="container">
 		<div class="top-area">
@@ -33,43 +36,67 @@
 						
 							<div>
 								<span style="color:#AB93C9; font-weight: bold; margin-left: 2px">Point</span>
-								<span class="point mb-2" style="margin-left: 10px; color:gray">${data.ppoint }</span>
+								<span class="point mb-2" style="margin-left: 10px; color:gray">${data.ppoint}</span>
 							</div>
 						<p class="info-text" style="font-size: 0.9em">${data.pcontent}</p>
-						<div class="row">
 							
-							<div class="col-lg-4 col-md-4 col-12">
-								<div class="form-group quantity">
-
-									<div>
-										<span style="color:#AB93C9; font-weight: bold;">남은 수량</span>
-										<span class="point mb-2" style="margin-left: 10px; color:gray">${data.pqty}</span>
-									</div>
-								</div>
-							</div>
-						</div>
 						<div class="bottom-content">
 							<div class="row align-items-end">
-								<div class="col-lg-4 col-md-4 col-12">
-									
-	                            <div class="button">
-	                           <div class="button">
+							<div class="col-lg-4 col-md-4 col-12">
+							<div class="button">
+								<div class="quantity_div mb-3">
+		                         	<input style="padding: 5px; border: 1px solid #ddd; width:50px;
+		   							 color: darkgray;"
+		                         	type="text" value="1" size="2" class="quantity_input">
+		                         	
+		                         	<button style="padding:5px 0 5px 0;outline: none; border: 1px solid #ddd; 
+		                         	 margin-left: -3px"
+		                         	class="quantity_btn plus_btn">+</button>   
+		                         	<button style="padding:5px 0 5px 0;margin-left: -3px;
+		                         	outline: none; border: 1px solid #ddd;"
+		                         	class="quantity_btn minus_btn">-</button>
+		                         	<script>
+		                      
+		                         	/* 수량버튼 */
+		                         	$(".plus_btn").on("click", function(){
+		                         		let quantity = $(this).parent("div").find("input").val();
+		                         		$(this).parent("div").find("input").val(++quantity);
+		                         	});
+		                         	$(".minus_btn").on("click", function(){
+		                         		let quantity = $(this).parent("div").find("input").val();
+		                         		if(quantity > 1){
+		                         			$(this).parent("div").find("input").val(--quantity);		
+		                         		}
+		                         	});
+		
+		                         	</script>   
+		                         </div>
 	                            <!-- 로그인 하지 않는 상태 -->
                                  <c:if test="${member == null}">
                                  	<a href="<c:url value='insert'/>" onClick="alert('로그인 후 이용해주세요.')" class="btn"><i class="lni lni-cart"></i>장바구니</a>
                                  </c:if>
                                  <!-- 로그인 상태 -->
-                                 <c:if test="${member != null}">
-                                    <a href="<c:url value='insert?pnum=${data.pnum}&pqty=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
-                                 </c:if>
-	                            </div>
-	                            </div>
-								</div>
-
-								<div class="col-lg-4 col-md-4 col-12">
+                                <c:if test="${member != null}">
+                               		<a class="qty_update_btn btn mt-3" data-pnum="${data.pnum}">
+		                         	<i class="lni lni-cart"></i>장바구니</a>
+		                         	<script>
+		                         	/* 수량 수정 버튼 */
+		                         	$(".qty_update_btn").on("click", function(){
+		                         		let pnum = $(this).data("pnum");
+		                         		let cartAmount = $(this).parent("div").find("input").val();
+		                         		$(".update_pnum").val(pnum);
+		                         		$(".update_cartAmount").val(cartAmount);
+		                         		$(".quantity_update_form").submit();
+		                         		
+		                         	});
+		                         	</script>
+		                         </c:if>
+		                        </div>
+		                         </div>
+		                         <div class="col-lg-4 col-md-4 col-12">
 									<div class="wish-button">
 										<button class="btn">
-											<i class="lni lni-heart"></i>위시리스트
+											<i class="lni lni-heart"></i>바로결제
 										</button>
 									</div>
 								</div>
@@ -80,13 +107,13 @@
 											</button></a>
 									</div>
 								</div>
+	                            </div>
+	                            </div>
+	                            </div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </section>
 <!-- Start Article -->
 <div id="carousel-related-product" style="padding-left: 20px; padding-right:20px; margin-bottom: 200px;">
@@ -105,7 +132,7 @@
                                  </c:if>
                                  <!-- 로그인 상태 -->
                                  <c:if test="${member != null}">
-                                    <a href="<c:url value='insert?pnum=${list.pnum}&pqty=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+                                    <a href="<c:url value='insert?pnum=${list.pnum}&cartAmount=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
                                  </c:if>
 	                            </div>
 					</div>

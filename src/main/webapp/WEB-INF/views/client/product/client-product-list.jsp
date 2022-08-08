@@ -103,17 +103,16 @@
 										<div class="single-product" style="height: 390px">
 											<div class="product-image">
 												<img src="<c:out value='${list.pimage}'/>" />
-												<div class="button">
-				                            <!-- 로그인 하지 않는 상태 -->
-			                                 <c:if test="${member == null}">
-			                                 	<a href="<c:url value='insert'/>" onClick="alert('로그인 후 이용해주세요.')" class="btn"><i class="lni lni-cart"></i>장바구니</a>
-			                                 </c:if>
-			                                 <!-- 로그인 상태 -->
-			                                 <c:if test="${member != null}">
-			                                    <a href="<c:url value='insert?pnum=${list.pnum}&pqty=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
-			                                 </c:if>
-				                            </div>
-
+												 <div class="button">
+					                             <!-- 로그인 하지 않는 상태 -->
+				                                 <c:if test="${member == null}">
+				                                 	<a href="<c:url value='insert'/>" onClick="alert('로그인 후 이용해주세요.')" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+				                                 </c:if>
+				                                 <!-- 로그인 상태 -->
+				                                 <c:if test="${member != null}">
+				                                    <a href="<c:url value='insert?pnum=${list.pnum}&cartAmount=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+				                                 </c:if>
+					                            </div>
 											</div>
 											<div class="product-info">
 												<span class="category"></span>

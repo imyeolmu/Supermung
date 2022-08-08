@@ -27,7 +27,6 @@ public class ProductVO {
 	private int totPrice; // 총 금액
 	private int totPoint; // 총 포인트
 	private int salePrice; // 총금액에서 포인트 사용하고 남은 금액
-	
 
 	////////search ///////////
 	private String searchType; 

@@ -39,7 +39,9 @@ public interface ProductMapper {
 	//상품 상세보기(detail)
 	public ProductVO prodDetail(int pnum);
 	
+	public int prodQty(int pnum);
 }
+
 
 
 

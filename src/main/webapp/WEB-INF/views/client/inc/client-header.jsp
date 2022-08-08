@@ -19,6 +19,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <link rel="shortcut icon" type="image/x-icon"
    href="${ctx}/resources/images/favicon.svg" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">   
 <!-- ========================= CSS here ========================= -->
 <link rel="stylesheet" href="${ctx}/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${ctx}/resources/css/LineIcons.3.0.css" />
@@ -109,7 +110,7 @@ $("#btn-search").on("click", function(e){
                   </div>
                   <div class="navbar-cart">
                      <div class="user">
-                        <a href="javascript:void(0)" class="main-btn">🐶</a>
+                        <a href="javascript:void(0)" class="main-btn"><img style="width: 60%"src="https://img.icons8.com/fluency-systems-filled/48/000000/dog-footprint.png"/></a>
                         <!-- User-menu -->
                         <div class="user-menu">
                            <div class="dropdown-user">
@@ -150,10 +151,11 @@ $("#btn-search").on("click", function(e){
                            <c:if test="${member == null}">
                            	  <p>로그인 하고 확인해주라멍</p>
                            </c:if>
+                           
+                           </div>
                            <c:if test="${member != null}">
                             <span>${count} 멍</span>
                               <a href="cart"><span style="color:#AB93C9">${member.id} 님의 장바구니로</span></a>
-                           </div>
                           <c:forEach var="cartList" items="${cartlist}">
                            <ul class="shopping-list">
                               <li>
@@ -161,14 +163,15 @@ $("#btn-search").on("click", function(e){
                                    <a href="<c:url value='client-product-detail?pnum=${cartList.pnum}'/>"><img src="<c:url value="${cartList.pimage}"/>" alt="#"></a>
                                  </div>
                                  <div class="content">
-                                <a href="<c:url value='cart-delete?cartnum=${cartList.cartnum}'/>"onClick="alert('삭제하시겠습니까?')">❌</a>
+                                <a href="<c:url value='cart-delete?cartnum=${cartList.cartnum}'/>"onClick="alert('삭제하시겠습니까?')"><img src="https://img.icons8.com/sf-black-filled/20/ab93c9/x.png"/></a>
                                     <h4>
                                        <a href="product-details">${cartList.pname}</a>
                                     </h4>
                                     <p class="quantity">
                                        1x - <span class="amount">${cartList.price}</span>
                                     </p>
-                                 </div></li>
+                                 </div>
+                               </li>
                            </ul>
                            <div class="bottom">
                               <div class="total">
@@ -179,8 +182,8 @@ $("#btn-search").on("click", function(e){
                               <div class="button">
                                  <a href="checkout" class="btn animate">구매하기</a>
                               </div>
-                        </div>
                         </c:if>
+                        </div>
                         <!--/ End Shopping Item -->
                      </div>
                   </div>

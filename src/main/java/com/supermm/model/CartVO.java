@@ -13,8 +13,9 @@ import lombok.NoArgsConstructor;
 
 public class CartVO {
 	
+	// 카트
 	private int cartnum; // **카트 번호
-	
+	private int cartAmount;
 	// 멤버
 	private String id; // **고객 고유번호(시퀀스)
 	private String name; // 고객이름

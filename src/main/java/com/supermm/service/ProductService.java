@@ -39,6 +39,13 @@ public interface ProductService {
 	//상품 상세보기(detail)
 	public ProductVO prodDetail(int pnum);
 	
+	
+	// 상품 남은 수량
+	public int prodQty(int pnum);
+	
+	
+
+	
 
 
 	

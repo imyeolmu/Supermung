@@ -71,6 +71,15 @@
    
    
    <!-- ************************ 클라이언트 ************************* -->
-
+	<!-- 남은 상품수량 -->
+	<select id="prodQty" resultType="int">
+		select nvl(sum(p.pqty-cartAmount),'0')
+		
+		from cart c, product p
+		<!-- 조건:> 카트상품num = 상품num 요청하는 회원 id같을때 -->
+		where c.pnum = p.pnum
+	</select>	
+	
+	
 	
   </mapper>

@@ -100,7 +100,14 @@ public class ProductServicelmpl implements ProductService {
 		return mapper.prodDetail(pnum);
 	 }
 	
-
+	
+	// 상품 남은 수량 
+	@Override
+	public int prodQty(int pnum){
+		System.out.println("prodQty service..");		
+		
+		return mapper.prodQty(pnum);
+	}
 	 	
 
 }

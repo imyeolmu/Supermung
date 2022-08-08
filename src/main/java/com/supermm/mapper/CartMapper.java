@@ -20,10 +20,11 @@ public interface CartMapper {
 	
 	int priceAll(String id); // 장바구니 금액 합계
 	int pointAll(String id); // 장바구니 포인 합계
+	int qty(String id); // 장바구니 포인 합계
 	
 	
 	// 장바구니 수정
 	void update(int cartnum); // 번호넘김
-	int modifyCart(CartVO cvo); // ??
+	int modifyCart(CartVO cvo); // 수정
 	
 }

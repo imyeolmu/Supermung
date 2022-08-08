@@ -73,7 +73,7 @@
                                  </c:if>
                                  <!-- 로그인 상태 -->
                                  <c:if test="${member != null}">
-                                    <a href="<c:url value='insert?pnum=${list.pnum}&pqty=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+                                    <a href="<c:url value='insert?pnum=${list.pnum}&cartAmount=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
                                  </c:if>
 	                            </div>
 	                        </div>
@@ -124,7 +124,7 @@
                                  </c:if>
                                  <!-- 로그인 상태 -->
                                  <c:if test="${member != null}">
-                                    <a href="<c:url value='insert?pnum=${list.pnum}&pqty=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
+                                    <a href="<c:url value='insert?pnum=${list.pnum}&cartAmount=1'/>" class="btn"><i class="lni lni-cart"></i>장바구니</a>
                                  </c:if>
 	                            </div>
 	                        </div>

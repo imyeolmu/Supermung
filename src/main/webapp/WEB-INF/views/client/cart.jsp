@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    
 <%@ include file="./inc/client-header.jsp"%>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 <!-- 수량 조정 form -->
 	<form action="<c:url value='/cart/update'/>" method="post" class="quantity_update_form">
 		<input type="hidden" name="cartnum" class="update_cartnum">
-		<input type="hidden" name="pqty" class="update_pqty">
+		<input type="hidden" name="cartAmount" class="update_cartAmount">
 		<input type="hidden" name="id" value="${member.id}">
 	</form>
     <div class="shopping-cart section">
@@ -78,7 +75,7 @@
                          <div class="quantity_div">
                          	<input style="padding: 5px; border: 1px solid #ddd; width:50px;
    							 color: darkgray;"
-                         	type="text" value="${cartList.pqty}" size="2" class="quantity_input">
+                         	type="text" value="${cartList.cartAmount}" size="2" class="quantity_input">
                          	
                          	<button style="padding:5px 0 5px 0;outline: none; border: 1px solid #ddd; 
                          	 margin-left: -3px"
@@ -102,14 +99,14 @@
                          	</script>   
                          </div>
                          	<a class="qty_update_btn" data-cartnum="${cartList.cartnum}">
-                         	<span style="color: darkgray; margin-top: 5px">수정</span></a>
+                         	<span class="mt-3" style="color: darkgray; margin-top: 5px">수정</span></a>
                          	<script>
                          	/* 수량 수정 버튼 */
                          	$(".qty_update_btn").on("click", function(){
                          		let cartnum = $(this).data("cartnum");
-                         		let pqty = $(this).parent("div").find("input").val();
+                         		let cartAmount = $(this).parent("div").find("input").val();
                          		$(".update_cartnum").val(cartnum);
-                         		$(".update_pqty").val(pqty);
+                         		$(".update_cartAmount").val(cartAmount);
                          		$(".quantity_update_form").submit();
                          		
                          	});
@@ -128,7 +125,7 @@
                             <p>${cartList.totpoint}</p>
                         </div>
                         <div class="col-lg-1 col-md-2 col-12">
-                            <a href="<c:url value='cart-delete?cartnum=${cartList.cartnum}'/>"onClick="alert('삭제하시겠습니까?')">❌</a>
+                            <a href="<c:url value='cart-delete?cartnum=${cartList.cartnum}'/>"onClick="alert('삭제하시겠습니까?')"><img src="https://img.icons8.com/sf-black-filled/20/ab93c9/x.png"/></a>
                         </div>
                     </div>
                 </div>
@@ -137,7 +134,9 @@
                  <div class="coupon mt-4 text-center">
 			         <form action="#" target="_blank">
 			         	<div class="button">
-			                 <button id="btnDelete" type="button" class="btn">장바구니 비우기
+			                 <button id="btnDelete" type="button" class="btn"><img src="https://img.icons8.com/ios/30/FFFFFF/broom.png"/>
+			                 </br><span style="font-size: 0.5em">장바구니 비우기</span>
+			                 
 			                 <script>
 			                 $(function(){
 			                	    $("#btnDelete").click(function(){
@@ -147,6 +146,7 @@
 			                	    });
 			                	});
 			                 </script>
+			                 
 			                 </button>
 			            </div>
 			         </form>

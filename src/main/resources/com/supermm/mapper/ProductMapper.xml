@@ -41,8 +41,8 @@
 	
 	<!-- 상품등록 -->
 	<insert id="prodInput" parameterType="ProductVO">
-	    insert into product(pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint)
-	    values (productseq.NEXTVAL, #{pcategory_fk1, jdbcType=VARCHAR}, #{pname}, #{pimage}, #{pcompany}, #{pspec}, #{pqty}, #{price}, #{ppoint})
+	    insert into product(pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent)
+	    values (productseq.NEXTVAL, #{pcategory_fk1, jdbcType=VARCHAR}, #{pname}, #{pimage}, #{pcompany}, #{pspec}, #{pqty}, #{price}, #{ppoint}, #{pcontent})
 	</insert>
   
   	<!-- 카테고리 리스트 -->
@@ -54,15 +54,17 @@
   	<delete id="prodDelete">
   		delete from product where pnum = #{pnum}
   	</delete>
-  	
-  	<!--  상품 수정  -->
-	<update id="prodUpdate" parameterType="productVO">
-		update product set 
-		pcategory_fk1=#{pcategory_fk1}, pname=#{pname}, pimage=#{pimage},
-		pcompany=#{pcompany}, pspec=#{pspec}, pqty=#{pqty}, price=#{price}, ppoint=#{ppoint}, pcontent=#{pcontent}
-		where pnum=#{pnum}
-	</update>
 	
+	<!-- 상품 수정 -->
+	<update id="prodUpdate">
+		update product set
+		pcategory_fk1=#{pcategory_fk1, jdbcType=VARCHAR}, pname=#{pname, jdbcType=VARCHAR},
+		pimage=#{pimage},
+		pcompany=#{pcompany}, pspec=#{pspec}, pqty=#{pqty},
+		price=#{price}, ppoint=#{ppoint}, pcontent=#{pcontent}
+		where
+		pnum=#{pnum}
+	</update>
 	
 	<!--   상품 (수정)상세내용   -->
 	<select id="prodDetail" resultType="productVO">

@@ -27,6 +27,11 @@ public interface ProductService {
 	//상품 삭제
 	public int prodDelete(String pnum);
 	
+	//상품조회
+	public ProductVO prodDetail(int pnum);
+	
+	//상품수정
+	public void updateProduct(ProductVO prod);
 	
 	/********************* 클라이언트 ************************/
 	//상품목록(페이징 적용)
@@ -35,18 +40,8 @@ public interface ProductService {
 	//상품 총 개수
 	public int getProdTotal(ClientCriteria cri);
 	
-
-	//상품 상세보기(detail)
-	public ProductVO prodDetail(int pnum);
-	
-	
 	// 상품 남은 수량
 	public int prodQty(int pnum);
 	
-	
-
-	
-
-
 	
 }

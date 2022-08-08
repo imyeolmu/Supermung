@@ -68,7 +68,7 @@ public class CategoryController {
 		
 		return "redirect:/category-list";
 	}
-	// 카테고리 삭제 ( 번호넘김 )
+	// 카테고리 삭제
 	@RequestMapping(value="/category-delete", method=RequestMethod.GET)
 	public String cateDelete(String cateNum) throws Exception {
 		System.out.println("카테고리 삭제입니다.");

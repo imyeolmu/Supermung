@@ -22,26 +22,6 @@ $(".notice-page a").on("click", function(e){
 	MoveForm.submit();
 });
 
-
-	$(document).ready(function(){
-		
-		let result = "<c:out value='${result}'/>";
-		
-		chkAlert(result);
-		console.log(result);
-		
-		function chkAlert(result) {
-			if(result === ''){
-				return;
-			}
-			if(result === "update success"){
-				alert("수정이 완료되었습니다.");
-				console.log("수정..");
-				return false;
-			}
-		}
-	}); 
-
 	//검색    
 	$(".search button").on("click", function(e){
     	e.preventDefault();
@@ -97,12 +77,14 @@ $(".notice-page a").on("click", function(e){
 				<th style="width:10%">전화번호</th>
 				<th style="width:10%">우편번호</th>
 				<th style="width:15%">주소</th>
+				<th style="width:13%">충전금액</th>
 				<th style="width:13%">회원포인트</th>
 				<th style="width:10%">가입일</th>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${list}" var="list">
+		<c:if test="${list.adminchk} nq 1">
 			<tr class="text-center">
 				<!-- 회원번호(primarykey) 클릭하면 수정페이지로 넘어가기 -->
 				<td width="100"><nobr /><a href="member-info?mnum=${list.mnum}" class="pro-hre"><c:out value="${list.mnum}"/></a></td>
@@ -110,7 +92,6 @@ $(".notice-page a").on("click", function(e){
 				<!-- 비밀번호 *****로 나오도록 -->
 				<td width="100"><nobr /><c:out value="${fn:replace(list.pw,list.pw,'*****')}"/></td>
 				<td width="100"><nobr /><c:out value="${list.name}"/></td>
-				<!-- 생년월일 날짜 포맷 변경 -->
 				<td width="100"><nobr /><c:out value="${list.birth}"/></td>
 				<td width="100"><nobr /><c:out value="${list.gender}"/></td>
 				<td width="100"><nobr /><c:out value="${list.email}"/></td>
@@ -118,10 +99,13 @@ $(".notice-page a").on("click", function(e){
 				<td width="100"><nobr /><c:out value="${list.zipcode}"/></td>
 				<td width="100"><nobr /><c:out value="${list.addr1}(${list.addr2}), ${list.addr3}"/></td>
 				<!-- 숫자 포맷 변경 -->
+				<td width="100"><nobr /><fmt:formatNumber value="${list.money}" pattern="#,##0"/>P</a></td>				
+				<!-- 숫자 포맷 변경 -->
 				<td width="100"><nobr /><a href="member-point?mnum=${list.mnum}" class="pro-hre"><fmt:formatNumber value="${list.mpoint}" pattern="#,##0"/>P</a></td>				
 				<!-- 가입일 날짜 포맷 변경 -->
 				<td width="100"><nobr /><fmt:formatDate value="${list.regdate}" pattern="yy-MM-dd"/></td>
 			</tr>
+		</c:if>
 		</c:forEach>
 		</tbody>
 	</table>

@@ -83,12 +83,30 @@ public class ProductController {
 	}
 
 	//상품수정
-	@RequestMapping("/product-update")
-	public String prodUpdate() {
-
+	@RequestMapping(value="/product-update", method = RequestMethod.GET)
+	public String prodUpdateGET(int pnum, Model model) {
+		
+		System.out.println("상품 수정페이지..");
+		
+		ProductVO prod = service.prodDetail(pnum);
+		
+		model.addAttribute("prod", prod);
+		
 		return "admin/product/product-update";
-	}	
+	}
+	
+	//상품수정
+	@RequestMapping(value="/product-update", method = RequestMethod.POST)
+	public String prodUpdatePOST(ProductVO prod, Model model) {
 
+		System.out.println("상품 수정..");
+
+		service.updateProduct(prod);
+		model.addAttribute("prod", prod);
+
+		return "redirect: /product-list";
+	}
+	
 	//상품삭제
 	@RequestMapping(value="/product-delete", method= RequestMethod.GET)
 	public String prodDelete(String pnum) throws Exception {
@@ -168,7 +186,7 @@ public class ProductController {
 
 		return "client/product/client-product-list-category";
 	}	
-	
-	
+
+
 
 }

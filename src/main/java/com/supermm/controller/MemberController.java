@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.supermm.model.Criteria;
 import com.supermm.model.MemberVO;
@@ -86,14 +85,12 @@ public class MemberController {
 
 	//정보수정(포인트적립) 수정
 	@RequestMapping(value="/member-point", method = RequestMethod.POST)
-	public String memPointUpdatePOST(MemberVO member, Model model, RedirectAttributes rttr) {
+	public String memPointUpdatePOST(MemberVO member, Model model) {
 
 		System.out.println("회원 포인트 수정..");
 
 		service.updateMemPoint(member);
 		model.addAttribute("member" , member);
-
-		rttr.addFlashAttribute("result", "update success");
 
 		return "redirect: /member-list";
 	}
@@ -109,18 +106,18 @@ public class MemberController {
 		return "client/login/client-login";
 	}
 
-
 	//로그인 
 	@RequestMapping(value="/client-login",  method = RequestMethod.POST)
 	public String loginPost(HttpServletRequest request, MemberVO member) throws Exception{
-		
+
 		//정상적으로 메서드가 요청 되었는지 데이터 확인 System.out.println("login 메소드 진입");
 		// System.out.println("전달된 데이터:" + member);
-		
+
 		//세션 초기화하기
 		HttpSession session = request.getSession();
 		//두번쨰 변수 선언 - 값을 담을 변수
 		MemberVO vo = service.memberLogin(member);
+
 		if(vo == null) {
 			//일치하지 않는 아이디,비밀번호경우	
 			int result = 0;
@@ -128,16 +125,19 @@ public class MemberController {
 			session.invalidate();
 			return "redirect:/client-login";
 		}
-		
+
 		// 일치하는 아이디, 비밀번호 경우 - 로그인 성공
 		session.setAttribute("member", vo);
-		// 장바구니 :> 아이디 저장
-		session.setAttribute("memberid", vo.getId());
-		
-		//session.setAttribute("id", id);
 		System.out.println("로그인성공");
+
+		//로그인 id 확인
+		System.out.println("id :" +member.getId());
+
+		// 아이디 저장
+		session.setAttribute("memberid", vo.getId());
 		return "redirect:/client-main";
 	}
+
 	//메인페이지 로그아웃
 	@RequestMapping(value="/client-logout", method = RequestMethod.GET)
 	public String loginmainGET(HttpServletRequest request) throws Exception {
@@ -171,7 +171,7 @@ public class MemberController {
 	public String joinGET() {
 
 		System.out.println("회원가입 페이지 진입");
-		
+
 		return "client/login/client-register";
 	}
 
@@ -214,15 +214,109 @@ public class MemberController {
 
 		return "client/login/client-pwsearch";
 	}
-	
-	//마이페이지
+
+	//마이페이지 조회
 	@RequestMapping(value="/client-mypage", method = RequestMethod.GET)
-	public void getMyInfoGET(int mnum, Model model) throws Exception {
+	public String getMyInfo(HttpSession session, Model model, MemberVO member) throws Exception {
 
 		System.out.println("마이페이지 내정보..");
 
-		model.addAttribute("myinfo", service.getMyInfo(mnum));
+		//로그인 id 불러오기
+		String id=(String)session.getAttribute("memberid");
+		System.out.println("id : " + id);
 
+		model.addAttribute("member", service.getMyInfo(id));
+		model.addAttribute("id", id);
+		
+		System.out.println("member : "+member);
+
+		return "client/mypage/mypage-info";
+	}
+
+	//마이페이지 정보수정
+	@RequestMapping(value="/client-mypage", method = RequestMethod.POST)
+	public String updateMyInfo(MemberVO member) throws Exception {
+		
+		System.out.println("마이페이지 정보수정");
+		
+		service.updateMyInfo(member);
+		System.out.println("member : "+member);
+		
+		return "redirect: /client-mypage";
+	}
+
+	//마이페이지 금액충전(페이지로 이동)
+	@RequestMapping(value="/client-money", method = RequestMethod.GET)
+	public String moneyPlus(HttpSession session, Model model, MemberVO member) throws Exception {
+
+		System.out.println("마이페이지 금액충전 페이지..");
+
+		//로그인 id 불러오기
+		String id=(String)session.getAttribute("memberid");
+		System.out.println("id : " + id);
+
+		model.addAttribute("member", service.getMyInfo(id));
+		model.addAttribute("id", id);
+
+		return "client/mypage/mypage-money";
+	}
+
+	//마이페이지 금액충전
+	@RequestMapping(value="/client-money", method = RequestMethod.POST)
+	public String moneyPlusPOST(MemberVO member) throws Exception {
+
+		System.out.println("마이페이지 금액충전");
+
+		service.plusMoney(member);
+		System.out.println("member : "+ member);
+
+		return "redirect: /client-money";
+	}
+
+
+	//마이페이지 포인트
+	@RequestMapping(value="/client-point", method = RequestMethod.GET)
+	public String myPoint(HttpSession session, MemberVO member) throws Exception {
+
+		System.out.println("마이페이지 내정보..");
+
+		//로그인 id 불러오기
+		String id=(String)session.getAttribute("memberid");
+
+		return "client/mypage/mypage-point";
+	}
+
+	//회원탈퇴
+	@RequestMapping(value = "/client-delete", method = RequestMethod.GET)
+	public String memDeleteGET(HttpSession session, Model model, MemberVO member) throws Exception {
+
+		System.out.println("회원탈퇴페이지..");
+
+		//로그인 id 불러오기
+		String id=(String)session.getAttribute("memberid");
+		System.out.println("id : " + id);
+
+		model.addAttribute("member", service.getMyInfo(id));
+		model.addAttribute("id", id);
+		
+		return "client/mypage/client-delete";
+	}
+
+	//회원탈퇴
+	@RequestMapping(value = "/client-delete", method = RequestMethod.POST)
+	public String memDeletePOST(HttpSession session, MemberVO member) throws Exception {
+		
+		System.out.println("회원탈퇴성공..");
+
+		//로그인 id 불러오기	
+		String id=(String)session.getAttribute("memberid");
+
+		service.memDelete(id);
+		
+		//세션 삭제
+		session.invalidate();
+		
+		return "redirect: /client-main";
 	}
 
 }

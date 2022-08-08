@@ -4,8 +4,6 @@
 <%@ include file="../inc/admin-header.jsp"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
-
-
 <!-- Start Product Input Area -->
 <div class="admin-input section" id="wrap">
 	<div class="container text-center">
@@ -14,9 +12,6 @@
 				<form action="<c:url value='product-input'/>" class="card input-form rounded shadow-sm"
 					method="post">
 					<h4 class="mb-5">상품 등록</h4>
-					<!-- ▲ MultipartRequest 기능을 쓰려면
-                            form에 enctype="multipart/form-data 를 넣어줘야한다.
-                            이렇게 해야 파라미터를 전달 받을 수 있다. 아니면 null값이 나옴.. -->
 					<table class="container table table-borderless">
 						<tbody>
 							<tr>
@@ -102,13 +97,11 @@
 								<td><input class="form-control form-control-sm cinput"
 									type="number" id="number" name="price" max="1000000000" min="0" ></td>
 							</tr>
-						<!-- 
-							<tr>
+						<tr>
 								<td>상품소개</td>
 								<td><textarea class="form-control form-control-sm cinput"
-										name="" rows="3"></textarea></td>
+										name="pcontent" rows="3"></textarea></td>
 							</tr>
-						 -->
 							<tr>
 								<td>포인트</td>
 								<td><input class="form-control form-control-sm cinput"

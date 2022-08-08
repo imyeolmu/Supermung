@@ -3,7 +3,7 @@
 .slick-dots, .slick-next, .slick-prev {
 	position: absolute;
 	display: block;
-	padding: 0;
+	padding: 0
 }
 
 .slick-dots li button:before, .slick-next:before, .slick-prev:before {
@@ -112,7 +112,8 @@
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	margin: 0 20px;
+	margin: 0 5px;
+	padding: 0;
 	cursor: pointer
 }
 
@@ -127,7 +128,7 @@
 	color: transparent;
 	border: 0;
 	outline: 0;
-	background: 0 0;
+	background: 0 0
 }
 
 .slick-dots li button:focus, .slick-dots li button:hover {
@@ -139,7 +140,7 @@
 }
 
 .slick-dots li button:before {
-	font-size: 30px;
+	font-size: 6px;
 	line-height: 20px;
 	position: absolute;
 	top: 0;
@@ -149,10 +150,10 @@
 	content: '•';
 	text-align: center;
 	opacity: .25;
-	color: #AB93C9
+	color: #000
 }
 
 .slick-dots li.slick-active button:before {
 	opacity: .75;
-	color: 
+	color: #000
 }

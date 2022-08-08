@@ -21,6 +21,12 @@ public interface ProductMapper {
 	//상품등록
 	public void prodInput(ProductVO prod);
 	
+	//상품수정(상세)
+	public ProductVO prodDetail(int pnum);
+	
+	//상품수정
+	public void prodUpdate(ProductVO prod);	
+	
 	//카테고리 리스트
 	public List<CategoryVO> cateList();
 
@@ -35,17 +41,7 @@ public interface ProductMapper {
 	//상품 총 개수
 	public int getProdTotal(ClientCriteria cri);
 
-
-	//상품 상세보기(detail)
-	public ProductVO prodDetail(int pnum);
-	
 	public int prodQty(int pnum);
+
+
 }
-
-
-
-
-
-
-
-

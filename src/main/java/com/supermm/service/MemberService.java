@@ -41,6 +41,18 @@ public interface MemberService {
 	 */
 
 	//마이페이지 내정보
-	public MemberVO getMyInfo(int mnum) throws Exception;
+	public MemberVO getMyInfo(String id) throws Exception;
+
+	//마이페이지 정보수정
+	public void updateMyInfo(MemberVO member);
+	
+	//마이페이지 금액충전
+	public void plusMoney(MemberVO member);
+
+	//회원탈퇴
+	public int memDelete(String id);
+	
+	//주문자정보
+//	public MemberVO getClientInfo(String id);
 
 }

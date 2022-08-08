@@ -33,8 +33,7 @@
 							</tr>
 							<tr>
 								<td>생년월일</td>
-								<td><fmt:formatDate value="${minfo.birth}"
-										pattern="yyyy-MM-dd" /></td>
+								<td>${minfo.birth}</td>
 							</tr>
 							<tr>
 								<td>성별</td>
@@ -60,6 +59,11 @@
 								<td>가입일</td>
 								<td><fmt:formatDate value="${minfo.regdate}"
 										pattern="yyyy-MM-dd" /></td>
+							</tr>
+							<tr>
+								<td>충전금액</td>
+								<td><fmt:formatNumber value="${minfo.money}"
+										pattern="#,##0" />P</td>
 							</tr>
 							<tr>
 								<td><a class="member-point" href="member-point?mnum=${minfo.mnum}">회원포인트</a></td>

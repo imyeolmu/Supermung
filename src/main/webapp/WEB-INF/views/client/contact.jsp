@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./inc/client-header.jsp"%>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0c54a31a5341f82cc3064afd8908d92b"></script>
     <!-- Start Contact Area -->
     <section id="contact-us" class="contact-us section">
         <div class="container">
@@ -8,9 +9,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title">
-                            <h2>Contact Us</h2>
-                            <p>There are many variations of passages of Lorem
-                                Ipsum available, but the majority have suffered alteration in some form.</p>
+                            <h2>문의하기</h2>
+                            <p>슈퍼멍뭉에 대해 문의사항이 있으신 분은<br/> 아래 주소, 전화번호, 이메일로 문의해주시기 바랍니다.</p>
                         </div>
                     </div>
                 </div>
@@ -21,16 +21,16 @@
                                 <!-- Start Single Info -->
                                 <div class="single-info">
                                     <i class="lni lni-map"></i>
-                                    <h3>Address</h3>
+                                    <h3>주소</h3>
                                     <ul>
-                                        <li>44 Shirley Ave. West Chicago,<br> IL 60185, USA.</li>
+                                        <li>대전 서구 계룡로491번길 86<br>(지번)둔산동 1221</li>
                                     </ul>
                                 </div>
                                 <!-- End Single Info -->
                                 <!-- Start Single Info -->
                                 <div class="single-info">
                                     <i class="lni lni-phone"></i>
-                                    <h3>Call us on</h3>
+                                    <h3>전화번호</h3>
                                     <ul>
                                         <li>042-123-4567</li>
                                     </ul>
@@ -39,11 +39,9 @@
                                 <!-- Start Single Info -->
                                 <div class="single-info">
                                     <i class="lni lni-envelope"></i>
-                                    <h3>Mail at</h3>
+                                    <h3>이메일</h3>
                                     <ul>
-                                        <li><a href="mailto:support@shopgrids.com">support@shopgrids.com</a>
-                                        </li>
-                                        <li><a href="mailto:career@shopgrids.com">career@shopgrids.com</a></li>
+                                        <li>adminsupermm@gmail.com</li>
                                     </ul>
                                 </div>
                                 <!-- End Single Info -->
@@ -54,40 +52,25 @@
                                 <div class="form-main">
                                     <form class="form" method="post" action="../resources/mail/mail.php">
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <input name="name" type="text" placeholder="Your Name"
-                                                        required="required">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <input name="subject" type="text" placeholder="Your Subject"
-                                                        required="required">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <input name="email" type="email" placeholder="Your Email"
-                                                        required="required">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <input name="phone" type="text" placeholder="Your Phone"
-                                                        required="required">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group message">
-                                                    <textarea name="message" placeholder="Your Message"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group button">
-                                                    <button type="submit" class="btn ">Submit Message</button>
-                                                </div>
-                                            </div>
+                                        <div id="map" style="width:700px;height:500px;"></div>
+										<script>
+											var container = document.getElementById('map');
+											var options = {
+												center: new kakao.maps.LatLng(36.34857342067093, 127.3823130825302),
+												level: 3
+											};
+									
+											var map = new kakao.maps.Map(container, options);
+											// 마커가 표시될 위치입니다 
+											var markerPosition  = new kakao.maps.LatLng(36.34857342067093, 127.3823130825302);
+											// 마커를 생성합니다
+											var marker = new kakao.maps.Marker({
+											    position: markerPosition
+											});
+
+											// 마커가 지도 위에 표시되도록 설정합니다
+											marker.setMap(map);
+										</script>
                                         </div>
                                     </form>
                                 </div>

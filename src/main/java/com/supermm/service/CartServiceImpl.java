@@ -8,14 +8,13 @@ import org.springframework.stereotype.Repository;
 import com.supermm.mapper.CartMapper;
 import com.supermm.model.CartVO;
 
-
 @Repository
 public class CartServiceImpl implements CartService{
-	
+
 	
 	@Autowired
 	private CartMapper cartmapper;
-	
+
 	
 	
 	@Override
@@ -43,7 +42,7 @@ public class CartServiceImpl implements CartService{
 		cartmapper.delete(cartnum);
 	}
 	
-	// 고객 장바구니 비우기
+	 // 고객 장바구니 비우기
 	@Override
 	public void deleteAll(String id) {
 		cartmapper.deleteAll(id);

@@ -47,7 +47,7 @@ public class MemberServicelmpl implements MemberService{
 	@Override
 	public MemberVO getMemInfo(int mnum) {
 
-		System.out.println("getMemInfo service..");
+		System.out.println("getMemInfo service..mnum");
 
 		return mapper.getMemInfo(mnum);	
 	}
@@ -93,13 +93,47 @@ public class MemberServicelmpl implements MemberService{
 
 	//마이페이지 내정보
 	@Override
-	public MemberVO getMyInfo(int mnum) throws Exception {
+	public MemberVO getMyInfo(String id) throws Exception {
 
 		System.out.println("getMyInfo service..");
 
-		return mapper.getMyInfo(mnum);
+		return mapper.getMyInfo(id);
 	}
 
+	//마이페이지 정보수정
+	@Override
+	public void updateMyInfo(MemberVO member) {
+		
+		System.out.println("updateMyInfo service..");
+		
+		mapper.updateMyInfo(member);
+	}
+	
+	//마이페이지 금액충전
+	@Override
+	public void plusMoney(MemberVO member) {
+		
+		System.out.println("moneyPlus service..");
+		
+		mapper.plusMoney(member);
+	}
+	
+	//회원탈퇴
+	@Override
+	public int memDelete(String id) {
+		
+		System.out.println("memDelete service..");
+		
+		return mapper.memDelete(id);
+	}
 
-
+	//주문자정보
+//	@Override
+//	public MemberVO getClientInfo(String id) {
+//		
+//		System.out.println("getMemInfo service..id");
+//		
+//		return mapper.getClientInfo(id);
+//		
+//	}
 }

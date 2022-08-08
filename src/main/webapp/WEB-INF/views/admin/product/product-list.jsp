@@ -84,9 +84,9 @@
 		<c:forEach items="${list}" var="list">
 			<tr class="text-center">
 				<!-- 상품번호(primarykey) 클릭하면 수정페이지로 넘어가기 -->
-				<td><a href="product-update" class="pro-hre"><c:out value="${list.pnum}"/></a></td>
+				<td><a href="product-update?pnum=${list.pnum}" class="pro-hre"><c:out value="${list.pnum}"/></a></td>
 				<td width="100"><nobr /><c:out value="${list.pcategory_fk1}"/></td>
-				<td width="100"><a href="product-update" class="pro-hre"><nobr /><c:out value="${list.pname}"/></a></td>
+				<td width="100"><a href="product-update?pnum=${list.pnum}" class="pro-hre"><nobr /><c:out value="${list.pname}"/></a></td>
 				<!-- 이미지 주소 불러오기 -->
 				<td width="100"><nobr /><img src="<c:out value='${list.pimage}'/>"/></td>
 				<td width="100"><nobr /><c:out value="${list.pcompany}"/></td>

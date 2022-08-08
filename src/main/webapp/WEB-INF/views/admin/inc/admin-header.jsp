@@ -4,16 +4,14 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>슈퍼멍뭉</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="${ctx}/resources/images/favicon.svg" />
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="${ctx}/resources/css/bootstrap.min.css" />
@@ -21,6 +19,7 @@
     <link rel="stylesheet" href="${ctx}/resources/css/tiny-slider.css" />
     <link rel="stylesheet" href="${ctx}/resources/css/glightbox.min.css" />
     <link rel="stylesheet" href="${ctx}/resources/scss/main.css" />
+    <link rel="stylesheet" href="${ctx}/resources/css/style.css">
 
 </head>
 
@@ -78,7 +77,7 @@
                                             <div class="admin-menu">
                                                 <div class="dropdown-user">
                                                    <ul class="admin-menu-list">
-                                                        <li><a href="admin-info" class="admin-head-menu">관리자정보수정</a></li>
+                                                        <li><a href="admin-info" class="admin-head-menu">관리자정보</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -117,7 +116,6 @@
                                                     <ul class="admin-menu-list">
                                                         <li><a href="product-list" class="admin-head-menu">상품목록</a></li>
                                                         <li><a href="product-input" class="admin-head-menu">상품등록</a></li>
-                                                        <li><a href="product-update" class="admin-head-menu">상품수정</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -149,30 +147,19 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <form id="logoutForm" method="post" >
-                                    <div class="navbar-cart mt-2">
+                                    <li class="navbar-cart mt-2">
                                         <div class="user">
-                                            <a href="javascript:void(0)" class="main-btn">
-                                                <i class="lni lni-user"></i>
-                                            </a>
+                                             <a href="javascript:void(0)" class="main-btn">🐶</a>
                                             <!-- User-menu -->
-                                            
-                                            
-                                           
-                                            
                                             <div class="user-menu">
                                                 <div class="dropdown-user">
                                                     <ul class="user-menu-list">
                                                         <li><a href="admin-logout" >로그아웃</a></li>
-                                                     
-               
-                                                     
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                   </form>
+                                    </li>
                                 </ul>
                             </div> <!-- navbar collapse -->
                         </nav>
@@ -187,14 +174,10 @@
 
 
     <!-- ========================= JS here ========================= -->
- 
-    
-    
     <script src="${ctx}/resources/js/bootstrap.min.js"></script>
     <script src="${ctx}/resources/js/tiny-slider.js"></script>
     <script src="${ctx}/resources/js/glightbox.min.js"></script>
     <script src="${ctx}/resources/js/main.js"></script>
-    <script src="${ctx}resources/js/login.js"></script>
     <script type="text/javascript">
         //========= Hero Slider 
         tns({

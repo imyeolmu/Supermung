@@ -73,7 +73,6 @@
 		</thead>
 		<tbody>
 			<form id="nextForm" method="post">
-
 				<c:forEach items="${list}" var="list">
 					<tr class="text-center">
 						<td width="100"><nobr /> <c:out value="${list.nno}" /></td>

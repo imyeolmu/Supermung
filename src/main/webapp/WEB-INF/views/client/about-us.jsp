@@ -96,7 +96,8 @@
 						<div class="info">
 							<h3>사료의 골든 타임 '30일'</h3>
 							<p>
-								우리 아이가 먹는 사료의<br /> 완벽한 골든 타임을경험하고 싶다면,<br />'가장 맛있는 시간 30일'을 선택하세요. <span>오늘의 신선함이 골든타임을 만듭니다.</span>
+								사료의 골든 타임을 경험하고 싶다면, <br />'가장 맛있는 시간 30일'을 선택하세요. <span>오늘
+									생산된 신선함이 골든타임을 만듭니다.</span>
 							</p>
 						</div>
 					</div>
@@ -112,7 +113,7 @@
 			<div class="col-12">
 				<div class="section-title">
 					<h2 class="wow fadeInUp" data-wow-delay=".4s">슈퍼멍뭉</h2>
-					<h3 class="wow fadeInUp" data-wow-delay=".6s">슈퍼멍뭉 팀을 소개합니다</h3>
+					<h3 class="wow fadeInUp" data-wow-delay=".6s">슈퍼멍뭉 팀을 소개합니다~</h3>
 				</div>
 			</div>
 		</div>

@@ -2,6 +2,7 @@ package com.supermm.mapper;
 
 import java.util.List;
 
+
 import com.supermm.model.CategoryVO;
 import com.supermm.model.ClientCriteria;
 import com.supermm.model.Criteria;
@@ -45,5 +46,10 @@ public interface ProductMapper {
 	
 	// 상품 카테고리 리스트
 	public List<ProductVO> prodSide(String pcategory_fk1);
-
+	
+	// 카테고리에 해당하는 상품 리스트
+	public List<ProductVO> prodCateList(ClientCriteria cri);
+	
+	// 카테고리에 해당하는 총 상품 개수
+	public int prodCateTotal(ClientCriteria cri);
 }

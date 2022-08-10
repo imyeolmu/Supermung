@@ -1,24 +1,14 @@
 package com.supermm.controller;
 
-import java.util.Date;
-import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.supermm.model.Criteria;
@@ -27,25 +17,26 @@ import com.supermm.model.PageMakeDTO;
 import com.supermm.service.NoticeService;
 
 import lombok.extern.log4j.Log4j;
+
 @Log4j
 @Controller
 public class NoticeController {
-
+	
 	@Autowired
 	private NoticeService noticeservice;
 	private Object pageMake;
 	
 	//등록 페이지 접속
-	 @GetMapping("/notice-register")
+	@GetMapping("/notice-register")
 	public String Noticeregisetrget() {
 		
-		 System.out.println("등록 접속");
+		System.out.println("등록 접속");
 		
 		
 		return "admin/notice/notice-register";
 		
-
-
+		
+		
 	}
 	
 	/*
@@ -66,7 +57,7 @@ public class NoticeController {
 	 */
 	
 	//공지사항 등록 하기
-	 @RequestMapping(value ="/notice-register", method = RequestMethod.POST)
+	@RequestMapping(value ="/notice-register", method = RequestMethod.POST)
 	public String NoticeregisterPost(NoticeVO  vo, RedirectAttributes rttr) {
 		
 		System.out.println("NoticeVo:"+ vo);
@@ -82,7 +73,7 @@ public class NoticeController {
 	
 	//상세페이지
 	
-	 @GetMapping({"/notice-detail","/notice-update"})
+	@GetMapping({"/notice-detail","/notice-update"})
 	public String Noticedetailget(Integer nno, Model model) throws Exception{
 		
 		model.addAttribute("pageMake", pageMake);
@@ -91,30 +82,30 @@ public class NoticeController {
 		return "admin/notice/notice-detail";
 		
 	}
-		
-		
+	
+	
 	//수정페이지
 	
 	//수정페이지 이동
 	
-	 @GetMapping("/notice-update")
+	@GetMapping("/notice-update")
 	public String getNoticeupdate(Integer nno, Model model){
 		
 		//requestParam: 기본값 선언 가능 
 		
 		NoticeVO vo = noticeservice.Noticedetail(nno); 
 		
-	
+		
 		model.addAttribute("pageInfo", nno); 
 		
 		
 		log.info("게시판 수정폼- nno:" +nno);
 		System.out.println("수정페이지 이동");
-
+		
 		return "/notice-update";
-	
-	
-	
+		
+		
+		
 	}
 	
 	//페이지 수정메소드
@@ -126,8 +117,8 @@ public class NoticeController {
 		Integer result = noticeservice.Noticeupdate(vo);
 		rttr.addFlashAttribute("result","update success");
 		System.out.println("수정완료");
-
-	
+		
+		
 		return "redirect:/notice-list";
 	}
 	
@@ -144,24 +135,23 @@ public class NoticeController {
 	}
 	
 	
-
-	@RequestMapping(value = "/notice-list")
-	  public String noticeListForm(Integer nno, Model model, Criteria cri) {
-	  
-	  System.out.println("공지사항목록 페이지 페이징..");
-	  
-	  model.addAttribute("list", noticeservice.getNoticePaging(cri));
-	  
-	  Integer total = noticeservice.getNoticeTotal(cri);
-	  
-	  PageMakeDTO pageMake = new PageMakeDTO(cri, total);
-	  
-	  model.addAttribute("pageMake", pageMake);
-	  return "admin/notice/notice-list";
-	  
-	  }
 	
-
+	@RequestMapping(value = "/notice-list")
+	public String noticeListForm(Integer nno, Model model, Criteria cri) {
+		
+		System.out.println("공지사항목록 페이지 페이징..");
+		
+		model.addAttribute("list", noticeservice.getNoticePaging(cri));
+		
+		Integer total = noticeservice.getNoticeTotal(cri);
+		
+		PageMakeDTO pageMake = new PageMakeDTO(cri, total);
+		
+		model.addAttribute("pageMake", pageMake);
+		return "admin/notice/notice-list";
+		
+	}
+	
 	 
 		
 		

@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.supermm.mapper.ProductMapper">
+
 	<!--  상품목록   -->
 	<select id="getProdList" resultType="productVO">
 		 select * from product order by pnum
@@ -26,7 +27,7 @@
 		from( select /*+INDEX_DESC(product pnum) */ 
 		rownum rnum, pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent from product
 		where
-	<include refid="criteria"/>
+		<include refid="criteria"/>
 		<![CDATA[ rownum <= #{pageNum} * #{amount} ]]>
 		order by pnum)
 		<![CDATA[ where rnum > (#{pageNum} -1) * #{amount} ]]>
@@ -97,14 +98,19 @@
 		select pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent 
 		from( select /*+INDEX_DESC(product pnum) */ 
 		rownum rnum, pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent from product
-		where
-        pcategory_fk1 = #{pcategory_fk1} and
-        <include refid="criteria"/>
+		where pcategory_fk1 = #{pcategory_fk1} and
+		<include refid="criteria"/>
 		<![CDATA[ rownum <= #{pageNum} * #{amount} ]]>
 		order by pnum)
 		<![CDATA[ where rnum > (#{pageNum} -1) * #{amount} ]]>
 		order by pnum
 	</select>
 	
+	<!--  카테고리별 상품리스트 총 개수  -->
+	<select id="prodCateTotal" resultType="Integer">
+		select count(*) total from product where pcategory_fk1 = #{pcategory_fk1} and
+		<include refid="criteria"/>
+		pnum > 0
+	</select>
 	
 </mapper>

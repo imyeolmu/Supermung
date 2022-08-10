@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../inc/client-header.jsp"%>
+
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -39,6 +40,7 @@ $(document).ready(function(){
 <!-- Start Product Grids -->
 <section class="product-grids section">
 <form action='client-product-list-category' method="get" id="cateForm" name="cateForm" >
+	<input type="hidden"name="pcategory_fk1" id="pcategory_fk1" value="${prodCateList}">
 </form>
 
 	<div class="container">
@@ -67,8 +69,8 @@ $(document).ready(function(){
 							<c:forEach items="${prodCateList}" var="prodCateList">
 								<li class="prodcate_btn">
 									<a class="page-link"
-									href="<c:if test='${prodCateList.pcategory_fk1}'/>">
-									${prodCateList.pcategory_fk1}</a>
+									href="${prodCateList}">
+									${prodCateList}</a>
 								</li>
 							</c:forEach>
 						</ul>

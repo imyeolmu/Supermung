@@ -8,7 +8,6 @@ import com.supermm.model.Criteria;
 import com.supermm.model.ProductVO;
 
 public interface ProductService {
-	
 	//상품목록
 	public List<ProductVO> getProdList();
 	
@@ -17,7 +16,7 @@ public interface ProductService {
 	
 	//상품 총 개수
 	public int getProdTotal(Criteria cri);
-
+	
 	//상품등록
 	public void prodInput(ProductVO prod);
 	
@@ -36,7 +35,7 @@ public interface ProductService {
 	/********************* 클라이언트 ************************/
 	//상품목록(페이징 적용)
 	public List<ProductVO> getProdListPaging(ClientCriteria cri);
-
+	
 	//상품 총 개수
 	public int getProdTotal(ClientCriteria cri);
 	
@@ -45,5 +44,12 @@ public interface ProductService {
 	
 	// 상품 카테고리 리스트
 	public List<ProductVO> prodSide(String pcategory_fk1);
+	
+	// 카테고리에 해당하는 상품 리스트
+	public List<ProductVO> prodCateList(ClientCriteria cri);
+	
+	// 카테고리에 해당하는 총 상품 개수
+	public int prodCateTotal(ClientCriteria cri);
+	
 	
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data //lombok
 public class PageMakeDTO {
+	
    private int startPage; //시작페이지
    private int endPage; //끝페이지
    private boolean prev, next; //이전페이지, 다음페이지 존재유무

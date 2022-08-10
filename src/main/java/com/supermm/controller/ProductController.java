@@ -158,31 +158,27 @@ public class ProductController {
 		model.addAttribute("list", service.getProdListPaging(cri));
 		System.out.println("list.........."+service.getProdListPaging(cri));
 		System.out.println("listsdfsdfsdfsdf.........."+service.prodSide(pcategory_fk1));
-
+		
 		//카테고리
 		model.addAttribute("prodCateList", service.prodSide(pcategory_fk1));
 		return "client/product/client-product-list";
 	}	
 
 	//카테고리별 상품리스트로 이동
-	@RequestMapping(value="/client-product-list-category", method= RequestMethod.GET)
-	public String clientProductListGET(String pcategory_fk1, ClientCriteria cri, Model model) {
-
+	@RequestMapping("/client-product-list-category")
+	public String cateProdLists(String pcategory_fk1, ClientCriteria cri, Model model) {
 		System.out.println("상품 목록 페이징");
 
-		int totalCnt = service.getProdTotal(cri);
+		int totalCnt = service.prodCateTotal(cri);
 
 		// 페이징처리
 		ClientPageMakeDTO pageMake = new ClientPageMakeDTO(cri, totalCnt);
-		model.addAttribute("pageMake", pageMake);
-
-		//상품
-		model.addAttribute("list", service.getProdListPaging(cri));
-		model.addAttribute("plist", service.getProdList());
-		System.out.println("list.........."+service.getProdListPaging(cri));
+		model.addAttribute("page", pageMake);
 
 		//카테고리
+		System.out.println("qweqwe1231231232"+service.prodCateList(cri));
 		model.addAttribute("prodCateList", service.prodSide(pcategory_fk1));
+		model.addAttribute("prodCate", service.prodCateList(cri));
 		return "client/product/client-product-list-category";
 	}	
 

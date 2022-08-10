@@ -14,6 +14,7 @@ import com.supermm.model.ProductVO;
 @Service //해당클래스가 Service역할을 한다는 것을 인식할 수 있도록 추가
 public class ProductServicelmpl implements ProductService {
 
+	
 	@Autowired
 	private ProductMapper mapper;
 
@@ -127,7 +128,23 @@ public class ProductServicelmpl implements ProductService {
 		return mapper.prodSide(pcategory_fk1);
 	}
 	
+	// 카테고리에 해당하는 상품 리스트
+	@Override
+	public List<ProductVO> prodCateList(ClientCriteria cri){
+		
+		System.out.println("prodCateList service..");
+		
+		return mapper.prodCateList(cri);
+	}
 	
+	// 카테고리에 해당하는 총 상품 개수
+	@Override
+	public int prodCateTotal(ClientCriteria cri) {
+
+		System.out.println("getProdTotal service..");		
+
+		return mapper.prodCateTotal(cri);
+	}
 	
 	
 }

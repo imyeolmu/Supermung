@@ -5,6 +5,7 @@ import lombok.Data;
 @Data //lombok
 //pageNum과 amount를 같이 파라미터로 전달하기 위한 용도, criteria(기준)
 public class Criteria { 
+	
 	private int pageNum; //현재페이지
 	private int amount; //한페이지당 보여질 게시물 개수	
 	

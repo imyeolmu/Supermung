@@ -6,21 +6,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../inc/admin-header.jsp"%>
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 <style>
 .activePage {
-	background-color: rgba(171, 147, 201, 0.1);	
+	background-color: rgba(171, 147, 201, 0.1);
+	
 }
 </style>
-
 <script type="text/javascript">
-$(".notice-page a").on("click", function(e){
-	e.preventDefault();
-	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	moveForm.attr("action", "/member-list");
-	MoveForm.submit();
-});
+$(document).ready(function(){   
+	/************* 페이징 ***************/
+	var moveForm =$("#moveForm");
+	$(".pageInfo_btn a").on("click", function(e){
+		e.preventDefault();
+		
+		moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+		moveForm.submit();
+	});
 
 	//검색    
 	$(".search button").on("click", function(e){
@@ -48,10 +53,15 @@ $(".notice-page a").on("click", function(e){
 </script>
 
 <main class="board container w-100 p-5">
+	<form action="member-list" method="get" id="moveForm"  name="moveForm">
+		<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}">
+		<input type="hidden" name="amount" value="${pageMake.cri.amount}">
+		<input type="hidden" name="keyWord" value="${pageMake.cri.keyWord}">
+		<input type="hidden" name="searchType" value="${pageMake.cri.searchType}">
+	</form>
+
 	<h4>회원 목록</h4>
 	<!-- 검색창  -->
-	<table class="table">
-		<thead>
 			<form id="searchForm" method="post" action="member-list">
 				<div class="search">
 					<select name="searchType">
@@ -66,6 +76,8 @@ $(".notice-page a").on("click", function(e){
 					<button id="btn-search" class="button board-search-button">검색</button>
 				</div>
 			</form>
+		<table class="table">
+		<thead>
 			<tr class="text-center">
 				<th style="width:5%">NO</th>
 				<th style="width:10%">아이디</th>
@@ -115,33 +127,34 @@ $(".notice-page a").on("click", function(e){
 			<ul id="pageInfo" class="notice-page pager">
 				<!-- 맨앞으로 버튼 -->
 				<c:if test="${pageMake.prev}">
-					<li class="next pageInfo_btn"><a href="?pageNum=${pageMake.realStart}&amount=5"><i class="lni lni-angle-double-left"></i></a></li>
+					<li class="next pageInfo_btn"><a class="page-link" href="${pageMake.realStart}">
+					<i class="lni lni-angle-double-left"></i></a></li>
 				</c:if>
 				<!-- 이전페이지 버튼 -->
 				<c:if test="${pageMake.prev}">
-					<li class="prev pageInfo_btn"><a href="?pageNum=${pageMake.startPage-1}&amount=5"><i class="lni lni-chevron-left"></i></a></li>
+					<li class="prev pageInfo_btn">
+					<a class="page-link" href="${pageMake.startPage-1}"><i class="lni lni-chevron-left"></i></a></li>
 				</c:if>
 				<!-- 각 번호 페이지 버튼 -->
-				<c:forEach var="num" begin="${pageMake.startPage}" end="${pageMake.endPage}">
-					 <li class="pageInfo_btn ${pageMake.cri.pageNum == num ? 'activePage':'' }"><a href="?pageNum=${num}&amount=5">${num}</a></li>
+				<c:forEach var="num" begin="${pageMake.startPage }" end="${pageMake.endPage }">
+				<li class="pageInfo_btn ${pageMake.pageNum eq num ? 'activePage' : ''}">
+				<a class="page-link" href="${num}" >${num}</a>
+				</li>
 				</c:forEach>
 				<!-- 다음페이지 버튼 -->
 				<c:if test="${pageMake.next}">
-					<li class="next pageInfo_btn"><a href="?pageNum=${pageMake.endPage+1}&amount=5"><i class="lni lni-chevron-right"></i></a></li>
+					<li class="next pageInfo_btn">
+					<a class="page-link" href="${pageMake.endPage+1}"><i class="lni lni-chevron-right"></i></a></li>
 				</c:if>
 				<!-- 맨끝으로 버튼 -->
 				<c:if test="${pageMake.next}">
-					<li class="next pageInfo_btn"><a href="?pageNum=${pageMake.realEnd}&amount=5"><i class="lni lni-angle-double-right"></i></a></li>
+					<li class="next pageInfo_btn">
+					<a class="page-link" href="${pageMake.realEnd}">
+					<i class="lni lni-angle-double-right"></i></a></li>
 				</c:if>
-			</ul>
+         </ul>
 		</div>
 	</div>
-	<form id="moveForm" method="get">
-		<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}">
-		<input type="hidden" name="amount" value="${pageMake.cri.amount}">
-		<input type="hidden" name="keyWord" value="${pageMake.cri.keyWord}">
-		<input type="hidden" name="keyWord" value="${pageMake.cri.searchType}">
-	</form>
 </main>
 
 <%@ include file="../inc/footer.jsp"%>

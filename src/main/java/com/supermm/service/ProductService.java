@@ -43,5 +43,7 @@ public interface ProductService {
 	// 상품 남은 수량
 	public int prodQty(int pnum);
 	
+	// 상품 카테고리 리스트
+	public List<ProductVO> prodSide(String pcategory_fk1);
 	
 }

@@ -3,7 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../inc/client-header.jsp"%>
-
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 <style>
 .activePage {
 	border: 3px solid #AB93C9;
@@ -13,17 +16,31 @@
 </style>
 
 <script type="text/javascript">
-	//페이징
-	$(".notice-page a").on("click", function(e) {
+$(document).ready(function(){   
+	/************* 페이징 ***************/
+	var moveForm =$("#moveForm");
+    var cateForm =$("#cateForm");
+
+	$(".pageInfo_btn a").on("click", function(e){
 		e.preventDefault();
+		
 		moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-		moveForm.attr("action", "/product-list");
 		moveForm.submit();
+	})
+    $(".prodcate_btn a").on("click", function(e){
+        e.preventDefault();
+
+        cateForm.find("input[name='pcategory_fk1']").val($(this).attr("href"));
+        cateForm.submit();
+    });
 	});
 </script>
 
 <!-- Start Product Grids -->
 <section class="product-grids section">
+<form action='client-product-list-category' method="get" id="cateForm" name="cateForm" >
+</form>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3 col-12">
@@ -45,17 +62,16 @@
 					</div>
 					<!-- End Single Widget -->
 					<!-- Start Single Widget -->
-					<form class="single-widget" action="<c:url value='client-product-list-category'/>" method="post">
 						<h3>카테고리</h3>
 						<ul class="list">
-							<c:forEach items="${cateList}" var="cateList">
-								<li>
-									<a href="client-product-list-category?cateCode=${cateList.cateCode}">
-									<c:out value="${cateList.cateName}"/></a>
+							<c:forEach items="${prodCateList}" var="prodCateList">
+								<li class="prodcate_btn">
+									<a class="page-link"
+									href="<c:if test='${prodCateList.pcategory_fk1}'/>">
+									${prodCateList.pcategory_fk1}</a>
 								</li>
 							</c:forEach>
 						</ul>
-					</form>
 					<!-- End Single Widget -->
 				</div>
 				<!-- End Product Sidebar -->
@@ -66,15 +82,6 @@
 						<div class="row align-items-center">
 							<div class="col-lg-7 col-md-8 col-12">
 								<div class="product-sorting">
-									<label for="sorting">Sort by:</label> 
-									<select class="form-control" id="sorting">
-										<option>Popularity</option>
-										<option>Low - High Price</option>
-										<option>High - Low Price</option>
-										<option>Average Rating</option>
-										<option>A - Z Order</option>
-										<option>Z - A Order</option>
-									</select>
 									<h3 class="total-show-product" style="color:#333">
 										Pages: <span>${pageMake.cri.pageNum}/${pageMake.realEnd} pages</span>
 									</h3>
@@ -131,41 +138,38 @@
 								</c:forEach>
 							</div>
 							<div class="notice-footer w-100">
-								<div class="indexer align-right pagination left">
-									<ul id="pageInfo" class="pagination-list">
+								<div class="indexer align-right">
+								<span>${pageMake.cri.pageNum}/${pageMake.realEnd} pages</span>
+									<ul id="pageInfo" class="notice-page pager">
 										<!-- 맨앞으로 버튼 -->
 										<c:if test="${pageMake.prev}">
-											<li class="next pageInfo_btn"><a
-												href="?pageNum=${pageMake.realStart}&amount=12"><i
-													class="lni lni-angle-double-left"></i></a></li>
+											<li class="next pageInfo_btn"><a class="page-link" href="${pageMake.realStart}">
+											<i class="lni lni-angle-double-left"></i></a></li>
 										</c:if>
 										<!-- 이전페이지 버튼 -->
 										<c:if test="${pageMake.prev}">
-											<li class="prev pageInfo_btn"><a
-												href="?pageNum=${pageMake.startPage-1}&amount=12"><i
-													class="lni lni-chevron-left"></i></a></li>
+											<li class="prev pageInfo_btn">
+											<a class="page-link" href="${pageMake.startPage-1}"><i class="lni lni-chevron-left"></i></a></li>
 										</c:if>
 										<!-- 각 번호 페이지 버튼 -->
-										<c:forEach var="num" begin="${pageMake.startPage}"
-											end="${pageMake.endPage}">
-											<li
-												class="pageInfo_btn ${pageMake.cri.pageNum == num ? 'activePage':'' }"><a
-												href="?pageNum=${num}&amount=12">${num}</a></li>
+										<c:forEach var="num" begin="${pageMake.startPage }" end="${pageMake.endPage }">
+										<li class="pageInfo_btn ${pageMake.pageNum eq num ? 'activePage' : ''}">
+										<a class="page-link" href="${num}" >${num}</a>
+										</li>
 										</c:forEach>
 										<!-- 다음페이지 버튼 -->
 										<c:if test="${pageMake.next}">
-											<li class="next pageInfo_btn"><a
-												href="?pageNum=${pageMake.endPage+1}&amount=12"><i
-													class="lni lni-chevron-right"></i></a></li>
+											<li class="next pageInfo_btn">
+											<a class="page-link" href="${pageMake.endPage+1}"><i class="lni lni-chevron-right"></i></a></li>
 										</c:if>
 										<!-- 맨끝으로 버튼 -->
 										<c:if test="${pageMake.next}">
-											<li class="next pageInfo_btn"><a
-												href="?pageNum=${pageMake.realEnd}&amount=12"><i
-													class="lni lni-angle-double-right"></i></a></li>
+											<li class="next pageInfo_btn">
+											<a class="page-link" href="${pageMake.realEnd}">
+											<i class="lni lni-angle-double-right"></i></a></li>
 										</c:if>
-									</ul>
-									<form action='product-list' method="get" id="moveForm">
+						         </ul>
+									<form action='client-product-list' method="get" id="moveForm" name="moveForm">
 										<input type="hidden" name="pageNum"
 											value="${pageMake.cri.pageNum}"> <input type="hidden"
 											name="amount" value="${pageMake.cri.amount}"> <input
@@ -177,7 +181,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+					</div>
 			</div>
 		</div>
 	</div>

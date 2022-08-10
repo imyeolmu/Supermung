@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
@@ -17,8 +18,13 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script
 	src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js'></script>
 <script src="${ctx}/resources/js/script.js"></script>
+
 <link rel="shortcut icon" type="image/x-icon"
 	href="${ctx}/resources/images/favicon.svg" />
 <!-- ========================= CSS here ========================= -->
@@ -27,25 +33,32 @@
 <link rel="stylesheet" href="${ctx}/resources/css/tiny-slider.css" />
 <link rel="stylesheet" href="${ctx}/resources/css/glightbox.min.css" />
 <link rel="stylesheet" href="${ctx}/resources/css/style.css">
-
-
-
-
-
-
 <link rel="stylesheet" href="${ctx}/resources/scss/main.css" />
 
 <script>
-/************* 검색 ****************/
-var sf = $("#searchForm");
-$("#btn-search").on("click", function(e){
-   if(!sf.find("input[name='keyWord']").val()){
-      alert("키워드를 입력하세요!!");
-      $("#keyWord").focus();
-      return false;
-   }
-   sf.submit();
-});
+$(document).ready(function(){   
+	/************* 페이징 ***************/
+	var moveForm =$("#moveForm");
+	$(".pageInfo_btn a").on("click", function(e){
+		e.preventDefault();
+		
+		moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+		moveForm.submit();
+	});
+
+
+	 /************* 검색 ****************/
+       var sf = $("#searchForm");
+       $("#btn-search").on("click", function(e){
+          if(!sf.find("input[name='keyWord']").val()){
+             alert("키워드를 입력하세요!!");
+             $("#keyWord").focus();
+             return false;
+          }
+          sf.submit();
+       });
+
+    });
 </script>
 
 </head>
@@ -73,13 +86,11 @@ $("#btn-search").on("click", function(e){
 					<!-- End Header Logo -->
 				</div>
 				<div class="col-lg-5 col-md-7 d-xs-none">
-					<form action='client-product-list' method="get" id="moveForm">
-						<input type="hidden" name="pageNum"
-							value="${pageMake.cri.pageNum}"> <input type="hidden"
-							name="amount" value="${pageMake.cri.amount}"> <input
-							type="hidden" name="keyWord" value="${pageMake.cri.keyWord}">
-						<input type="hidden" name="searchType"
-							value="${pageMake.cri.searchType}">
+					<form action='client-product-list' method="get" id="moveForm" name="moveForm">
+						<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}">
+						<input type="hidden" name="amount" value="${pageMake.cri.amount}">
+						<input type="hidden" name="keyWord" value="${pageMake.cri.keyWord}">
+						<input type="hidden" name="searchType" value="${pageMake.cri.searchType}">
 					</form>
 					<!-- Start Main Menu Search -->
 					<form id="searchForm" method="post" action='client-product-list'>

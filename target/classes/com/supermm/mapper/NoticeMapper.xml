@@ -70,10 +70,10 @@
 		resultType="com.supermm.model.NoticeVO">	
 	
         
-        select nno, ntitle, nwriter_id, ncontent, nregdate, updatedate
+        select nno, ntitle, nwriter_id, ncontent, nregdate, updatedate,nhit
         from(
         		   select /*+INDEX_DESC(anotice nno) */
-                 rownum rnum, nno, ntitle, nwriter_id, ncontent, nregdate, updatedate
+                 rownum rnum, nno, ntitle, nwriter_id, ncontent, nregdate, updatedate,nhit
                 from anotice 
                 where <include refid="criteria"></include>
                <![CDATA[rownum <= #{pageNum} * #{amount}]]>

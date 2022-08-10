@@ -13,7 +13,7 @@
 <!-- main -->
 <main class="board-detail container w-50 p-5">
 
-<form id="detailForm" method=post">
+<form id="detailForm" method="post">
 	<h5 class="mb-3">공지사항</h5>
 	<table class="table">
 			<tbody>

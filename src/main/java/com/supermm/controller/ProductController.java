@@ -144,7 +144,7 @@ public class ProductController {
 
 	//전체상품리스트
 	@RequestMapping("/client-product-list")
-	public String clientProductList(ClientCriteria cri, Model model) {
+	public String clientProductList(String pcategory_fk1, ClientCriteria cri, Model model) {
 
 		System.out.println("상품 목록 페이징");
 
@@ -157,16 +157,16 @@ public class ProductController {
 		//상품
 		model.addAttribute("list", service.getProdListPaging(cri));
 		System.out.println("list.........."+service.getProdListPaging(cri));
+		System.out.println("listsdfsdfsdfsdf.........."+service.prodSide(pcategory_fk1));
 
 		//카테고리
-		model.addAttribute("cateList", service.cateList());
-
+		model.addAttribute("prodCateList", service.prodSide(pcategory_fk1));
 		return "client/product/client-product-list";
 	}	
 
 	//카테고리별 상품리스트로 이동
 	@RequestMapping(value="/client-product-list-category", method= RequestMethod.GET)
-	public String clientProductListGET(ClientCriteria cri, Model model) {
+	public String clientProductListGET(String pcategory_fk1, ClientCriteria cri, Model model) {
 
 		System.out.println("상품 목록 페이징");
 
@@ -182,8 +182,7 @@ public class ProductController {
 		System.out.println("list.........."+service.getProdListPaging(cri));
 
 		//카테고리
-		model.addAttribute("cateList", service.cateList());
-
+		model.addAttribute("prodCateList", service.prodSide(pcategory_fk1));
 		return "client/product/client-product-list-category";
 	}	
 

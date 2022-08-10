@@ -17,12 +17,12 @@ public class ProductVO {
 
 	////////search ///////////
 	private String searchType; 
-	private String[] searchTypeArr;
-	
 	private String keyWord;
 	
 	private int pageNum; //현재페이지
 	private int amount; //한페이지당 보여질 게시물 개수	
+	
+	private String cateName;
 	
 	
 }

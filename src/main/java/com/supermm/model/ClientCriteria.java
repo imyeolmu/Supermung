@@ -11,9 +11,8 @@ public class ClientCriteria {
 
 	////////search ///////////
 	private String searchType; 
-	private String[] searchTypeArr;
-	
 	private String keyWord;
+
 	
 	//기본생성자 : 기본세팅(pageNum=1, amount=5)
 	public ClientCriteria() {
@@ -28,6 +27,5 @@ public class ClientCriteria {
 	
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;
-		this.searchTypeArr = searchType.split("");
 	}
 }

@@ -117,4 +117,17 @@ public class ProductServicelmpl implements ProductService {
 
 		return mapper.prodQty(pnum);
 	}
+	
+	//상품별 카테고리 리스트
+	@Override
+	public List<ProductVO> prodSide(String pcategory_fk1) {
+
+		System.out.println("prodCateList service..");
+
+		return mapper.prodSide(pcategory_fk1);
+	}
+	
+	
+	
+	
 }

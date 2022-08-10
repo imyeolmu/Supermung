@@ -6,6 +6,7 @@ import java.util.List;
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,14 +83,11 @@ public class NoticeController {
 	//상세페이지
 	
 	 @GetMapping({"/notice-detail","/notice-update"})
-	
 	public String Noticedetailget(Integer nno, Model model) throws Exception{
 		
-		 model.addAttribute("pageMake", pageMake);
+		model.addAttribute("pageMake", pageMake);
 		model.addAttribute("pageInfo",noticeservice.Noticedetail(nno));
 		
-		
-
 		return "admin/notice/notice-detail";
 		
 	}
@@ -107,10 +105,8 @@ public class NoticeController {
 		NoticeVO vo = noticeservice.Noticedetail(nno); 
 		
 	
-		 model.addAttribute("pageInfo", nno); 
-	
-
-	
+		model.addAttribute("pageInfo", nno); 
+		
 		
 		log.info("게시판 수정폼- nno:" +nno);
 		System.out.println("수정페이지 이동");
@@ -149,21 +145,18 @@ public class NoticeController {
 	
 	
 
-	@RequestMapping(value = "/notice-list", method = RequestMethod.GET)
-	  public String noticeListForm(Model model, Criteria cri) {
+	@RequestMapping(value = "/notice-list")
+	  public String noticeListForm(Integer nno, Model model, Criteria cri) {
 	  
 	  System.out.println("공지사항목록 페이지 페이징..");
 	  
 	  model.addAttribute("list", noticeservice.getNoticePaging(cri));
 	  
-	 Integer total = noticeservice.getNoticeTotal(cri);
+	  Integer total = noticeservice.getNoticeTotal(cri);
 	  
 	  PageMakeDTO pageMake = new PageMakeDTO(cri, total);
 	  
 	  model.addAttribute("pageMake", pageMake);
-	  
-	
-	 
 	  return "admin/notice/notice-list";
 	  
 	  }

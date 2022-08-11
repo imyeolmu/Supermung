@@ -1,0 +1,215 @@
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet';
+
+:root {
+	--dk-gray-100: #fff;
+	--dk-gray-200: #333;
+	--dk-gray-300: #333;
+	--dk-gray-400: #333;
+	--dk-gray-500: #6B7280;
+	--dk-gray-600: #333;
+	--dk-gray-700: #374151;
+	--dk-gray-800: #1F2937;
+	--dk-gray-900: #111827;
+	--dk-dark-bg: #f9f9f9;
+	--dk-darker-bg: #fff;
+	--navbar-bg-color: #6f6486;
+	--sidebar-bg-color: #252636;
+	--sidebar-width: 250px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	background-color: var(--dk-darker-bg);
+	font-size: .925rem;
+}
+
+#wrapper {
+	margin-left: 100px;
+	margin-right: 100px;
+	transition: all .3s ease-in-out;
+	padding: 50px;
+	min-height: 1000px;
+}
+
+#wrapper.fullwidth {
+	margin-left: 0;
+}
+
+/** --------------------------------
+ -- Statistics
+-------------------------------- */
+.statistics {
+	color: var(--dk-gray-200);
+}
+
+.statistics .box {
+	background-color: var(--dk-dark-bg);
+	height: 200px;
+}
+
+.statistics .box i {
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+}
+
+.statistics .box a {
+	color: var(--dk-gray-400);
+}
+
+.statistics .box a:hover {
+	color: #AB93C9;
+}
+
+
+
+
+/** --------------------------------
+ -- Myinfo
+-------------------------------- */
+.myinfo .myinfo-container {
+	background-color: var(--dk-dark-bg);
+	margin-top: 70px;
+	min-height: 500px;
+}
+
+.myinfo .myinfo-container h3 {
+	color: var(--dk-gray-400);
+	margin-top: 50px;
+}
+
+.myinfo .account-login {
+	background-color: #f9f9f9;
+	padding: 70px;
+	
+}
+
+.myinfo .account-login .precautions {
+	color: #333;
+	font-size: 20px;
+}
+
+.myinfo .account-login .buttondiv {
+	margin-top: 30px;
+}
+
+.myinfo .account-login .ok {
+	width: 200px;
+	padding: 15px;
+	background-color: #ab93c9;
+	color: #fff;
+}
+
+.myinfo .account-login .reset {
+	width: 200px;
+	padding: 15px;
+	background-color: #ffd66b;
+	color: #fff;
+}
+
+.money-container {
+  background-color: #f9f9f9;
+  min-height: 200px;
+  padding: 0;
+  margin: 0;
+}
+
+.money-container-form {
+  padding: 70px;
+}
+
+.money-container .input-form {
+  padding: 20px;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.money-container .input-form .cinput {
+  border: 1px solid #eee;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+.money-container .input-form .cinput:focus {
+  border: 1px solid #eee;
+  outline: none;
+  box-shadow: none;
+}
+
+.money-container .input-form .member-point {
+  color: #AB93C9;
+  font-weight: 600;
+}
+.money-container .input-form .member-point:hover {
+  color: #333;
+}
+
+.fs-6 {
+	height: 100px;
+}
+
+.buttondiv {
+	margin-top: 50px;
+}
+
+.buttondiv .ok {
+  background-color: #AB93C9;
+  color: white;
+  font-size: 1em;
+  width: 200px;
+  padding: 15px;
+}
+.buttondiv .reset {
+  background-color: #FFD66B;
+  color: white;
+  font-size: 1em;
+  width: 200px;
+  padding: 15px;
+}
+
+
+
+/** --------------------------------
+ -- Admininfo
+-------------------------------- */
+.admin .admin-container {
+	background-color: #fff;
+	min-height: 500px;
+}
+
+
+.admin .account-login {
+	background-color: #fff;
+	padding: 70px;
+	
+}
+
+.admin .account-login .precautions {
+	color: #333;
+	font-size: 20px;
+}
+
+.admin .account-login .buttondiv {
+	margin-top: 30px;
+}
+
+.admin .account-login .ok {
+	width: 200px;
+	padding: 15px;
+	background-color: #ab93c9;
+	color: #fff;
+}
+
+.admin .account-login .reset {
+	width: 200px;
+	padding: 15px;
+	background-color: #ffd66b;
+	color: #fff;
+}
+

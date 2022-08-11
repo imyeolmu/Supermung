@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis를 사용할 수 있도록 태그코드 추가 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.supermm.mapper.CategoryMapper">
+
+	<!-- 카테고리 등록 -->
+<insert id="cateInput" parameterType="categoryVO">
+    insert into Category(cateNum, cateCode, cateName)
+    values (categorySeq.NEXTVAL, #{cateCode}, #{cateName})
+</insert>
+
+  <!-- 전체 게시글 수 구하기 -->
+ <select id="totalCnt" resultType="Integer">
+	select count(*) total from Category where
+	<include refid="criteria"></include> 
+	cateNum >0
+ </select>
+ 
+<!-- 검색조건 -->
+<sql id="criteria">
+    <if test="searchType =='N'.toString()">
+	    cateName like '%'||#{keyWord}||'%'and
+	</if>
+	<if test="searchType =='C'.toString()">
+	    cateCode like '%'||#{keyWord}||'%'and
+	</if>
+</sql>
+
+<!-- 카테고리 목록 -->
+<select id="cateListPaging" resultType="categoryVO">
+<!-- 오라클에서는 limit 사용할d 수 없으니 rownum로 사용하기
+검색은 WHERE절 알맞은 위치에 맞게 넣어주면 검색가능
+위 표현식의 and 꼭!!!! 넣기-->
+select
+	cateNum,cateCode,cateName
+from
+	(
+	select /*+INDEX_DESC(Category cateNum)*/
+	rownum rnum,cateNum,cateCode,cateName
+        from Category
+        where <include refid="criteria"></include>
+        
+        <![CDATA[rownum <= #{pageNum} * #{amount}]]> order by cateNum)
+		<![CDATA[where rnum > (#{pageNum} -1) * #{amount}]]>
+		order by cateNum
+</select>
+	
+	<!-- 카테고리 삭제 -->
+	<delete id="cateDelete">
+		delete from Category where cateNum=#{cateNum} 
+	</delete>
+
+
+<!-- 카테고리 수정 -->
+	<update id="cateUpdate" parameterType="categoryVO">
+		update Category set cateCode=#{cateCode}, cateName=#{cateName} where cateNum=#{cateNum} 
+	</update>
+<!--  카테고리 (수정)상세내용  -->
+    <select id="cateDetail" resultType="categoryVO">
+        select cateNum, cateCode, cateName
+        from Category where cateNum = #{cateNum} 
+    </select>
+</mapper>

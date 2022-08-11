@@ -1,3 +1,4 @@
+<%@page import="com.supermm.model.ClientCriteria"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -39,14 +40,22 @@
 <script>
 $(document).ready(function(){   
 	/************* 페이징 ***************/
-	var moveForm =$("#moveForm");
+	var prodForm =$("#prodForm");
+    var cateForm =$("#cateForm");
+
 	$(".pageInfo_btn a").on("click", function(e){
 		e.preventDefault();
 		
-		moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-		moveForm.submit();
-	});
+		prodForm.find("input[name='pageNum']").val($(this).attr("href"));
+		prodForm.submit();
+	})
+    $(".prodcate_btn a").on("click", function(e){
+        e.preventDefault();
 
+        cateForm.find("input[name='pcategory_fk1']").val($(this).attr("href"));
+        cateForm.submit();
+    });
+	});
 
 	 /************* 검색 ****************/
        var sf = $("#searchForm");
@@ -61,7 +70,6 @@ $(document).ready(function(){
 
     });
 </script>
-
 </head>
 <!-- Preloader -->
 <div class="preloader">
@@ -93,6 +101,7 @@ $(document).ready(function(){
 						<input type="hidden" name="keyWord" value="${pageMake.cri.keyWord}">
 						<input type="hidden" name="searchType" value="${pageMake.cri.searchType}">
 					</form>
+					
 					<!-- Start Main Menu Search -->
 					<form id="searchForm" method="post" action='client-product-list'>
 						<div class="main-menu-search">
@@ -231,17 +240,13 @@ $(document).ready(function(){
 					<div class="mega-category-menu">
 						<span class="cat-button"><i class="lni lni-menu"></i>CATEGORY</span>
 						<ul class="sub-category">
-							<li><a href="product-grids">New Arrival</a></li>
-							<li><a href="product-grids">Best Seller</a></li>
-							<li><a href="product-grids">Home</a></li>
-							<li><a href="product-grids">Walk</a></li>
-							<li><a href="product-grids">Carrier</a></li>
-							<li><a href="product-grids">Clothes</a></li>
-							<li><a href="product-grids">Grooming</a></li>
-							<li><a href="product-grids">Toy</a></li>
-							<li><a href="product-grids">Food</a></li>
-							<li><a href="product-grids">For human</a></li>
-							<li><a href="product-grids">Outdoor</a></li>
+							<c:forEach items="${prodCateList}" var="prodCateList">
+								<li class="prodcate_btn" style="margin: 0">
+									<a style="border: none;"class="page-link"
+									href="/client-product-list-category?pcategory_fk1=${prodCateList}">
+									${prodCateList}</a>
+								</li>
+							</c:forEach>
 						</ul>
 					</div>
 					<!-- End Mega Category Menu -->

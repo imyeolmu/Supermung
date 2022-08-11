@@ -98,7 +98,7 @@
 		select pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent 
 		from( select /*+INDEX_DESC(product pnum) */ 
 		rownum rnum, pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent from product
-		where pcategory_fk1 = #{pcategory_fk1} and
+		where pcategory_fk1 = #{pcategory_fk1,jdbcType=VARCHAR} and
 		<include refid="criteria"/>
 		<![CDATA[ rownum <= #{pageNum} * #{amount} ]]>
 		order by pnum)
@@ -108,7 +108,7 @@
 	
 	<!--  카테고리별 상품리스트 총 개수  -->
 	<select id="prodCateTotal" resultType="Integer">
-		select count(*) total from product where pcategory_fk1 = #{pcategory_fk1} and
+		select count(*) total from product where pcategory_fk1 = #{pcategory_fk1,jdbcType=VARCHAR} and
 		<include refid="criteria"/>
 		pnum > 0
 	</select>

@@ -3,6 +3,7 @@ package com.supermm.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -144,7 +145,7 @@ public class ProductController {
 
 	//전체상품리스트
 	@RequestMapping("/client-product-list")
-	public String clientProductList(String pcategory_fk1, ClientCriteria cri, Model model) {
+	public String clientProductList(String pcategory_fk1, ClientCriteria cri, Model model,HttpSession session) {
 
 		System.out.println("상품 목록 페이징");
 
@@ -161,6 +162,8 @@ public class ProductController {
 		
 		//카테고리
 		model.addAttribute("prodCateList", service.prodSide(pcategory_fk1));
+		session.setAttribute("prodCateList", service.prodSide(pcategory_fk1));
+		
 		return "client/product/client-product-list";
 	}	
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.supermm.model.CartVO;
 import com.supermm.model.ClientCriteria;
+import com.supermm.model.ClientPageMakeDTO;
 import com.supermm.model.ProductVO;
 import com.supermm.service.CartService;
 import com.supermm.service.NoticeService;
@@ -80,11 +81,11 @@ public class ClientController {
 	
 	
 	@RequestMapping("/client-main")
-	public String clientMain(ClientCriteria cri, Model model) {
-		
-
+	public String clientMain(ClientCriteria cri, Model model,String pcategory_fk1,HttpSession session) {
 		System.out.println("상품 목록 페이징");
-
+		//카테고리
+		model.addAttribute("prodCateList", service.prodSide(pcategory_fk1));
+		System.out.println("상품 목록 페이징");
 		int totalCnt = service.getProdTotal(cri);
 		model.addAttribute("list", service.getProdListPaging(cri));
 
@@ -102,6 +103,9 @@ public class ClientController {
 
 	}
 
+}
+	
+	
 //	@RequestMapping("/client-mypage")
 //	public String myPage() {
 //		return "client/mypage";
@@ -118,5 +122,3 @@ public class ClientController {
 	
 	
 	
-
-}

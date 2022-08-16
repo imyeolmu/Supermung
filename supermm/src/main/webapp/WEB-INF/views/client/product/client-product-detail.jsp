@@ -32,7 +32,7 @@
 						<p class="category">
 							<i class="lni lni-tag"></i>${data.pcategory_fk1}</p>
 						
-							<h3 class="price">$ ${data.price}</h3> 
+							<h3 class="price"><fmt:formatNumber pattern="###,###,###" value="${data.price}"/>원</h3> 
 						
 							<div>
 								<span style="color:#AB93C9; font-weight: bold; margin-left: 2px">Point</span>
@@ -49,10 +49,10 @@
 		   							 color: darkgray;"
 		                         	type="text" value="1" size="2" class="quantity_input">
 		                         	
-		                         	<button style="padding:5px 0 5px 0;outline: none; border: 1px solid #ddd; 
+		                         	<button style="background-color:#AB93C9; color:white; padding:5px;outline: none; border: 1px solid #ddd; 
 		                         	 margin-left: -3px"
 		                         	class="quantity_btn plus_btn">+</button>   
-		                         	<button style="padding:5px 0 5px 0;margin-left: -3px;
+		                         	<button style="background-color:#AB93C9; color:white; padding:5px;margin-left: -3px;
 		                         	outline: none; border: 1px solid #ddd;"
 		                         	class="quantity_btn minus_btn">-</button>
 		                         	<script>
@@ -93,13 +93,6 @@
 		                         </c:if>
 		                        </div>
 		                         </div>
-		                         <div class="col-lg-4 col-md-4 col-12">
-									<div class="wish-button">
-										<button class="btn">
-											<i class="lni lni-heart"></i>바로결제
-										</button>
-									</div>
-								</div>
 								<div class="col-lg-4 col-md-4 col-12">
 									<div class="wish-button">
 										<a href="javascript:history.back()"><button class="btn">
@@ -120,7 +113,7 @@
 	<c:set value="${data.pcategory_fk1}" var="category" />
 	<c:forEach items="${list}" var="list" step="8">
 		<c:if test="${list.pcategory_fk1 eq category}">
-			<div class="single-product me-3" style="height:450px; box-shadow:none;">
+			<div class="single-product me-3" style=" box-shadow:none;">
 				<div class="product-image">
 					<img  src="<c:url value="${list.pimage}"/>" alt="#">
 					<div
@@ -140,8 +133,8 @@
 				<div class="product-info">
 					<span class="category"></span>
 					<h4 class="title">
-						<span class="category">${list.pcategory_fk1}</span> <a
-							href="<c:url value='client-product-detail?pnum=${list.pnum}'/>">
+						<span class="category">${list.pcategory_fk1}</span>
+						<a style=" white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" href="<c:url value='client-product-detail?pnum=${list.pnum}'/>">
 								${list.pname}</a>
 					</h4>
 					<div class="price">

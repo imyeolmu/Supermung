@@ -14,8 +14,9 @@
 						<h3 class="mb-0">${member.id}</h3>
 						<span class="d-block ms-2">님</span>
 					</div>
-					<a class="fs-normal mt-2 mb-0 ms-3" href="client-mypage">내정보</a><br/>
-					<a class="fs-normal mt-2 mb-0 ms-3" href="client-delete">탈퇴하기</a><br/>
+					<a class="fs-normal mt-2 mb-0 ms-3" href="client-mypage">내정보</a>
+					<a class="fs-normal mt-2 mb-0 ms-3" href="client-delete">탈퇴</a><br/>
+					<a class="fs-normal mt-2 mb-0 ms-3" href="client-history">구매내역</a><br/>
 				</div>
 			</div>
 		</div>

@@ -2,26 +2,28 @@ package com.supermm.model;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
-@Data
+ @Data
 public class NoticeVO {
 	
-	private Integer nno;
+	private int nno;
 	private String ntitle;
 	private String nwriter_id; 
     private String ncontent; 
     private Date nregdate;
-    private Date nupdateDate;
+    private Date updatedate;
     private Integer nhit;
-    private String nfiles;
+
 
 
 	
 	
 public  NoticeVO() {}
 	
-	public NoticeVO(Integer nno) {
+	public NoticeVO(int nno) {
 		this.nno= nno;
 	}
 	
@@ -40,4 +42,5 @@ public  NoticeVO() {}
 		this.PageNum = pageNum;
 		this.amount = amount;
 	}
-}
+
+ }

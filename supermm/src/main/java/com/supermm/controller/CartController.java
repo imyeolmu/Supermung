@@ -39,11 +39,10 @@ public class CartController {
 			List<CartVO> list = service.cartList(id);
 			int priceAll = service.priceAll(id);
 			int pointAll = service.pointAll(id);
-			int fee = priceAll - pointAll;
 			
 			map.put("priceAll", priceAll);
 			map.put("pointAll", pointAll);
-			map.put("fee", fee);
+			
 			map.put("list", list);
 			map.put("count", list.size());
 			

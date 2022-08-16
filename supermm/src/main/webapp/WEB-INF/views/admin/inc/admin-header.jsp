@@ -69,14 +69,15 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto text-center admin-nav">
                                     <li class="nav-item">
-                                        <a href="admin-login" class="active" aria-label="Toggle navigation">HOME</a>
+                                        <a href="admin-main" class="active" aria-label="Toggle navigation">HOME</a>
                                     </li>
                                     <li class="nav-item">
                                         <div class="admin">
-                                            <a href="admin-info" aria-label="Toggle navigation">관리자정보</a>
+                                            <a href="admin-order" aria-label="Toggle navigation">관리자페이지</a>
                                             <div class="admin-menu">
                                                 <div class="dropdown-user">
                                                    <ul class="admin-menu-list">
+                                                        <li><a href="admin-order" class="admin-head-menu">주문현황</a></li>
                                                         <li><a href="admin-info" class="admin-head-menu">관리자정보</a></li>
                                                     </ul>
                                                 </div>
@@ -149,7 +150,8 @@
                                     </li>
                                     <li class="navbar-cart mt-2">
                                         <div class="user">
-                                             <a href="javascript:void(0)" class="main-btn">🐶</a>
+                                             <a href="javascript:void(0)" class="main-btn">
+                                             <img class="w-75" src="${ctx}/resources/images/hero/발바닥.png" alt="발바닥"></a>
                                             <!-- User-menu -->
                                             <div class="user-menu">
                                                 <div class="dropdown-user">

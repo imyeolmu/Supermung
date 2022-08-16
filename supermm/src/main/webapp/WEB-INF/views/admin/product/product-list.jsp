@@ -9,10 +9,12 @@
   crossorigin="anonymous"></script>
 <style>
 .activePage {
-	background-color: rgba(171, 147, 201, 0.1);
-	
+	border: 4px solid  rgba(171, 147, 201, 0.1);
+	background-color:  rgba(171, 147, 201, 0.1);
+	border-radius: 4px;
 }
 </style>
+
 <script type="text/javascript">
 $(document).ready(function(){   
 	/************* 페이징 ***************/
@@ -108,9 +110,9 @@ $(document).ready(function(){
 		<c:forEach items="${list}" var="list">
 			<tr class="text-center">
 				<!-- 상품번호(primarykey) 클릭하면 수정페이지로 넘어가기 -->
-				<td><a href="product-update?pnum=${list.pnum}" class="pro-hre"><c:out value="${list.pnum}"/></a></td>
+				<td><a href="product-update?pnum=${list.pnum}" onClick="alert('수정하시겠습니까?')" class="pro-hre"><c:out value="${list.pnum}"/></a></td>
 				<td width="100"><nobr /><c:out value="${list.pcategory_fk1}"/></td>
-				<td width="100"><a href="product-update?pnum=${list.pnum}" class="pro-hre"><nobr /><c:out value="${list.pname}"/></a></td>
+				<td width="100"><a href="product-update?pnum=${list.pnum}" onClick="alert('수정하시겠습니까?')" class="pro-hre"><nobr /><c:out value="${list.pname}"/></a></td>
 				<!-- 이미지 주소 불러오기 -->
 				<td width="100"><nobr /><img src="<c:out value='${list.pimage}'/>"/></td>
 				<td width="100"><nobr /><c:out value="${list.pcompany}"/></td>
@@ -131,29 +133,29 @@ $(document).ready(function(){
 			<ul id="pageInfo" class="notice-page pager">
 				<!-- 맨앞으로 버튼 -->
 				<c:if test="${pageMake.prev}">
-					<li class="next pageInfo_btn"><a class="page-link" href="${pageMake.realStart}">
+					<li class="next pageInfo_btn"><a class="page-link" href="${pageMake.realStart}" style="border:none">
 					<i class="lni lni-angle-double-left"></i></a></li>
 				</c:if>
 				<!-- 이전페이지 버튼 -->
 				<c:if test="${pageMake.prev}">
 					<li class="prev pageInfo_btn">
-					<a class="page-link" href="${pageMake.startPage-1}"><i class="lni lni-chevron-left"></i></a></li>
+					<a class="page-link" href="${pageMake.startPage-1}" style="border:none"><i class="lni lni-chevron-left"></i></a></li>
 				</c:if>
 				<!-- 각 번호 페이지 버튼 -->
 				<c:forEach var="num" begin="${pageMake.startPage }" end="${pageMake.endPage }">
 				<li class="pageInfo_btn ${pageMake.pageNum eq num ? 'activePage' : ''}">
-				<a class="page-link" href="${num}" >${num}</a>
+				<a class="page-link" href="${num}" style="border:none" >${num}</a>
 				</li>
 				</c:forEach>
 				<!-- 다음페이지 버튼 -->
 				<c:if test="${pageMake.next}">
 					<li class="next pageInfo_btn">
-					<a class="page-link" href="${pageMake.endPage+1}"><i class="lni lni-chevron-right"></i></a></li>
+					<a class="page-link" href="${pageMake.endPage+1}" style="border:none"><i class="lni lni-chevron-right"></i></a></li>
 				</c:if>
 				<!-- 맨끝으로 버튼 -->
 				<c:if test="${pageMake.next}">
 					<li class="next pageInfo_btn">
-					<a class="page-link" href="${pageMake.realEnd}">
+					<a class="page-link" href="${pageMake.realEnd}" style="border:none">
 					<i class="lni lni-angle-double-right"></i></a></li>
 				</c:if>
          </ul>

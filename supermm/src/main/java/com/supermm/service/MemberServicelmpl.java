@@ -66,7 +66,7 @@ public class MemberServicelmpl implements MemberService{
 	//로그인
 	@Override
 	public MemberVO memberLogin(MemberVO member) throws Exception {
-		
+
 		System.out.println("memberLogin service..");
 
 		return mapper.memberLogin(member);
@@ -77,7 +77,7 @@ public class MemberServicelmpl implements MemberService{
 	public void memberjoin(MemberVO member) throws Exception {
 
 		System.out.println("memberjoin service..");
-		
+
 		mapper.memberjoin(member);
 
 	}
@@ -85,11 +85,27 @@ public class MemberServicelmpl implements MemberService{
 	//아이디 중복체크
 	@Override
 	public int idCheck(String id) throws Exception {
-		
+
 		System.out.println("idCheck service..");
-		
+
 		return mapper.idCheck(id);
 	}
+
+	//이메일 중복체크
+	public int eCheck(String email) throws Exception{
+
+		System.out.println("eCheck service..");
+		
+		return mapper.eCheck(email);
+	}
+
+	//비번바꾸기
+	@Override
+	public void findpw(MemberVO member) throws Exception {
+		System.out.println("새비번으로 바꿈");
+
+		mapper.findpw(member);
+	}	
 
 	//마이페이지 내정보
 	@Override
@@ -103,37 +119,38 @@ public class MemberServicelmpl implements MemberService{
 	//마이페이지 정보수정
 	@Override
 	public void updateMyInfo(MemberVO member) {
-		
+
 		System.out.println("updateMyInfo service..");
-		
+
 		mapper.updateMyInfo(member);
 	}
-	
+
 	//마이페이지 금액충전
 	@Override
 	public void plusMoney(MemberVO member) {
-		
+
 		System.out.println("moneyPlus service..");
-		
+
 		mapper.plusMoney(member);
 	}
-	
+
 	//회원탈퇴
 	@Override
 	public int memDelete(String id) {
-		
+
 		System.out.println("memDelete service..");
-		
+
 		return mapper.memDelete(id);
 	}
 
 	//주문자정보
-//	@Override
-//	public MemberVO getClientInfo(String id) {
-//		
-//		System.out.println("getMemInfo service..id");
-//		
-//		return mapper.getClientInfo(id);
-//		
-//	}
+	@Override
+	public MemberVO getClientInfo(String id) {
+
+		System.out.println("getMemInfo service..id");
+
+		return mapper.getClientInfo(id);
+
+	}
+
 }

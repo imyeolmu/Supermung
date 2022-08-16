@@ -10,11 +10,12 @@
   crossorigin="anonymous"></script>
 <style>
 .activePage {
-	border: 3px solid #AB93C9;
-	background-color: #AB93C9;
-	border-radius: 7px;
+	border: 4px solid  rgba(171, 147, 201, 0.1);
+	background-color:  rgba(171, 147, 201, 0.1);
+	border-radius: 4px;
 }
 </style>
+
 
 <script type="text/javascript">
 $(document).ready(function(){   
@@ -39,7 +40,7 @@ $(document).ready(function(){
 
 <!-- Start Product Grids -->
 
-<form action='client-product-list-category' method="get" id="cateForm" name="cateForm" >
+<form action='<c:url value="client-product-list-category"/>' method="get" id="cateForm" name="cateForm" >
 	<input type="hidden"name="pcategory_fk1" id="pcategory_fk1" value="${prodCateList}">
 </form>
 	<section class="product-grids section">
@@ -60,6 +61,7 @@ $(document).ready(function(){
 							<button type="submit">
 								<i class="lni lni-search-alt"></i>
 							</button>
+						</form>
 					</div>
 					<!-- End Single Widget -->
 					<!-- Start Single Widget -->
@@ -124,7 +126,7 @@ $(document).ready(function(){
 												<span class="category"></span>
 												<h4 class="title">
 													<span class="category">${list.pcategory_fk1}</span>
-													<a href="<c:url value='client-product-detail?pnum=${list.pnum}'/>"><c:out value="${list.pname}" /></a>
+													<a href="<c:url value='client-product-detail?pnum=${list.pnum}'/>"><MARQUEE  scrolldelay=120><c:out value="${list.pname}" /></MARQUEE></a>
 												</h4>
 												<div class="price">
 													<span><fmt:formatNumber value="${list.price}"
@@ -142,29 +144,29 @@ $(document).ready(function(){
 									<ul id="pageInfo" class="notice-page pager">
 										<!-- 맨앞으로 버튼 -->
 										<c:if test="${pageMake.prev}">
-											<li class="next pageInfo_btn"><a class="page-link" href="${pageMake.realStart}">
+											<li class="next pageInfo_btn"><a class="page-link" href="${pageMake.realStart}" style="border:none">
 											<i class="lni lni-angle-double-left"></i></a></li>
 										</c:if>
 										<!-- 이전페이지 버튼 -->
 										<c:if test="${pageMake.prev}">
 											<li class="prev pageInfo_btn">
-											<a class="page-link" href="${pageMake.startPage-1}"><i class="lni lni-chevron-left"></i></a></li>
+											<a class="page-link" href="${pageMake.startPage-1}" style="border:none"><i class="lni lni-chevron-left"></i></a></li>
 										</c:if>
 										<!-- 각 번호 페이지 버튼 -->
 										<c:forEach var="num" begin="${pageMake.startPage }" end="${pageMake.endPage }">
 										<li class="pageInfo_btn ${pageMake.pageNum eq num ? 'activePage' : ''}">
-										<a class="page-link" href="${num}" >${num}</a>
+										<a class="page-link" href="${num}"  style="border:none">${num}</a>
 										</li>
 										</c:forEach>
 										<!-- 다음페이지 버튼 -->
 										<c:if test="${pageMake.next}">
 											<li class="next pageInfo_btn">
-											<a class="page-link" href="${pageMake.endPage+1}"><i class="lni lni-chevron-right"></i></a></li>
+											<a class="page-link" href="${pageMake.endPage+1}" style="border:none"><i class="lni lni-chevron-right"></i></a></li>
 										</c:if>
 										<!-- 맨끝으로 버튼 -->
 										<c:if test="${pageMake.next}">
 											<li class="next pageInfo_btn">
-											<a class="page-link" href="${pageMake.realEnd}">
+											<a class="page-link" href="${pageMake.realEnd}" style="border:none">
 											<i class="lni lni-angle-double-right"></i></a></li>
 										</c:if>
 						         </ul>

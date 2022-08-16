@@ -1,8 +1,6 @@
-<%@page import="com.supermm.model.ClientCriteria"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
@@ -19,13 +17,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-<script
 	src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js'></script>
 <script src="${ctx}/resources/js/script.js"></script>
-
 <link rel="shortcut icon" type="image/x-icon"
 	href="${ctx}/resources/images/favicon.svg" />
 <!-- ========================= CSS here ========================= -->
@@ -36,26 +29,25 @@
 <link rel="stylesheet" href="${ctx}/resources/css/style.css">
 <link rel="stylesheet" href="${ctx}/resources/scss/main.css" />
 
-
 <script>
 $(document).ready(function(){   
-	/************* 페이징 ***************/
-	var prodForm =$("#prodForm");
-    var cateForm =$("#cateForm");
+	$(document).ready(function(){   
+		/************* 페이징 ***************/
+		var moveForm =$("#moveForm");
+	    var cateForm =$("#cateForm");
 
-	$(".pageInfo_btn a").on("click", function(e){
-		e.preventDefault();
-		
-		prodForm.find("input[name='pageNum']").val($(this).attr("href"));
-		prodForm.submit();
-	})
-    $(".prodcate_btn a").on("click", function(e){
-        e.preventDefault();
+		$(".pageInfo_btn a").on("click", function(e){
+			e.preventDefault();
+			
+			moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+			moveForm.submit();
+		})
+	    $(".prodcate_btn a").on("click", function(e){
+	        e.preventDefault();
 
-        cateForm.find("input[name='pcategory_fk1']").val($(this).attr("href"));
-        cateForm.submit();
-    });
-	});
+	        cateForm.find("input[name='pcategory_fk1']").val($(this).attr("href"));
+	        cateForm.submit();
+	    });
 
 	 /************* 검색 ****************/
        var sf = $("#searchForm");
@@ -71,6 +63,9 @@ $(document).ready(function(){
     });
 </script>
 </head>
+<form action='client-product-list-category' method="get" id="cateForm" name="cateForm" >
+	<input type="hidden"name="pcategory_fk1" id="pcategory_fk1" value="${prodCateList}">
+</form>
 <!-- Preloader -->
 <div class="preloader">
 	<div class="preloader-inner">
@@ -140,7 +135,8 @@ $(document).ready(function(){
 						</div>
 						<div class="navbar-cart">
 							<div class="user">
-								<a href="javascript:void(0)" class="main-btn">🐶</a>
+								<a href="javascript:void(0)" class="main-btn"><img class="w-75"
+						src="${ctx}/resources/images/hero/발바닥.png" alt="발바닥"></a>
 								<!-- User-menu -->
 								<div class="user-menu">
 									<div class="dropdown-user">
@@ -174,7 +170,7 @@ $(document).ready(function(){
                                     </a>
                                 </div> -->
 							<div class="cart-items">
-								<a href="javascript:void(0)" class="main-btn">🛒<span
+								<a href="javascript:void(0)" class="main-btn"><img src="https://img.icons8.com/stickers/30/000000/shopping-cart.png"/><span
 									class="total-items">${count}</span>
 								</a>
 								<!-- Shopping Item -->
@@ -185,8 +181,15 @@ $(document).ready(function(){
 										</c:if>
 									</div>
 									<c:if test="${member != null}">
-										<span>${count} 멍</span>
-										<a href="cart"><span style="color: #AB93C9">${member.id}
+										<span style="color:#333">
+											<c:if test="${count eq 0}">
+											  o개다 멍
+											</c:if>
+											<c:if test="${count ne 0}">
+											  	${count}개다 멍
+											</c:if>
+										</span><br/>
+										<a href="cart"><span style="color: #AB93C9; margin-bottom:5px">${member.id}
 												님의 장바구니로</span></a>
 										<c:forEach var="cartList" items="${cartlist}">
 											<ul class="shopping-list">
@@ -205,7 +208,7 @@ $(document).ready(function(){
 															<a href="product-details">${cartList.pname}</a>
 														</h4>
 														<p class="quantity">
-															1x - <span class="amount">${cartList.price}</span>
+														<span class="amount" style="color:#333">${cartList.price}</span>
 														</p>
 													</div>
 												</li>
@@ -216,9 +219,6 @@ $(document).ready(function(){
 												</div>
 											</div>
 										</c:forEach>
-										<div class="button">
-											<a href="checkout" class="btn animate">구매하기</a>
-										</div>
 									</c:if>
 								</div>
 
@@ -236,22 +236,8 @@ $(document).ready(function(){
 		<div class="row align-items-center">
 			<div class="col-lg-8 col-md-6 col-12">
 				<div class="nav-inner">
-					<!-- Start Mega Category Menu -->
-					<div class="mega-category-menu">
-						<span class="cat-button"><i class="lni lni-menu"></i>CATEGORY</span>
-						<ul class="sub-category">
-							<c:forEach items="${prodCateList}" var="prodCateList">
-								<li class="prodcate_btn" style="margin: 0">
-									<a style="border: none;"class="page-link"
-									href="/client-product-list-category?pcategory_fk1=${prodCateList}">
-									${prodCateList}</a>
-								</li>
-							</c:forEach>
-						</ul>
-					</div>
-					<!-- End Mega Category Menu -->
 					<!-- Start Navbar -->
-					<nav class="navbar navbar-expand-lg">
+					<nav class="navbar navbar-expand-lg" >
 						<button class="navbar-toggler mobile-menu-btn" type="button"
 							data-bs-toggle="collapse"
 							data-bs-target="#navbarSupportedContent"
@@ -269,7 +255,7 @@ $(document).ready(function(){
 									aria-label="Toggle navigation">ABOUT</a></li>
 								<li class="nav-item"><a href="client-product-list"
 									aria-label="Toggle navigation">SHOP</a></li>
-								<li class="nav-item"><a href="#"
+								<li class="nav-item"><a href="client-notice-list"
 									aria-label="Toggle navigation">NOTICE</a></li>
 								<li class="nav-item"><a href="client-faq"
 									aria-label="Toggle navigation">FAQ</a></li>

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.supermm.model.CartVO;
 import com.supermm.model.ClientCriteria;
-import com.supermm.model.ClientPageMakeDTO;
 import com.supermm.model.ProductVO;
 import com.supermm.service.CartService;
 import com.supermm.service.NoticeService;
@@ -98,14 +97,12 @@ public class ClientController {
 		// 페이징처리
 		
 		model.addAttribute("list", service.getProdListPaging(cmc));
-		
+		model.addAttribute("prodCateList", service.prodSide(pcategory_fk1));
+		model.addAttribute("prodCate", service.prodCateList(cri));
 		return "client/main";
 
 	}
 
-}
-	
-	
 //	@RequestMapping("/client-mypage")
 //	public String myPage() {
 //		return "client/mypage";
@@ -122,3 +119,5 @@ public class ClientController {
 	
 	
 	
+
+}

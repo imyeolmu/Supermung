@@ -21,14 +21,14 @@ public class NoticeServiceImpl implements NoticeService {
 
 		noticemapper.Noticeregister(vo);
 	}
+	/*
+	 * //목록 public List<NoticeVO> Noticelist() {
+	 * 
+	 * return noticemapper.Noticelist(); }
+	 */
+	//조회수
 
-//목록
-	public List<NoticeVO> Noticelist() {
-
-		return noticemapper.Noticelist();
-	}
-
-	public NoticeVO Noticedetail(Integer nno) {
+	public NoticeVO Noticedetail(int nno) {
 
 		noticemapper.increase(nno);
 		
@@ -36,16 +36,20 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	// 수정
-
-	public Integer Noticeupdate(NoticeVO vo) {
-
+	
+	@Override
+	public int Noticeupdate(NoticeVO vo) {
+		
+		System.out.println("수정 service입니다");
+		
+	
 		return noticemapper.Noticeupdate(vo);
-
 	}
+	
 
 	// 삭제
 
-	public Integer Noticedelete(Integer nno) {
+	public int Noticedelete(int nno) {
 
 		return noticemapper.Noticedelete(nno);
 
@@ -75,6 +79,11 @@ public class NoticeServiceImpl implements NoticeService {
 		
 		return noticemapper.getNoticeTotal(cri);
 	}
+
+
+
+
+
 
 	
 

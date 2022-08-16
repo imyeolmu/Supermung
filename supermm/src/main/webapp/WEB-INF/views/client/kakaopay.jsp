@@ -7,10 +7,10 @@
 <script>
 	IMP.init('imp55744771');
 	function requestPay(){			
-		IMP.request_pay({
-			pg : 'kakaopay',
+		IMP.request_pay({ //param
+			pg : 'html5_inicis',
 			pay_method : 'card', //생략 가능
-			merchant_uid : "order_no_0006", // 상점에서 관리하는 주문 번호
+			merchant_uid : 'merchant_' + new Date().getTime(), // 상점에서 관리하는 주문 번호
 			name : '결제하기',
 			amount : 10000,
 			buyer_email : 'iamport@siot.do',
@@ -31,6 +31,53 @@
 		});
 	}
 </script>
+
+<%-- 	<script>
+				IMP.init('imp55744771');
+				function requestPay(){	
+					var money = $('input[name="cp_item"]').val();
+			        //console.log(money);
+			        
+					IMP.request_pay({ //param
+						pg : 'html5_inicis',
+						pay_method : 'card', //생략 가능
+						merchant_uid : 'merchant_' + new Date().getTime(), // 상점에서 관리하는 주문 번호
+						name : '결제하기',
+						amount : money,
+						buyer_email : '<%=member.getEmail()%>',
+						buyer_name : '<%=member.getName()%>',
+						buyer_tel : '<%=member.getPhone()%>',
+						buyer_addr : '<%=member.getAddr2()%>,<%=member.getAddr3()%>',
+						buyer_postcode : '<%=member.getAddr1()%>'
+					}, function(rsp) { // callback
+						console.log(rsp);
+						if (rsp.success) {
+							 $.ajax({
+				                    type: "GET", 
+				                    url: "/client-money", //충전 금액값을 보낼 url 설정
+				                    contentType : "application/json;charset=UTF-8",
+				                    dataType: "json",
+				                    data: JSON.stringify ({
+				                        "amount" : money
+				                    }),
+				                }); 
+							/* 서버 전송 */
+							//$(".money-container-form").submit();
+							  console.log(money);
+							var msg = '결제가 완료되었습니다.';
+							alert(msg);
+							location.href="/client-money"
+						} else {
+							var msg = '결제에 실패하였습니다.';
+							msg += '에러내용 : ' + rsp.error_msg;
+							alert(msg);
+							return false;
+						}
+					});
+				}
+	
+					</script>
+ --%>
 <form action="/mypage-info?id=${myinfo.id}" method="post" name="plusMoney">
 <input type="hidden" name="id"  value="${myinfo.id}"> 
 <input type="hidden" name="money" value="10000">

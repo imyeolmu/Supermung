@@ -24,7 +24,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<div class="inputdiv text-center">
+			<div class="buttondiv text-center">
 				<a class="btn ok" href="client-product-list">쇼핑하기</a>
 				<a class="btn reset" href="javascript:history.back()">뒤로가기</a>
 			</div>

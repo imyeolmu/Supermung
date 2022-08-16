@@ -6,59 +6,67 @@
 
 <mapper namespace="com.supermm.mapper.CartMapper">
 
-<!-- 장바구니에 담기 -->
+	<!-- 장바구니에 담기 -->
 	<insert id="cartAdd">
 		insert into cart (cartnum, id, pnum, cartAmount)
 		values
 		(cartSeq.nextval, #{id},#{pnum},#{cartAmount})
 	</insert>
 
-<!-- 장바구니 목록 -->
+	<!-- 장바구니 목록 -->
 	<select id="cartList" resultType="cartVO">
-	<!-- 멤버, 상품, 카트 3개의 테이블 조인..
-		멤버 회원id = 카트 회원id , 카트상품num=상품num , 카트 회원id = 카트저장회원id=멤버회원id -->
-		select c.cartnum, p.pnum, p.pname, c.id, m.name, pqty, p.pimage,p.pspec, cartAmount, p.price, p.ppoint, 
+		<!-- 멤버, 상품, 카트 3개의 테이블 조인.. 멤버 회원id = 카트 회원id , 카트상품num=상품num , 카트 회원id 
+			= 카트저장회원id=멤버회원id -->
+		select c.cartnum, p.pnum, p.pname, c.id, m.name, pqty,
+		p.pimage,p.pspec, cartAmount, p.price, p.ppoint,
 		(price*cartAmount)totprice, (ppoint*cartAmount)totpoint
-		
+
 		from member m, cart c, product p
-		
-		where m.id = c.id and c.pnum = p.pnum and c.id=#{id} order by cartnum 
+
+		where m.id = c.id and c.pnum = p.pnum and c.id=#{id} order by cartnum
 
 	</select>
 
-<!-- 가격,포인트 -->	
+	<!-- 가격,포인트 -->
 	<select id="priceAll" resultType="int">
-		<!-- 카트에 아무것도 담지 않았을 때.. 빈값이 null이면 안되니까 대체값 0으로-->
+		<!-- 카트에 아무것도 담지 않았을 때.. 빈값이 null이면 안되니까 대체값 0으로 -->
 		select nvl(sum(p.price*cartAmount),0)
-		
+
 		from cart c, product p
 		<!-- 조건:> 카트상품num = 상품num 요청하는 회원 id같을때 -->
 		where c.pnum = p.pnum and id=#{id}
-		
+
 	</select>
 	<select id="pointAll" resultType="int">
-		<!-- 카트에 아무것도 담지 않았을 때.. 빈값이 null이면 안되니까 대체값 0으로-->
+		<!-- 카트에 아무것도 담지 않았을 때.. 빈값이 null이면 안되니까 대체값 0으로 -->
 		select nvl(sum(p.ppoint*cartAmount),0)
-		
+
 		from cart c, product p
 		<!-- 조건:> 카트상품num = 상품num 요청하는 회원 id같을때 -->
 		where c.pnum = p.pnum and id=#{id}
-		
+
 	</select>
-	
-<!-- 장바구니 삭제 -->
+
+	<!-- 장바구니 삭제 -->
 	<delete id="delete">
-		delete from cart where cartnum=#{cartnum} 
+		delete from cart where cartnum=#{cartnum}
 	</delete>
-<!-- 장바구니 비우기 -->
+	<!-- 장바구니 비우기 -->
 	<delete id="deleteAll">
-		delete from cart where id=#{id} 
+		delete from cart where id=#{id}
 	</delete>
-<!-- 장바구니 수량 수정 -->
+	<!-- 장바구니 수량 수정 -->
 	<update id="modifyCart" parameterType="cartVO">
-		update cart set cart.cartAmount=#{cartAmount} where cartnum = #{cartnum}
+		update cart set
+		cart.cartAmount=#{cartAmount} where cartnum = #{cartnum}
 	</update>
-	
+
+	<!-- 카트제거(주문) -->
+	<delete id="deleteOrderCart">
+		delete from cart where id = #{id} and pnum = #{pnum}
+	</delete>
+
+
 
 
 

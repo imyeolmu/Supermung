@@ -10,20 +10,23 @@ public interface NoticeService {
 	//등록
 	public void Noticeregister(NoticeVO vo);
 
-	//리스트
-	public  List<NoticeVO> Noticelist();
+	/*
+	 * //리스트 public List<NoticeVO> Noticelist();
+	 */
 	//상세페이지
 
 
 
-	public NoticeVO Noticedetail(Integer nno);
+	public NoticeVO Noticedetail(int nno);
 
 	//수정하기
-	public  Integer Noticeupdate(NoticeVO vo);
+	
+	public int Noticeupdate(NoticeVO vo);
+
 
 	//삭제하기
 
-	public Integer Noticedelete(Integer nno);
+	public int  Noticedelete(int nno);
 
 
 
@@ -37,6 +40,10 @@ public interface NoticeService {
 
 	//공지사항 총 개수
 	public int getNoticeTotal(ClientCriteria cri);
+
+
+
+
 
 
 

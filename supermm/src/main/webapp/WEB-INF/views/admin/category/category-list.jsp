@@ -7,9 +7,13 @@
   crossorigin="anonymous"></script>
 <style>
 .activePage {
-	background-color: rgba(171, 147, 201, 0.1);	
+	border: 4px solid  rgba(171, 147, 201, 0.1);
+	background-color:  rgba(171, 147, 201, 0.1);
+	border-radius: 4px;
 }
 </style>
+
+
 <script type="text/javascript">
 $(document).ready(function(){   
 	/************* 페이징 ***************/
@@ -50,7 +54,6 @@ $(document).ready(function(){
       <form id="searchForm" method="post" action='category-list'>
          <div class="search">
             <select name="searchType">
-            
 				<option
 					<c:out value="${pageMake.cri.searchType == null ? 'selected':''}"/>>선택</option>
 				<option value="N"
@@ -99,8 +102,8 @@ $(document).ready(function(){
          <c:set var="cno" value="${pageMake.startPage}"/>
          <c:forEach var="cateList" items="${cateList}">
          <tr class="text-center">
-            <td><a class="goUpdate" href="<c:url value='category-update?cateNum=${cateList.cateNum}'/>"><c:out value="${cateList.cateNum}"/></a></td>
-            <td>${cateList.cateName}</td>
+            <td><a class="pro-hre" href="<c:url value='category-update?cateNum=${cateList.cateNum}'/>"onClick="alert('수정하시겠습니까?')" ><c:out value="${cateList.cateNum}"/></a></td>
+            <td><a class="pro-hre" href="<c:url value='category-update?cateNum=${cateList.cateNum}'/>"onClick="alert('수정하시겠습니까?')" >${cateList.cateName}</a></td>
             <td>${cateList.cateCode}</td>
             <td class="checkbox"><input type="checkbox" name="RowCheck" value="${cateList.cateNum}"/></td>
          </tr>
@@ -114,8 +117,8 @@ $(document).ready(function(){
 			<ul id="pageInfo" class="notice-page pager">
 				<!-- 각 번호 페이지 버튼 -->
 				<c:forEach var="num" begin="${pageMake.startPage }" end="${pageMake.endPage }">
-				<li class="pageInfo_btn ${pageMake.pageNum eq num ? 'activePage' : ''}">
-				<a class="page-link" href="${num}" >${num}</a>
+				<li class="pageInfo_btn ${pageMake.pageNum eq num ? 'activePage' : ''} ">
+				<a class="page-link" href="${num}" style="border:none">${num}</a>
 				</li>
 				</c:forEach>
             </ul>

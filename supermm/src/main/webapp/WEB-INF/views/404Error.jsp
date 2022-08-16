@@ -46,8 +46,7 @@
       <div class="d-table-cell">
         <div class="container">
           <div class="error-content">
-            <h1>404</h1>
-            <h2>페이지가 존재하지 않습니다.</h2>
+            <h1 style="font-size:50px">잘못된 경로입니다</h1>
             <p>해당 URL은 존재하지 않는 URL입니다. 아래 뒤로가기 버튼을 눌러 페이지로 돌아가세요.</p>
             <div class="button">
               <a href="javascript:history.back()" class="btn">뒤로가기</a>

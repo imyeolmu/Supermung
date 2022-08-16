@@ -14,9 +14,8 @@ public class MemberVO {
 	private String gender; //성별
 	private String email; //이메일
 	private String phone; //핸드폰번호
-	private String zipcode; //우편번호
-	private String addr1; //도로명주소
-	private String addr2; //지번주소
+	private String addr1; //우편번호
+	private String addr2; //주소
 	private String addr3; //상세주소
 	private int mpoint; //회원포인트
 	private Date regdate; //가입일
@@ -42,7 +41,5 @@ public class MemberVO {
 		this.PageNum = pageNum;
 		this.amount = amount;
 	}
-
-
 	
 }

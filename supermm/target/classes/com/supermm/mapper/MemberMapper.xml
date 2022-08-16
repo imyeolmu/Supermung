@@ -6,123 +6,126 @@
 
 	<!-- 회원목록 -->
 	<select id="getMemList" resultType="com.supermm.model.MemberVO">
-		select * from member where order by mnum
+		select * from member where
+		order by mnum
 	</select>
 
 	<!-- 검색조건 -->
 	<sql id="criteria">
-		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
-			<foreach collection="searchTypeArr" item="searchType">
-				<trim prefix="OR">
-					<choose>
-						<when test="searchType == 'N'.toString()">
-							name like '%'||#{keyWord}||'%'
-						</when>
-						<when test="searchType == 'G'.toString()">
-							gender like '%'||#{keyWord}||'%'
-						</when>
-					</choose>
-				</trim>
-			</foreach>
-		</trim>
+		<if test="searchType =='N'.toString()">
+			name like '%'||#{keyWord}||'%'and
+		</if>
+		<if test="searchType =='G'.toString()">
+			gender like '%'||#{keyWord}||'%' and
+		</if>
 	</sql>
-
 	<!-- 회원목록(페이징) -->
 	<select id="getMemListPaging"
 		resultType="com.supermm.model.MemberVO">
-  	<![CDATA[ 
-  	select mnum, id, pw, name, birth, gender, email, phone, zipcode, addr1, addr2, addr3, mpoint, money, regdate from(
-		select /*+INDEX_DESC(member mnum) */ rownum rnum, mnum, id, pw, name, birth, gender, email, phone, zipcode, addr1, addr2, addr3, mpoint, money, regdate
-     	from member where rownum <= #{pageNum} * #{amount}
-     ]]>
-		<if test="keyWord != null">
-			<include refid="criteria"></include>
-		</if>
-     	
-	<![CDATA[
-		)
-		where rnum > (#{pageNum} -1) * #{amount}
-	]]>
+		select * from(
+		select /*+INDEX_DESC(member mnum) */ rownum rnum, mnum,
+		id, pw, name, birth, gender, email, phone, addr1, addr2, addr3,
+		mpoint, money, regdate
+		from member where
+		<include refid="criteria"></include>
+   		
+   		<![CDATA[rownum <= #{pageNum} * #{amount}]]>
+		order by mnum)
+		<![CDATA[where rnum > (#{pageNum} -1) * #{amount}]]>
+		order by mnum
 	</select>
 
 	<!-- 회원 총 인원 -->
 	<select id="getMemTotal" resultType="int">
-		select count(*) from member
-		<if test="keyWord != null">
-			where mnum > 0
-			<include refid="criteria"></include>
-		</if>
+		select count(*) from member where
+		<include refid="criteria"></include>
+		mnum > 0
+		<!-- <if test="keyWord != null"> <![CDATA[where mnum > 0]]> order by mnum 
+			</if> -->
 	</select>
 
 	<!-- 회원정보 조회 -->
 	<select id="getMemInfo" resultType="com.supermm.model.MemberVO">
-		select * from member where mnum = #{mnum}
+		select * from member where
+		mnum = #{mnum}
 	</select>
 
 	<!-- 회원포인트 수정 -->
 	<update id="updateMemPoint">
-		update member set mpoint = mpoint+#{mpoint} where mnum = #{mnum}
+		update member set mpoint = mpoint+#{mpoint} where
+		mnum = #{mnum}
 	</update>
 
 
 	<!-- ********************* 클라이언트 ************************ -->
 	<!-- 로그인하기 -->
 	<select id="memberLogin" resultType="com.supermm.model.MemberVO">
-		select id, name, mpoint, adminchk, money from member where id =#{id} and pw
-		= #{pw}
+		<!-- select id, name, mpoint, adminchk, money from member where id =#{id} 
+			and pw = #{pw} -->
+		select id, name, mpoint, adminchk, money from member where id =
+		#{id,jdbcType=VARCHAR} and pw=#{pw,jdbcType=VARCHAR}
+
 	</select>
 
 	<!-- 회원 가입 하기 -->
 	<insert id="memberjoin">
-		insert into member(mnum, id, pw, name, birth, gender, email, phone, addr1,
+		insert into member(mnum, id, pw, name, birth, gender,
+		email, phone, addr1,
 		addr2, addr3, regdate, adminchk)
-		values(memberSeq.NEXTVAL, #{id}, #{pw}, #{name}, #{birth}, #{gender}, #{email}, #{phone},
+		values(memberSeq.NEXTVAL, #{id}, #{pw}, #{name}, #{birth}, #{gender},
+		#{email}, #{phone},
 		#{addr1}, #{addr2}, #{addr3}, sysdate, 0)
 	</insert>
 
 	<!-- 아이디 중복 검사 -->
 	<select id="idCheck" resultType="int">
-		select count(*) from member where id = #{id}
+		select count(*) from member
+		where id = #{id,jdbcType=VARCHAR}
 	</select>
 
-	<!-- 비밀번호 찾기-메일 -->
+	<!--이메일 중복검사 -->
+	<select id="eCheck" resultType="int">
+		select count(*) from member where email = #{email,jdbcType=VARCHAR}
+	</select>
 
-	<!-- 비빌번호찾기 -->
-	<update id="findpw" parameterType="hashMap">
-		update member set pw = #{pw} where email =#{email} and id = #{id}
+	<!-- 비밀번호업뎃 -->
+	<update id="findpw">
+		update member set pw=#{pw} where
+		email=#{email,jdbcType=VARCHAR}
 	</update>
-
-	<!-- 비빌번호check -->
-	<select id="findpwchk" resultType="int">
-		select count(*) from member where email =#{email} and id = #{id}
-	</select>
 
 	<!-- 마이페이지 내정보 -->
 	<select id="getMyInfo" resultType="com.supermm.model.MemberVO">
 		select * from member where
-		id = #{id}
+		id =
+		#{id,jdbcType=VARCHAR}
 	</select>
 
-	<!-- 마이페이지 내정보 수정-->
+	<!-- 마이페이지 내정보 수정 -->
 	<update id="updateMyInfo">
-		update member set pw=#{pw}, email=#{email}, phone=#{phone}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, addr3=#{addr3} where id=#{id}
+		update member set email=#{email}, phone=#{phone},
+		addr1=#{addr1}, addr2=#{addr2}, addr3=#{addr3} where id=
+		#{id,jdbcType=VARCHAR}
 	</update>
 
 	<!-- 비밀번호 변경 -->
 
-	<!-- 회원포인트 수정 -->
+	<!-- 금액충전 -->
 	<update id="plusMoney">
-		update member set money=money+#{money}  where id= #{id}
+		update member set money=#{money}+money where id=
+		#{id,jdbcType=VARCHAR}
 	</update>
 
 	<!-- 회원탈퇴 -->
 	<delete id="memDelete">
-		delete from member where id = #{id}
+		delete from member where id = #{id,jdbcType=VARCHAR}
 	</delete>
 
 	<!-- 주문자정보 -->
-	<!-- <select id="getClientInfo" resultType="com.supermm.model.MemberVO">
-		select id, name, email, zipcode, addr1, addr2, addr3, money, mpoint from member where id=#{id}
-	</select> -->
+	<select id="getClientInfo"
+		resultType="com.supermm.model.MemberVO">
+		select id, name, email, phone, addr1, addr2, addr3, money,
+		mpoint from member where id=#{id, jdbcType=VARCHAR}
+	</select>
 
 </mapper>

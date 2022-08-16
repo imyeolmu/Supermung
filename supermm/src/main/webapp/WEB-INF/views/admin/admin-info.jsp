@@ -4,7 +4,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+<link rel="stylesheet" href="${ctx}/resources/css/password.css">
 <section id="wrapper">
 <section class="admin mt-4 mb-5">
 		<div class="admin-container p-3">
@@ -37,7 +37,12 @@
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label for="reg-pass-confirm">성별</label>
-						<input class="form-control" type="text" name="gender" required value="${member.gender}" readonly>
+						<div class="d-flex mt-3">
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="gender" value="${member.gender}" checked>
+								<label class="form-check-label pe-5"style="color: #333">${member.gender}</label>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-12">
@@ -46,28 +51,22 @@
 						<input class="form-control" type="tel" name="phone" required placeholder="ex) 010-1234-5678" value="${member.phone}">
 					</div>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-12">
 					<div class="form-group">
 						<label for="reg-pass">이메일</label>
 						<input class="form-control" type="email" name="email" required placeholder="1234@daum.net" value="${member.email}">
 					</div>
 				</div>
-				<div class="col-sm-3">
-					<div class="button">
-						<button type="button" class="btn m-3"
-							onclick="join_daum_address();">인증번호</button>
-					</div>
-				</div>
 				<div class="col-sm-8">
 					<div class="form-group">
 						<label for="reg-pass">우편번호</label> <input
-							class="form-control zipcode" type="text" name="zipcode"
-							readonly="readonly" value="${member.zipcode}">
+							class="form-control address1" type="text" name="addr1"
+							readonly="readonly" value="${member.addr1}">
 					</div>
 				</div>
 				<div class="col-sm-3">
 					<div class="button">
-						<button type="button" class="btn m-3"
+						<button type="button" class="btn"
 							onclick="search_daum_address();">주소 찾기</button>
 					</div>
 				</div>
@@ -108,9 +107,8 @@
 				            }
 
 				            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-				            $("[name=zipcode]").val(data.zonecode);
-				            $("[name=addr1]").val(data.roadAddress);				            
-				            $("[name=addr2]").val(addr.jibunAddress);
+				            $("[name=addr1]").val(data.zonecode);
+				            $("[name=addr2]").val(data.roadAddress);
 
 				            // 커서를 상세주소 필드로 이동한다.
 				            $("[name=addr3]").attr("readonly", false);
@@ -125,8 +123,7 @@
 					<div class="form-group">
 						<div>
 							<label for="reg-pass"> 주소</label>
-							<input class="form-control address1 mb-1" type="text" name="addr1" readonly value="${member.addr1}">
-							<input class="form-control address2" type="text" name="addr2" readonly value="${member.addr2}">
+							<input class="form-control address2 mb-1" type="text" name="addr2" readonly value="${member.addr2}">
 						</div>
 					</div>
 				</div>
@@ -136,30 +133,57 @@
 						<input class="form-control address3" type="text" name="addr3" placeholder="상세주소" readonly value="${member.addr3}">
 					</div>
 				</div>
-				<div class="buttondiv text-center mx-auto">
-					<input type="submit" class="btn ok" value="수정" onclick="passWord()" />
-					<input type="reset" class="btn reset" value="취소" />
+				<div class="buttondiv text-center">
+					<a href="" class="show-prompt-box btn ok">수정하기</a>
+					<div class="overlay"></div>
+					<div class="prompt-wrap">
+						<div class="prompt-box">
+							<span class="close" onclick="closeModal();"></span>
+							<p>비밀번호를 입력하세요</p>
+							<input name="clients input-form" class="clients" type="password"
+								placeholder="비밀번호">
+							<button class="btn" type="submit">확인</button>
+							<script>
+								//Password protect form page
+								(function() {
+											
+								//Display modal on click
+								$('.show-prompt-box').click(function(e){
+								  e.preventDefault();
+								  $('.overlay, .prompt-box, .prompt-wrap').fadeIn();
+								});
+			
+								//Fade out overlay and prompt-box
+								$('.overlay, .close').click(function(){
+								  $('.overlay, .prompt-box').fadeOut();
+								  $('.code-error').removeClass('is-error');
+								  e.stopPropagation();
+								});
+			
+			
+								//Get value and compare to password
+								$('.btn').click(function() {
+								  var codeWord = $('.clients').val();		
+			
+								  if (codeWord.toLowerCase() == '${member.pw}') {
+									alert('수정되었습니다.');
+								   	return true;
+								} else{
+								    $('.prompt-box').addClass('shake');
+								    setTimeout(function() {
+								        $('.prompt-box').removeClass('shake')
+								    }, 1000);
+								    return false;
+									
+								}
+			
+								});
+			
+								})(); 
+							</script>
+						</div>
+					</div>
 				</div>
-				<script>function passWord() {
-						var testV = 1;
-						var pass1 = prompt('비밀번호를 입력하세요.',''); // 초기시 암호 물어보는 멘트
-						while (testV < 3) {
-						if (!pass1) 
-						history.go(-1);
-						if (pass1.toLowerCase() == '${member.pw}') { // 암호지정
-						alert('수정이 완료되었습니다.'); // 암호가 맞았을때 나오는 멘트
-						location.href ='/admin-info'; // 이동할 웹페이지 지정 - 현재창에서 이동
-						break;
-						} 
-						testV+=1;
-						var pass1 = 
-						prompt('비밀번호를 다시 입력하세요.',''); // 암호가 틀렸을때 멘트
-						}
-						if (pass1.toLowerCase()!="password" & testV ==3) 
-						history.go(-1);
-						return " ";
-						} 
-					</script>
 			</form>
 		</div>
 	</section>

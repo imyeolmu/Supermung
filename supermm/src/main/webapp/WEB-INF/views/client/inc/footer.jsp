@@ -99,7 +99,7 @@
 					<div class="col-lg-4 col-12">
 						<div class="copyright">
 							<p>
-								Designed and Developed by<a href="https://graygrids.com/"
+								Designed and Developed by<a href=""
 									rel="nofollow" target="_blank">GrayGrids</a>
 							</p>
 						</div>

@@ -86,16 +86,16 @@ public class ProductController {
 	//상품수정
 	@RequestMapping(value="/product-update", method = RequestMethod.GET)
 	public String prodUpdateGET(int pnum, Model model) {
-		
+
 		System.out.println("상품 수정페이지..");
-		
+
 		ProductVO prod = service.prodDetail(pnum);
-		
+
 		model.addAttribute("prod", prod);
-		
+
 		return "admin/product/product-update";
 	}
-	
+
 	//상품수정
 	@RequestMapping(value="/product-update", method = RequestMethod.POST)
 	public String prodUpdatePOST(ProductVO prod, Model model) {
@@ -107,7 +107,7 @@ public class ProductController {
 
 		return "redirect: /product-list";
 	}
-	
+
 	//상품삭제
 	@RequestMapping(value="/product-delete", method= RequestMethod.GET)
 	public String prodDelete(String pnum) throws Exception {
@@ -145,7 +145,7 @@ public class ProductController {
 
 	//전체상품리스트
 	@RequestMapping("/client-product-list")
-	public String clientProductList(String pcategory_fk1, ClientCriteria cri, Model model,HttpSession session) {
+	public String clientProductList(String pcategory_fk1, ClientCriteria cri, Model model, HttpSession session) {
 
 		System.out.println("상품 목록 페이징");
 
@@ -159,16 +159,16 @@ public class ProductController {
 		model.addAttribute("list", service.getProdListPaging(cri));
 		System.out.println("list.........."+service.getProdListPaging(cri));
 		System.out.println("listsdfsdfsdfsdf.........."+service.prodSide(pcategory_fk1));
-		
+
 		//카테고리
 		model.addAttribute("prodCateList", service.prodSide(pcategory_fk1));
 		session.setAttribute("prodCateList", service.prodSide(pcategory_fk1));
-		
+
 		return "client/product/client-product-list";
 	}	
 
 	//카테고리별 상품리스트로 이동
-	@RequestMapping("/client-product-list-category")
+	@RequestMapping(value="/client-product-list-category")
 	public String cateProdLists(String pcategory_fk1, ClientCriteria cri, Model model) {
 		System.out.println("상품 목록 페이징");
 
@@ -179,11 +179,11 @@ public class ProductController {
 		model.addAttribute("page", pageMake);
 
 		//카테고리
-		System.out.println("qweqwe1231231232"+service.prodCateList(cri));
 		model.addAttribute("prodCateList", service.prodSide(pcategory_fk1));
 		model.addAttribute("prodCate", service.prodCateList(cri));
 		return "client/product/client-product-list-category";
 	}	
+
 
 
 

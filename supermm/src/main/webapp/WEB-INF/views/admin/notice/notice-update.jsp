@@ -1,102 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- <script src="//cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script> -->
+
 <%@ include file="../inc/admin-header.jsp"%>
 
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous"></script>
 
-<%@ include file="../inc/admin-header.jsp"%>
-
-<!-- main -->
-<main class="board-detail container w-50 p-5">
-<form id="updateForm" action=<c:url value="notice-update?nno=${pageInfo.nno}"/> method="post">
-
-
-	<h5 class="mb-3">공지사항</h5>
-	<table class="table">
-		<tbody>
-		
-			<input type="hidden" name="nno" value="${pageInfo.nno }">
-			
+<main class="admin-input board container w-75 p-5">
+	<h4 class="text-center mb-3">공지사항 수정</h4>
+	<form id="updateForm" class="input-form" style="border:none"
+		action="<c:url value='notice-update?nno=${list.nno}'/>" method="post">
+		<table class="table">
+			<tbody>
 				<tr>
-					<th>제목</th>
-					<td><input class="w-100 cinput" type="text" name="ntitle"
-						value=" ${pageInfo.ntitle}" /></td>
-				</tr>
-
-				<tr>
-					<th>작성자</th>
-					<td><input class="w-30 cinput" type="text" name="nwriter_id"
-						value="${pageInfo.nwriter_id}" />
-				<tr>
-				<tr>
-					<th>첨부파일</th>
-					<td class="text-align-left text-indent"><input type="file"
-						name="nfiles" value="${pageInfo.nfiles}" /></td>
-				</tr>
-
-				<tr>
-					<td colspan="7">
+					<td colspan="12">
 						<div class="content">
-							<input class="w-30 cinput" type="text" name="ncontent"
-								value="${pageInfo.ncontent}" />
+							<span class="m-2 fw-bold">번호</span> 
+							<input class="w-20" value="${list.nno}" style="border:none; margin-left:20px" readonly/>
 						</div>
 					</td>
 				</tr>
-		</tbody>
-	</table>
-	<div class="one-menu w-100">
+				<tr>
+					<td colspan="12">
+						<div class="content d-flex">
+							<span class="m-2 fw-bold">제목</span>
+							<input class="w-20"
+								type="text" name="ntitle" value="${list.ntitle}" style="border:none; margin-left:20px"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="12">
+						<div class="content d-flex">
+							<span class="m-2 fw-bold">작성자</span> <input class="w-20"
+								type="text" name="nwriter_id" value="${list.nwriter_id}"
+								readonly="readonly" style="border:none; margin-left:10px"/>
+						</div>
+					</td>
+				</tr>
 
-		<button class="three-menu">
-			<a href="notice-list"on">ìì ìë£</a>
-	</div>
-	<div>
-		<button class="three-menu">
-			<a href="notice-detail" id="cancel_btn">ìì ì·¨ì</a>
-	</div>
-	<div>
-		<button class="three-menu">
-			<a href="notice-list" id="cancel_btn">ëª©ë¡</a>
-	</div>
+				<tr>
+					<td colspan="12"><textarea class="w-100" rows="20"
+							name="ncontent" id="notice_textarea" style="border: none; padding:10px">${list.ncontent}</textarea>
+					</td>
+				</tr>
+				<!-- <script>
+					CKEDITOR.replace('notice_textarea');
+					 CKEDITOR.editorConfig = function(config){
+		                  config.enterMode = CKEDITOR.ENTER_BR;
+		               };
+				</script>
+ -->
+			</tbody>
+		</table>
+
+		<div class="text-center ">
+			<div class="text-center inputdiv">
+			<input type="submit" class="btn ok" value="수정"/>
+				 <input class="btn reset" type="reset" value="취소"/> 
+				<a href="notice-list" class="btn golist">목록</a>
+				</div>
+		</div>
 	</form>
-
-	<form id="infoForm" action="/notice-update" method="post">
-		<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}">s
-		<input type="hidden" name="amount" value="${pageMake.cri.amount}">
-		<input type="hidden" name="keyword" value="${pageMake.cri.keyWord}">
-		<input type="hidden" name="nno" value="${pageInfo.nno }">
-
+	<form id="infoForm" action="/notice-update" method="get">
+		<input type="hidden" id="nno" value='<c:out value="${list.nno}"/>'>
 	</form>
-
-
-
-	<script>
-		let form = $("#infoForm"); 
-		let uForm = $("#updateForm");
-
-		
-		$("#list_btn").on("click", function(e) {
-			form.find("#nno").remove();
-			form.attr("action", "/notice-list");
-			form.submit();
-		});
-
-	
-		$("#update_btn").on("click", function(e) {
-			uForm.submit();
-		});
-
-		$("#cancel_btn").on("click", function(e) {
-			form.attr("action", "/notice-detail");
-			form.submit();
-		});
-	</script>
-
-
-
 </main>
+
+
+
+
 
 <%@ include file="../inc/footer.jsp"%>

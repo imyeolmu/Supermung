@@ -26,7 +26,7 @@
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <p>결제 방법은 금액충전 결제, 적립금 결제 2가지의 방법으로 결제가 가능합니다.</p>
+                                    <p>결제 방법은 금액충전 결제, 포인트 결제 2가지의 방법으로 결제가 가능합니다.</p>
                                     <p>
 	                                    <!-- 1. 신용카드<br/>
 										고객님의 카드번호, 유효기간 등을 승인받으 신 후 이용하실 수 있는 인터넷 안전결제(ISP), 안심클릭서비스를 이용해 결제 시 지정한 패스워드를 입력하여 편리하게 결제할 수 있습니다.

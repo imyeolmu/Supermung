@@ -8,6 +8,10 @@
 		<input type="hidden" name="cartAmount" class="update_cartAmount">
 		<input type="hidden" name="id" value="${member.id}">
 	</form>
+<!-- 주문 form -->
+	<form action="/order?id=${member.id}" method="get" class="order_form">
+		
+	</form>
     <div class="shopping-cart section">
         <div class="container">
             <div class="cart-list-head">
@@ -48,13 +52,22 @@
 <c:choose>
    <%-- hashmap에 저장해놓은거! 담긴 상품이 없을 때! --%>
 	<c:when test="${map.count==0}">
-		장바구니가 비어있습니다.
+		<span style="color:#333; font-weight:600; padding: 20px; ">장바구니가 비어있습니다.</span>
 	</c:when>
 	<c:otherwise>
 	<%-- 담긴 상품이 있을 때 --%>
                 	<c:forEach var="cartList" items="${map.list}">
                 <!-- Cart Single List list -->
                 <div class="cart-single-list">
+                	<input type="hidden" class="individual_price_input" value="${cartList.price}">
+                	<input type="hidden" class="individual_price_input" value="${cartList.price}">
+                	<input type="hidden" class="individual_quantity_input" value="${cartList.cartAmount}">
+                	<input type="hidden" class="individual_totalPrice_input" value="${cartList.totprice}">
+                	<input type="hidden" class="individual_point_input" value="${cartList.ppoint}">
+                	<input type="hidden" class="individual_totalPoint_input" value="${cartList.totpoint}">
+                	<input type="hidden" class="individual_pnum_input" value="${cartList.pnum}">
+                	<input type="hidden" class="individual_id_input" value="${member.id}">
+                	<input type="hidden" class="individual_priceAll_input" value="${priceAll}">
                     <div class="row align-items-center text-center">
                         <div class="col-lg-1 col-md-1 col-12">
                             <p style="color:#AB93C9; font-weight: bold">${cartList.cartnum}</p>
@@ -161,12 +174,43 @@
                                     <ul>
                                         <li>총 가격<span style="color:#AB93C9; font-weight: bold">${map.priceAll}원</span></li>
                                         <li>총 적립 포인트<span style="color:#AB93C9; font-weight: bold">${map.pointAll}원</span></li>
-                                        <li class="last" style="color:#3333; font-weight: bold">전체 포인트 사용시 결제금액<span>${map.fee}원</span></li>
                                     </ul>
                                     <div class="button">
-                                        <a href="checkout" class="btn">구매하기</a>
-                                        <a href="<c:url value='client-main'/>" class="btn btn-alt">계속 쇼핑하기</a>
+                                        <button class="order_btn btn">구매하기</button>
+                                        <a href="<c:url value='client-product-list'/>" class="btn btn-alt">계속 쇼핑하기</a>
                                     </div>
+                                    <script>
+                                    /* 주문 페이지 이동 */	
+                                    $(".order_btn").on("click", function(){
+                                    	let form_contents ='';
+                                    	let orderNumber = 0;
+                                    	
+                                    	$(".cart-single-list").each(function(index, element){
+                                    		let pnum = $(element).find(".individual_pnum_input").val();
+                                			let pcount = $(element).find(".individual_quantity_input").val();
+                                			let id = $(element).find(".individual_id_input").val();
+                                			console.log(pnum);
+                                			console.log(pcount);
+                                			console.log(id);
+                                			
+                                			let pnum_input = "<input name='orders[" + orderNumber + "].pnum' type='hidden' value='" + pnum + "'>";
+                                			form_contents += pnum_input;
+                                			
+                                			let pcount_input = "<input name='orders[" + orderNumber + "].pcount' type='hidden' value='" + pcount + "'>";
+                                			form_contents += pcount_input;
+                                		
+                                			orderNumber +=1;
+
+                                			let id_input = "<input name='orders[" + orderNumber + "].id' type='hidden' value='" + id + "'>";
+                                    	});
+                                    	
+                                    	$(".order_form").html(form_contents);
+                                    	console.log(form_contents);
+                                    	console.log(orderNumber);
+
+                                    	$(".order_form").submit();
+                                    });
+                                    </script>
                                 </div>
                             </div>
                         </div>

@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
 				<form class="card input-form rounded shadow-sm" action="member-point?mnum=${minfo.mnum}" method="post">
-				<h4 class="mb-5">회원포인트 수정</h4>
+				<h4 class="mb-5">회원포인트 충전</h4>
 					<table class="container table table-borderless">
 						<c:set value="${minfo.mnum}" var="mpinfo" />
 							<tbody>
@@ -32,8 +32,8 @@
 										pattern="#,##0" />P</td>
 								</tr>
 								<tr>
-									<td>포인트수정</td>
-									<td><input class="w-50  cinput" type="number" name ="mpoint" value="${minfo.mpoint}"required></td>
+									<td>포인트충전</td>
+									<td><input class="w-50  cinput" type="number" name ="mpoint" required></td>
 								</tr>
 							</tbody>
 					</table>

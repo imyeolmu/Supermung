@@ -9,9 +9,9 @@
   crossorigin="anonymous"></script>
 <style>
 .activePage {
-	border: 3px solid #AB93C9;
-	background-color: #AB93C9;
-	border-radius: 7px;
+	border: 4px solid  rgba(171, 147, 201, 0.1);
+	background-color:  rgba(171, 147, 201, 0.1);
+	border-radius: 4px;
 }
 </style>
 
@@ -124,7 +124,7 @@ $(document).ready(function(){
 												<span class="category"></span>
 												<h4 class="title">
 													<span class="category">${prodCate.pcategory_fk1}</span>
-													<a href="<c:url value='client-product-detail?pnum=${prodCate.pnum}'/>"><c:out value="${prodCate.pname}" /></a>
+													<a href="<c:url value='client-product-detail?pnum=${prodCate.pnum}'/>"><MARQUEE  scrolldelay=120><c:out value="${prodCate.pname}" /></MARQUEE></a>
 												</h4>
 												<div class="price">
 													<span><fmt:formatNumber value="${prodCate.price}"
@@ -142,29 +142,29 @@ $(document).ready(function(){
 									<ul id="pageInfo" class="notice-page pager">
 										<!-- 맨앞으로 버튼 -->
 										<c:if test="${page.prev}">
-											<li class="next pageInfo_btn"><a class="page-link" href="${page.realStart}">
+											<li class="next pageInfo_btn"><a class="page-link" href="${page.realStart}"style="border:none">
 											<i class="lni lni-angle-double-left"></i></a></li>
 										</c:if>
 										<!-- 이전페이지 버튼 -->
 										<c:if test="${page.prev}">
 											<li class="prev pageInfo_btn">
-											<a class="page-link" href="${page.startPage-1}"><i class="lni lni-chevron-left"></i></a></li>
+											<a class="page-link" href="${page.startPage-1}"style="border:none"><i class="lni lni-chevron-left"></i></a></li>
 										</c:if>
 										<!-- 각 번호 페이지 버튼 -->
 										<c:forEach var="num" begin="${page.startPage}" end="${page.endPage}">
 										<li class="pageInfo_btn ${page.pageNum eq num ? 'activePage' : ''}">
-										<a class="page-link" href="${num}" >${num}</a>
+										<a class="page-link" href="${num}" style="border:none">${num}</a>
 										</li>
 										</c:forEach>
 										<!-- 다음페이지 버튼 -->
 										<c:if test="${page.next}">
 											<li class="next pageInfo_btn">
-											<a class="page-link" href="${page.endPage+1}"><i class="lni lni-chevron-right"></i></a></li>
+											<a class="page-link" href="${page.endPage+1}"style="border:none"><i class="lni lni-chevron-right"></i></a></li>
 										</c:if>
 										<!-- 맨끝으로 버튼 -->
 										<c:if test="${page.next}">
 											<li class="next pageInfo_btn">
-											<a class="page-link" href="${page.realEnd}">
+											<a class="page-link" href="${page.realEnd}"style="border:none">
 											<i class="lni lni-angle-double-right"></i></a></li>
 										</c:if>
 						         </ul>

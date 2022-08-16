@@ -10,8 +10,14 @@
    typeAliases 태그로 마이바티스에서 데이터 전달에 사용될 VO빈을 설정!!
    root-context.xml에 추가해야됩니당 -->
       <typeAlias type="com.supermm.model.CategoryVO" alias="categoryVO"/>
-      <typeAlias type="com.supermm.model.ProductVO" alias="productVO"/>
-      <typeAlias type="com.supermm.model.MemberVO" alias="memberVO"/>
-      <typeAlias type="com.supermm.model.CartVO" alias="cartVO"/>
-   </typeAliases>
+		<typeAlias type="com.supermm.model.ProductVO" alias="productVO"/>
+		<typeAlias type="com.supermm.model.MemberVO" alias="memberVO"/>
+		<typeAlias type="com.supermm.model.NoticeVO" alias="noticeVO"/>
+		<typeAlias type="com.supermm.model.CartVO" alias="cartVO"/>
+		<typeAlias type="com.supermm.model.OrderPageDTO" alias="orderPageDTO"/>
+		<typeAlias type="com.supermm.model.OrderPageItemDTO" alias="orderPageItemDTO"/>
+		<typeAlias type="com.supermm.model.OrderDTO" alias="orderDTO"/>
+		<typeAlias type="com.supermm.model.OrderItemDTO" alias="orderItemDTO"/>
+		<typeAlias type="com.supermm.model.OrderCancelDTO" alias="orderCancelDTO"/>
+	  </typeAliases>
 </configuration>

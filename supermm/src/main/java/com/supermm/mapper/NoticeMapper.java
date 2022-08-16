@@ -11,18 +11,20 @@ public interface NoticeMapper {
 	//글쓰기하기 (등록)
 	public void Noticeregister(NoticeVO vo);
 
-	//게시판 목록
-	public List<NoticeVO> Noticelist();
+	/*
+	 * //게시판 목록 public List<NoticeVO> Noticelist();
+	 */
 
 	//상세페이지
 
-	public NoticeVO Noticedetail(Integer nno);
+	public NoticeVO Noticedetail(int nno);
 
 	//수정
-	public  Integer Noticeupdate(NoticeVO vo);
+
+	public int Noticeupdate(NoticeVO vo);
 
 	//삭제
-	public Integer Noticedelete(Integer nno);
+	public int Noticedelete(int nno);
 
 	//페이징
 	//상품목록
@@ -32,11 +34,11 @@ public interface NoticeMapper {
 	//공지사항 총 갯수
 	public int getNoticeTotal(Criteria cri);
 
-	public Integer movepage(Integer nno);
+	public int movepage(int nno);
 
 
 	//  조회수
-	public  void increase(Integer nno);
+	public  void increase(int nno);
 
 
 	//공지사항목록(페이징 적용)

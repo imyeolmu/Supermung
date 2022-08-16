@@ -49,11 +49,10 @@
 							</tr>
 							<tr>
 								<td>우편번호</td>
-								<td>${minfo.zipcode}</td>
-							</tr>
+								<td>${minfo.addr1}</td>
 							<tr>
 								<td>주소</td>
-								<td>${minfo.addr1}(${minfo.addr2}),${minfo.addr3}</td>
+								<td>${minfo.addr2},${minfo.addr3}</td>
 							</tr>
 							<tr>
 								<td>가입일</td>
@@ -66,7 +65,7 @@
 										pattern="#,##0" />P</td>
 							</tr>
 							<tr>
-								<td><a class="member-point" href="member-point?mnum=${minfo.mnum}">회원포인트</a></td>
+								<td><a class="member-point" href="member-point?mnum=${minfo.mnum}" onClick="alert('수정하시겠습니까?')">회원포인트</a></td>
 								<td><fmt:formatNumber value="${minfo.mpoint}"
 										pattern="#,##0" />P</td>
 							</tr>

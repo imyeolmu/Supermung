@@ -27,4 +27,7 @@ public interface CartMapper {
 	void update(int cartnum); // 번호넘김
 	int modifyCart(CartVO cvo); // 수정
 	
+	//카트제거(주문)
+	public int deleteOrderCart(CartVO dto);
+	
 }

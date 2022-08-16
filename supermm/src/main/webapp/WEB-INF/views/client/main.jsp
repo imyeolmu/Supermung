@@ -10,6 +10,9 @@
             <div class="hero-slider">
                 <!-- Start Single Slider -->
                 <div class="single-slider">
+                    <img style="object-fit: cover;"alt="" src="../resources/images/hero/banner.png">
+                </div>
+                <div class="single-slider">
                     <img style="object-fit: cover;"alt="" src="../resources/images/hero/banner01.png">
                 </div>
                 <!-- End Single Slider -->
@@ -35,12 +38,12 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="single-banner custom-responsive-margin">
-                    <a href="about-us.html"><img src="../resources/images/hero/brandstory.png" class="content1"/></a>
+                    <a href="about-us"><img src="../resources/images/hero/brandstory.png" class="content1"/></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="single-banner custom-responsive-margin">
-                    <a href="login.html"><img src="../resources/images/hero/event.png" class="content1"/></a>
+                    <a href="client-login"><img src="../resources/images/hero/event.png" class="content1"/></a>
                 </div>
             </div>
         </div>
@@ -170,7 +173,7 @@
                             <fmt:formatDate value="${nlist.nregdate}" pattern="yyyy-MM-dd"/>
                             </a>
                         <div class="button" style="float:right">
-                                <a href="javascript:void(0)" class="btn">자세히</a>
+                                <a href="client-notice-detail?nno=${nlist.nno}" class="btn">자세히</a>
                             </div>
                             <h4><a href="blog-single-sidebar">${nlist.ntitle}</a></h4>
                         </div>

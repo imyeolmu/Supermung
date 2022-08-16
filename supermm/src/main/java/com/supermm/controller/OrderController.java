@@ -63,8 +63,7 @@ public class OrderController {
 		
 		//세션 초기화
 		HttpSession session = request.getSession();
-		String id=(String)session.getAttribute("memberid");
-        cservice.deleteAll(id);
+		
 		try {
 			MemberVO memberLogin = mservice.memberLogin(member);
 			memberLogin.setPw("");

@@ -10,9 +10,6 @@
             <div class="hero-slider">
                 <!-- Start Single Slider -->
                 <div class="single-slider">
-                    <img style="object-fit: cover;"alt="" src="../resources/images/hero/banner.png">
-                </div>
-                <div class="single-slider">
                     <img style="object-fit: cover;"alt="" src="../resources/images/hero/banner01.png">
                 </div>
                 <!-- End Single Slider -->

@@ -17,5 +17,6 @@
 		<typeAlias type="com.supermm.model.OrderDTO" alias="orderDTO"/>
 		<typeAlias type="com.supermm.model.OrderItemDTO" alias="orderItemDTO"/>
 		<typeAlias type="com.supermm.model.OrderCancelDTO" alias="orderCancelDTO"/>
+		<typeAlias type="com.supermm.model.BoardVO" alias="BoardVO"/>
 	  </typeAliases>
 </configuration>

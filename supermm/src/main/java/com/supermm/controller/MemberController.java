@@ -157,6 +157,51 @@ public class MemberController {
 		session.setAttribute("memberid", vo.getId());
 		return "redirect:/client-main";
 	}
+	
+	
+//	시큐리티 적용	
+//	HttpSession session = request.getSession();
+//	  String rawPw =""; //인코딩 전 비밀번호 
+//	  String encodePw =""; //인코딩 후 비밀번호
+//	  
+//	// 두번쨰 변수 선언 - 값을 담을 변수
+//	MemberVO vo = service.memberLogin(member);
+//
+//	if (vo != null) {// 일치하는 아이디가 존재시
+//		
+//		rawPw = member.getPw(); //비밀번호 데이터를 얻음 
+//		encodePw = vo.getPw();//데이터 베이스에 저장한 인코딩된 비밀번호
+//		
+//		if(true ==  pwEncoder.matches(rawPw, encodePw)) {
+//			vo.setPw("");
+//			session.setAttribute("member", vo);
+//			return "redirect:/client-main";
+//			
+//		
+//		}else {
+//		
+//			session.setAttribute("result", 0);
+//			return "redirect:/client-login";
+//		
+//	
+//
+//		}
+//	 } else {
+//
+//	/*// 일치하는 아이디, 비밀번호 경우 - 로그인 성공
+//	session.setAttribute("member", vo);?--
+//	System.out.println("로그인성공");
+//
+//	// 로그인 id 확인
+//	System.out.println("id :" + member.getId());
+//*/
+//	// 아이디 저장
+//	session.setAttribute("result", 0);
+//	return "redirect:/client-login";
+//}
+//
+//}
+	
 
 	// 메인페이지 로그아웃
 	@RequestMapping(value = "/client-logout", method = RequestMethod.GET)

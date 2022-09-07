@@ -65,7 +65,12 @@
 		select id, name, mpoint, adminchk, money from member where id =
 		#{id,jdbcType=VARCHAR} and pw=#{pw,jdbcType=VARCHAR}
 
+
 	</select>
+		<!-- 시큐리티 적용  -->
+<!-- 	select id, pw, name, mpoint, adminchk, money from member where id = #{id}  -->
+
+	
 
 	<!-- 회원 가입 하기 -->
 	<insert id="memberjoin">

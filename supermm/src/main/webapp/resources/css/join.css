@@ -22,8 +22,28 @@
 	
 }
 
+.pwck_input_re_1{
+	color: green;
+	display: none;
+}
 
-.pw_input_re_1{
+.pwck_input_re_2{
+	color: red;
+	display:none;
+	
+}
+
+.mail_input_re_1{
+	
+	display: none;
+	
+	 color: red;
+	
+	
+	
+}
+
+.mail_input_re_2{
 	
 	display: none;
 	
@@ -33,15 +53,8 @@
 	
 }
 
-.pw_input_re_2{
-	
-	display: none;
-	
-	 color: red;
-	
-	
-	
-}
+
+
 
 /* 이메일 전송 */
 
@@ -74,4 +87,29 @@
 	
 }
 
+
+.final_id_ck{
+	display:none;
+	color:red;
+}
+.final_pw_ck{
+	display:none;
+	color:red;
+}
+.final_pwck_ck{
+	display:none;
+	color:red;
+}
+.final_name_ck{
+	display:none;
+	color:red;
+}
+.final_mail_ck{
+	display:none;
+	color:red;
+}
+.final_addr_ck{
+	display:none;
+	color:red;
+}
 

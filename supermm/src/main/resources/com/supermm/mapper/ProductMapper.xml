@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supermm.mapper.ProductMapper">
+
+	<!--  상품목록   -->
+	<select id="getProdList" resultType="productVO">
+		 select * from product order by pnum
+	</select>
+	 
+	 
+	<!--  검색조건  -->
+	<sql id="criteria">
+		<if test="searchType =='N'.toString()">
+			 pname like '%'||#{keyWord}||'%' and 
+		</if>
+		<if test="searchType =='C'.toString()">
+			 pcategory_fk1 like '%'||#{keyWord}||'%'and
+		</if>
+	</sql>
+	
+	
+	<!--   상품목록(페이징)   -->
+	<select id="getProdListPaging" resultType="productVO">
+		select pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent 
+		from( select /*+INDEX_DESC(product pnum) */ 
+		rownum rnum, pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent from product
+		where
+		<include refid="criteria"/>
+		<![CDATA[ rownum <= #{pageNum} * #{amount} ]]>
+		order by pnum)
+		<![CDATA[ where rnum > (#{pageNum} -1) * #{amount} ]]>
+		order by pnum
+	</select>
+	
+	
+	<!--  상품 총 개수  -->
+	<select id="getProdTotal" resultType="Integer">
+		select count(*) total from product where
+		<include refid="criteria"/>
+		pnum > 0
+	</select>
+	
+	
+	<!--  상품등록  -->
+	<insert id="prodInput" parameterType="productVO">
+		insert into product(pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent) 
+		values (productseq.NEXTVAL, #{pcategory_fk1, jdbcType=VARCHAR}, #{pname}, #{pimage}, #{pcompany},
+		#{pspec}, #{pqty}, #{price}, #{ppoint}, #{pcontent})
+	</insert>
+	
+	
+	<!--  카테고리 리스트  -->
+	<select id="cateList" resultType="categoryVO">
+		select * from category order by catecode
+	</select>
+	
+	
+	<!--  상품 삭제  -->
+	<delete id="prodDelete">
+		delete from product where pnum = #{pnum}
+	</delete>
+	
+	
+	<!--  상품 수정  -->
+	<update id="prodUpdate">
+		update product set pcategory_fk1=#{pcategory_fk1, jdbcType=VARCHAR}, 
+		pname=#{pname, jdbcType=VARCHAR}, pimage=#{pimage}, pcompany=#{pcompany}, pspec=#{pspec},
+		 pqty=#{pqty}, price=#{price}, ppoint=#{ppoint}, pcontent=#{pcontent} where pnum=#{pnum} 
+	</update>
+	
+	
+	<!--    상품 (수정)상세내용    -->
+	<select id="prodDetail" resultType="productVO">
+		select * from product where pnum = #{pnum}
+	</select>
+	
+	
+	<!--  ************************ 클라이언트 *************************  -->
+	
+	
+	<!--  남은 상품수량  -->
+	<select id="prodQty" resultType="int">
+		select nvl(sum(p.pqty-cartAmount),'0') from cart c, product p
+		<!--  조건:> 카트상품num = 상품num 요청하는 회원 id같을때  -->
+		where c.pnum = p.pnum
+	</select>
+	
+	
+	<!-- 상품 카테고리 리스트 -->
+	<select id="prodSide" resultType="String">
+		select pcategory_fk1 from product group by pcategory_fk1
+	</select>
+	
+	<!-- 카테고리별 상품리스트 가져오기 -->
+	<select id="prodCateList" resultType="productVO">
+		select pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent 
+		from( select /*+INDEX_DESC(product pnum) */ 
+		rownum rnum, pnum, pcategory_fk1, pname, pimage, pcompany, pspec, pqty, price, ppoint, pcontent from product
+		where pcategory_fk1 = #{pcategory_fk1,jdbcType=VARCHAR} and
+		<include refid="criteria"/>
+		<![CDATA[ rownum <= #{pageNum} * #{amount} ]]>
+		order by pnum)
+		<![CDATA[ where rnum > (#{pageNum} -1) * #{amount} ]]>
+		order by pnum
+	</select>
+	
+	<!--  카테고리별 상품리스트 총 개수  -->
+	<select id="prodCateTotal" resultType="Integer">
+		select count(*) total from product where pcategory_fk1 = #{pcategory_fk1,jdbcType=VARCHAR} and
+		<include refid="criteria"/>
+		pnum > 0
+	</select>
+	
+</mapper>

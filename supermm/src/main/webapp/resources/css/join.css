@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+
+/* 아이디 유효성 검사  */
+.id_input_re_1{
+	
+	display: none;
+	
+	 color: green;
+	
+	
+	
+}
+
+.id_input_re_2{
+	
+	display: none;
+	
+	 color: red;
+	
+	
+	
+}
+
+.pwck_input_re_1{
+	color: green;
+	display: none;
+}
+
+.pwck_input_re_2{
+	color: red;
+	display:none;
+	
+}
+
+.mail_input_re_1{
+	
+	display: none;
+	
+	 color: red;
+	
+	
+	
+}
+
+.mail_input_re_2{
+	
+	display: none;
+	
+	 color: green;
+	
+	
+	
+}
+
+
+
+
+/* 이메일 전송 */
+
+
+#mail_check_input_box_false{
+    background-color:#ebebe4;
+}
+ 
+#mail_check_input_box_true{
+    background-color:white;
+}
+ 
+.correct{
+	
+
+	color:green;
+	
+}
+.incorrect{
+	
+	color:red;
+	
+}
+
+
+.text-white {
+	
+	backgroud-color:#FFD66B;
+	
+	
+}
+
+
+.final_id_ck{
+	display:none;
+	color:red;
+}
+.final_pw_ck{
+	display:none;
+	color:red;
+}
+.final_pwck_ck{
+	display:none;
+	color:red;
+}
+.final_name_ck{
+	display:none;
+	color:red;
+}
+.final_mail_ck{
+	display:none;
+	color:red;
+}
+.final_addr_ck{
+	display:none;
+	color:red;
+}
+

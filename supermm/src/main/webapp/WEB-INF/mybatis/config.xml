@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <typeAliases>
+   <!-- 긴 이름의 클래스를 별칭으로 사용할 수 있게 설정한다.
+   typeAliases 태그로 마이바티스에서 데이터 전달에 사용될 VO빈을 설정!!
+   root-context.xml에 추가해야됩니당 -->
+      <typeAlias type="com.supermm.model.CategoryVO" alias="categoryVO"/>
+		<typeAlias type="com.supermm.model.ProductVO" alias="productVO"/>
+		<typeAlias type="com.supermm.model.MemberVO" alias="memberVO"/>
+		<typeAlias type="com.supermm.model.NoticeVO" alias="noticeVO"/>
+		<typeAlias type="com.supermm.model.CartVO" alias="cartVO"/>
+		<typeAlias type="com.supermm.model.OrderPageDTO" alias="orderPageDTO"/>
+		<typeAlias type="com.supermm.model.OrderPageItemDTO" alias="orderPageItemDTO"/>
+		<typeAlias type="com.supermm.model.OrderDTO" alias="orderDTO"/>
+		<typeAlias type="com.supermm.model.OrderItemDTO" alias="orderItemDTO"/>
+		<typeAlias type="com.supermm.model.OrderCancelDTO" alias="orderCancelDTO"/>
+		<typeAlias type="com.supermm.model.BoardVO" alias="BoardVO"/>
+	  </typeAliases>
+</configuration>

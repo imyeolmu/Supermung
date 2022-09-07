@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>슈퍼멍뭉</title>
+    <meta name="description" content="" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.svg" />
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../resources/css/LineIcons.3.0.css" />
+    <link rel="stylesheet" href="../resources/css/tiny-slider.css" />
+    <link rel="stylesheet" href="../resources/css/glightbox.min.css" />
+    <link rel="stylesheet" href="../resources/scss/main.css" />
+    <link rel="stylesheet" href="../resources/scss/list.css" />
+
+</head>
+
+<body>
+    <!-- main 부분 여기여기 폼 부분 -->
+    <main class="board container w-100 p-5">
+        <h4>게시판</h4>
+        <table class="table">
+                <thead>
+                    <div class="search">
+                        <select>
+                            <option value="title">제목</option>
+                            <option value="writerId">작성자</option>
+                        </select>
+                        <input class="board-search" type="text" name="q" value="" placeholder="검색어를 입력하세요"/>
+                        <input class="button board-search-button" type="submit" value="검색" />
+                    </div>
+                    <tr class="text-center">
+                        <th class="w60">번호</th>
+                        <th class="expand">제목</th>
+                        <th class="w100">작성자</th>
+                        <th class="w100">작성일</th>
+                        <th class="w60">조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+                        <td>8</td>
+                        <td><a href="detail.html" class="pro-hre">가나다라</a></td>
+                        <td>newlec</td>
+                        <td>2019-08-18</td>
+                        <td>146</td>
+                    </tr>
+                </tbody>
+        </table>
+        </div>
+        <div class="notice-footer w-100">
+            <div class="indexer align-right">
+                <p class="notice-page"><span>1</span> / 1 pages</p>
+                <button class="write"><a href="reg.html">글쓰기</a></button>
+                <ul class="text-center pager">
+                    <button class="prev" onclick="alert('이전 페이지가 없습니다.');"><i class="lni lni-chevron-left"></i></button>
+                    <li><a class="-text- orange bold" href="?p=1&t=&q=">1</a></li>
+                    <button class="next" onclick="alert('다음 페이지가 없습니다.');"><i class="lni lni-chevron-right"></i></button>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================= JS here ========================= -->
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/tiny-slider.js"></script>
+    <script src="../resources/js/glightbox.min.js"></script>
+    <script src="../resources/js/main.js"></script>
+    <script type="text/javascript">
+        //========= Hero Slider
+        tns({
+            container: '.hero-slider',
+            slideBy: 'page',
+            autoplay: true,
+            autoplayButtonOutput: false,
+            mouseDrag: true,
+            gutter: 0,
+            items: 1,
+            nav: false,
+            controls: true,
+            controlsText: ['<i class="lni lni-chevron-left"></i>', '<i class="lni lni-chevron-right"></i>']
+        });
+
+        //======== Brand Slider
+        tns({
+            container: '.brands-logo-carousel',
+            autoplay: true,
+            autoplayButtonOutput: false,
+            mouseDrag: true,
+            gutter: 15,
+            nav: false,
+            controls: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                540: {
+                    items: 3
+                },
+                768: {
+                    items: 5
+                },
+                992: {
+                    items: 6
+                }
+            }
+        });
+    </script>
+    <script>
+        const finaleDate = new Date("February 15, 2023 00:00:00").getTime();
+
+        const timer = () => {
+            const now = new Date().getTime();
+            let diff = finaleDate - now;
+            if (diff < 0) {
+                document
+                    .querySelector('.alert')
+                    .style
+                    .display = 'block';
+                document
+                    .querySelector('.container')
+                    .style
+                    .display = 'none';
+            }
+
+            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+            let minutes = Math.floor(diff % (1000 * 60 * 60) / (1000 * 60));
+            let seconds = Math.floor(diff % (1000 * 60) / 1000);
+
+            days <= 99
+                ? days = `0${days}`
+                : days;
+            days <= 9
+                ? days = `00${days}`
+                : days;
+            hours <= 9
+                ? hours = `0${hours}`
+                : hours;
+            minutes <= 9
+                ? minutes = `0${minutes}`
+                : minutes;
+            seconds <= 9
+                ? seconds = `0${seconds}`
+                : seconds;
+
+            document
+                .querySelector('#days')
+                .textContent = days;
+            document
+                .querySelector('#hours')
+                .textContent = hours;
+            document
+                .querySelector('#minutes')
+                .textContent = minutes;
+            document
+                .querySelector('#seconds')
+                .textContent = seconds;
+
+        }
+        timer();
+        setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>

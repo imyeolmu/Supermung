@@ -1,0 +1,551 @@
+/*======================================
+	Mypage CSS
+========================================*/
+.mypage {
+    position: relative;
+    background-color: $white;
+    min-height: 1000px;
+
+    .mypage-main {
+        .single-info-head {
+            margin-top: 30px;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+
+            @media #{$xs} {
+                margin-top: 20px;
+            }
+        }
+
+        .single-info {
+            margin-bottom: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-align: left;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+            
+            h5 {
+                font-size: 20px;
+                font-weight: 600;
+                color: $theme-color;
+                margin-bottom: 10px;
+                transition: all 0.3s ease;
+            }
+            
+            i {
+                font-size: 25px;
+                color: $theme-color;
+                transition: all 0.3s ease;
+                margin-bottom: 10px;
+                margin-right: 10px;
+            }
+
+            .button {
+                margin-top: 5px;
+                
+                .btn {
+                    border: 1px solid rgb(223, 223, 223);
+                    width: 150px;
+
+                    &:hover {
+                        background-color: $black;
+                        color: #fff;
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.mypage-wish {
+    margin-top: 30px;
+
+    .wish-main {
+        padding: 40px;
+        background-color: $gray;
+        border: 1px solid #eee;
+        border-radius: 4px;
+
+        h4 {
+            color: $theme-color;
+            font-size: 25px;
+        }
+
+        .single-product {
+
+            .button {
+                a {
+                    width: 30px;
+                    margin-top: 10px;
+
+                    i {
+                        color: $theme-color;
+                        display: flex;
+                        justify-content: center;
+                        font-size: 20px;
+                    }
+                }
+            }
+
+        }
+
+        @media #{$md,$xs} {
+            padding: 35px;
+            margin-top: 40px;
+        }
+
+        @media #{$xs} {
+            padding: 30px;
+        }
+    }
+}
+
+.mypage-review {
+    margin-top: 30px;
+
+    .review-main {
+        padding: 40px;
+        background-color: $gray;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        
+        h4 {
+            color: $theme-color;
+            font-size: 25px;
+        }
+        
+        .my-review {
+            color: #333;
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-top: 30px;
+            background-color: #fff;
+        }
+        
+        @media #{$md,$xs} {
+            padding: 35px;
+            margin-top: 40px;
+        }
+
+        @media #{$xs} {
+            padding: 30px;
+        }
+    }
+}
+
+/*======================================
+	Admin Header CSS
+========================================*/
+.admin-nav {
+    padding-left: 80px;
+    min-width: 900px;
+
+    .admin {
+        // margin-right: 12px;
+        position: relative;
+        
+        &:hover {
+            .admin-menu {
+                opacity: 1;
+            visibility: visible;
+            }
+        }
+    }
+
+    .admin-menu {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 150px;
+        background: #fff;
+        padding: 15px 25px;
+        margin: 0;
+        -webkit-transition: all 0.3s ease 0s;
+        -moz-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+        z-index: 99;
+        border-radius: 4px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.137);
+        opacity: 0;
+        visibility: hidden;
+
+        @media #{$xs} {
+            width: 250px;
+        }
+
+        @media #{$md} {
+            top: 68px;
+        }
+        
+        @media #{$xs} {
+            top: 66px;
+        }
+        
+        &:hover {
+            .user-menu {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        
+        .admin-menu-list li {
+            overflow: hidden;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            height: 40px;
+            position: relative;
+            display: flex;
+            font-size: 14px;
+
+            .admin-head-menu {
+                // border: 1px solid red;
+                height: 15px;
+                // height: 5px;
+                // line-height: 10px;
+                // margin: 3px;
+                color: $black;
+                font-weight: 500;
+                
+                &:hover {
+                    border-color: transparent;
+                    color: $theme-color;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+/*======================================
+	Admin Input CSS
+========================================*/
+.admin-input {
+    background-color: #fff;
+    min-height: 1000px;
+
+    .input-form {
+        padding: 42px;
+        border: 1px solid rgb(230, 230, 230);
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0px 5px 40px #00000008;
+
+        @media #{$xs} {
+            padding: 30px;
+        }
+
+        h4 {
+            color: $black;
+        }
+
+        .cinput {
+            padding: 10px;
+            border: 1px solid #eee;
+            margin-bottom: 25px;
+            margin-left: 20px;
+            border-radius: 10px;
+            
+            &:focus {
+                border: 1px solid #eee;
+                outline: none;
+                box-shadow: none;
+            }
+        }
+            
+        
+        p {
+
+            span {
+                color: $black;
+            }
+
+            .cinput{
+                padding: 10px;
+                border: 1px solid #eee;
+                margin-bottom: 25px;
+                margin-left: 20px;
+                border-radius: 10px;
+                
+                &:focus {
+                    border: 1px solid #eee;
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+            
+            textarea {
+                color: $black;
+            }
+
+            input {
+                margin-right: 15px;
+            }
+        }
+
+        .member-point {
+            color: $theme-color;
+            font-weight: 600;
+            
+            &:hover {
+                color: #333;
+            }
+        }
+
+        .inputdiv {
+            .ok {
+                background-color: $theme-color;
+                color: white;
+                font-size: 1em;
+                padding: 10px 30px;
+            }
+            
+            .reset {
+                background-color: $secondary-color;
+                color: white;
+                font-size: 1em;
+                padding: 10px 30px;
+            }
+            
+            .golist {
+                background-color: $green;
+                color: white;
+                font-size: 1em;
+                padding: 10px 30px;
+            }
+        }
+    }    
+}
+
+/*======================================
+    Admin Board CSS
+========================================*/
+
+.board {
+    min-height: 1000px;
+
+    h4 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+    
+    h5 {
+        font-size: 20px;
+    }
+    .table {
+        table-layout:fixed;
+
+        td {
+            text-overflow:ellipsis; 
+            overflow:hidden;
+            
+            a {
+                text-overflow:ellipsis; 
+                overflow:hidden;
+
+            }
+        }
+    }
+
+    .search {
+        float: right;
+        margin-bottom: 20px;
+
+        select {
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 5px;
+            
+            &:focus {
+                text-decoration: none;
+                outline: none;
+                box-shadow: none;
+            }
+                
+        }
+        
+        .board-search {
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 5px;            
+        }
+        
+        .board-search-button {
+            border: 1px solid $theme-color;
+            background-color: $theme-color;
+            color: #fff;
+            border-radius: 4px;
+            padding: 5px; 
+            padding-left: 10px; 
+            padding-right: 10px; 
+            margin-left: 0;          
+        }
+    
+    }
+
+    .pro-hre {
+        color: #333;
+    }
+
+    input[type=checkbox], input[type=radio] {
+        accent-color: #888;
+        
+    }
+}
+
+.notice-footer {
+margin-top: 10px;
+float: right;
+color: #333;
+
+    .indexer {
+        a {
+            color: #333;
+        }
+
+        .bloc { 
+            background-color: $secondary-color;
+            border: 1px solid $secondary-color;
+            border-radius: 4px;
+            padding: 5px; 
+            color: #fff;
+        }
+        
+        .write {
+            background-color: $theme-color;
+            border: 1px solid $theme-color;
+            border-radius: 4px;
+            padding: 5px;
+            
+            a {
+                color: #fff;
+            }
+        }
+    }
+
+    .notice-page {
+        margin-bottom: 5px;
+    }
+    
+    .pager {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .prev {
+            background-color: transparent;
+            border: none;
+            border-radius: 4px;
+            padding: 5px;
+            
+        }
+        
+        a {
+            color: #333;
+            padding: 15px;
+        }
+
+        .next {
+            background-color: transparent;
+            border: none;
+            border-radius: 4px;
+            padding: 5px;  
+        }
+    }
+}
+
+
+/*======================================
+    Admin Board Detail CSS
+========================================*/
+.board-detail {
+    min-height: 1000px;
+    color: #333;
+
+    h5 {
+        font-size: 20px;
+    }
+
+    .content {
+        min-height: 400px;
+    }
+
+    .one-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    } 
+
+    .two-menu {
+        background-color: $theme-color;
+        border: 1px solid $theme-color;
+        border-radius: 4px;
+        padding: 3px;
+        margin: 2px;
+        min-width: 70px;
+        color: #fff;
+    }
+    
+    .three-menu  {
+        background-color: $secondary-color;
+        border: 1px solid $secondary-color;
+        border-radius: 4px;
+        margin: 2px;
+        padding: 3px;
+        min-width: 70px;
+        min-width: 70px;
+        color: #fff;
+        
+        a {
+            color: #fff;
+        }
+    }
+
+    .reply {
+        margin-top: 50px;
+
+        h5 {
+            font-size: 15px;
+            font-weight: 500;
+            
+        }
+        .row {
+            border: 1px solid #eee;
+            border-radius: 4px;
+            margin-top: 10px;
+            padding: 10px 20px;
+            
+
+            p {
+                font-size: 15px;
+            }
+
+        }
+        
+        .form-group {
+            // border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            button {
+                background-color: $theme-color;
+                border: 1px solid $theme-color;
+                border-radius: 4px;
+                padding: 3px;
+                margin: 2px;
+                min-width: 30px;
+                color: #fff;
+                font-size: 14px;
+                font-weight: 500;
+                margin-top: 10px;
+            }
+        }   
+    }
+}

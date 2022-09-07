@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis를 사용할 수 있도록 태그코드 추가 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supermm.mapper.ChartMapper">
+	<!-- 상품순위 -->
+	<select id="bestProduct" resultType="productVO">
+		select * from product where
+		pspec='인기' order by pnum
+	</select>
+
+	<!-- 배송준비 -->
+	<select id="getReadyTotal" resultType="int">
+		select count(*) from
+		supermm_order where orderState = '배송준비'
+	</select>
+
+	<!-- 주문취소 -->
+	<select id="getCancelTotal" resultType="int">
+		select count(*) from
+		supermm_order where orderState = '주문취소'
+	</select>
+
+	<!-- 매출 -->
+	<select id="getSales" resultType="orderPageItemDTO">
+		select price from
+		supermm_orderItem order by orderItemId
+	</select>
+
+
+	<!-- 총 회원수 -->
+	<select id="getmembercnt" resultType="int">
+		select count(*) from member
+	</select>
+
+
+	<!--대쉬보드 오늘 -->
+	<select id="getmemberto" resultType="int">
+	   <![CDATA[
+	select (
+	select count(*) from member where regdate >= to_char(trunc(sysdate),'yyyy/mm/dd')) from dual
+	      ]]>
+	</select>
+
+	<!--대쉬보드 1일전 -->
+	<select id="getmemberone" resultType="int">
+	   <![CDATA[
+	select (
+	select count(*) from member where regdate >= to_char(trunc(sysdate-1),'yyyy/mm/dd')) from dual
+	      ]]>
+	</select>
+
+	<!-- 대쉬보드 2일전 -->
+	<select id="getmembertwo" resultType="int">
+	   <![CDATA[
+	select (
+	select count(*) from member where regdate >= to_char(trunc(sysdate-2),'yyyy/mm/dd')) from dual
+	      ]]>
+	</select>
+
+	<!-- 대쉬보드 3일전 -->
+	<select id="getmemberthr" resultType="int">
+   	<![CDATA[
+	select (
+	select count(*) from member where regdate >= to_char(trunc(sysdate-3),'yyyy/mm/dd')) from dual
+	      ]]>
+	</select>
+
+	<!-- 대쉬보드 4일전 -->
+	<select id="getmemberfour" resultType="int">
+	   <![CDATA[
+	select (
+	select count(*) from member where regdate >= to_char(trunc(sysdate-4),'yyyy/mm/dd')) from dual
+	      ]]>
+	</select>
+
+	<!-- 대쉬보드 5일전 -->
+	<select id="getmemberfive" resultType="int">
+	   <![CDATA[
+	select (
+	select count(*) from member where regdate >= to_char(trunc(sysdate-5),'yyyy/mm/dd')) from dual
+	      ]]>
+	</select>
+
+	<!--이번주 가입 회원수 -->
+	<select id="getmembercntw" resultType="int">
+	      <![CDATA[
+	      select (
+	select count(*) from member where regdate > to_char(trunc(sysdate,'iw'),'yyyy/mm/dd'))
+	from dual
+	         ]]>
+	</select>
+
+</mapper>

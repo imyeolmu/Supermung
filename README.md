@@ -63,7 +63,13 @@
 
 :six: 별첨
 ---
-DEMO 영상:
+DEMO 영상
+
+영상1
+https://www.youtube.com/watch?v=4WJWwXIJg_E
+
+영상2
+https://www.youtube.com/watch?v=sksmqUcXT6o
 
 보고서 작성: https://drive.google.com/drive/folders/1S-vmVP0w5q3vKc9M04m3-XuYcwPsUUXj?usp=sharing![image](https://user-images.githubusercontent.com/101086601/190324061-174e77a1-8ab6-4236-adc1-c027ee4838be.png)
 

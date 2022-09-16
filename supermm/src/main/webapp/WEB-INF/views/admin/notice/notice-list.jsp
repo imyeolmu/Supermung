@@ -51,7 +51,7 @@
    </form>
 	<h4>공지사항</h4>
 	<!--검색창  -->
-			<form id="searchForm" method="post" action='notice-list'>
+			<form id="searchForm" method="get" action='notice-list'>
 				<div class="search">
 					<select name="searchType">
 						<option

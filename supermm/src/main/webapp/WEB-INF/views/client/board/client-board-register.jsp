@@ -14,52 +14,58 @@
 <%@ include file="../inc/client-header.jsp"%>
 
 <!--메인  -->
-<main class="board-detail container w-50 p-4">
-	<h5 class="mb-3">봉사게시판</h5>
-	<form id="registerForm" action="<c:url value='client-board-register'/>"	method="post">
+
+<main class="admin-input board container w-75 p-5">
+	<h4 class="text-center mb-3">봉사게시판</h4>
+	<form id="registerForm" class="input-form" style="border:none" action="<c:url value='client-board-register'/>"
+		method="post">
 		<table class="table">
 			<tbody>
-
 				<tr>
-					<th>제목</th>
-					<td><input class= "w-120" type="text" name="btitle"/></td>
-				</tr>
-
-				<tr>
-					<th>작성자</th>
-					<td><input class="w-120" type="text" name="bwriter_id"/>
-				</td>
+					<td colspan="12">
+						<div class="content d-flex">
+							<span class="m-2 fw-bold">제목</span>
+							<input class="w-20"
+								type="text" name="btitle" style="border:none; margin-left:20px"/>
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="12">
-						
-							<textarea class = "w-100" rows="20" name="bcontent" id="notice_textarea"
-								 ></textarea>
-
-						
+						<div class="content d-flex">
+							<span class="m-2 fw-bold">작성자</span> <input class="w-20"
+								type="text" name="bwriter_id"  style="border:none; margin-left:10px"/>
+						</div>
 					</td>
 				</tr>
-			<!-- 	<script>
+
+				<tr>
+					<td colspan="12"><textarea class="w-100" rows="20"
+							name="bcontent" id="notice_textarea" style="border: none; padding:10px"></textarea>
+					</td>
+				</tr>
+				<!-- <script>
 					CKEDITOR.replace('notice_textarea');
 					 CKEDITOR.editorConfig = function(config){
 		                  config.enterMode = CKEDITOR.ENTER_BR;
 		               };
-				</script> -->
-		               
+				</script>
+ -->
 			</tbody>
 		</table>
-		<div class="one-menu w-100 ">
-			<div class="inputdiv">
-				<input type="submit" class="two-menu" value="등록"  onClick="alert('등록하시겠습니까?')"/>
-				<button class="three-menu" type="button">
-					<a href="client-board-list"> 목록</a>
-				</button>
-			</div>
 
+		<div class="text-center inputdiv">
+			<input type="submit" class="btn ok" value="등록" />
+			<input type="reset" class="btn reset" value="취소" /></td>
+			<input type="button" class="btn golist" onclick="javascript:history.back()" value="뒤로" /></td>
 		</div>
 	</form>
 </main>
 
+
+
+
+		
 
 
 <%@ include file="../inc/footer.jsp"%>
